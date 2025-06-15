@@ -11,27 +11,34 @@
       font-family: sans-serif;
       background: linear-gradient(to right, #83a4d4, #b6fbff);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
+    }
+    #splash {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #splash img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    #main {
+      display: none;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
     }
-    h1 {
+    #main h1 {
       font-size: 2.5em;
       color: #333;
     }
-    p {
-      font-size: 1.2em;
-      color: #555;
-    }
-    img {
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      margin: 20px 0;
-    }
-    button {
+    #main button {
       padding: 10px 20px;
       font-size: 1em;
       border: none;
@@ -40,15 +47,28 @@
       color: white;
       cursor: pointer;
     }
-    button:hover {
+    #main button:hover {
       background-color: #005f99;
     }
   </style>
 </head>
 <body>
+
+<div id="splash">
+  <img src="https://raw.githubusercontent.com/Amitantil123/apnasapnaapnaghar/main/735b9851-b47c-45c4-8d0f-6fbf26003028.png" alt="Welcome Image">
+</div>
+
+<div id="main">
   <h1>Welcome to Apna Sapna Apna Ghar</h1>
-  <p>Find your dream home today! Trusted by 1000+ buyers and sellers.</p>
-  <img src="https://via.placeholder.com/300x200.png?text=Apna+Sapna+Apna+Ghar" alt="Welcome Image">
   <button>Explore More</button>
+</div>
+
+<script>
+  setTimeout(() => {
+    document.getElementById('splash').style.display = 'none';
+    document.getElementById('main').style.display = 'flex';
+  }, 3000);
+</script>
+
 </body>
 </html>
