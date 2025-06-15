@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
     body {
@@ -10,65 +10,92 @@
       padding: 0;
       font-family: sans-serif;
       background: linear-gradient(to right, #83a4d4, #b6fbff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    #splash {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    #splash img {
-      max-width: 100%;
-      max-height: 100%;
-    }
-    #main {
-      display: none;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
     }
-    #main h1 {
-      font-size: 2.5em;
-      color: #333;
+    header {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 2px solid #007acc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    #main button {
-      padding: 10px 20px;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-container img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    .logo-container h1 {
+      font-size: 2em;
+      color: #007acc;
+      margin: 0;
+      font-weight: bold;
+    }
+    .details {
       font-size: 1em;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      margin: 10px;
+    }
+    input, textarea {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+    }
+    button {
+      background: #007acc;
+      color: white;
+      padding: 10px 15px;
       border: none;
       border-radius: 5px;
-      background-color: #007acc;
-      color: white;
       cursor: pointer;
     }
-    #main button:hover {
-      background-color: #005f99;
+    button:hover {
+      background: #005f99;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/Amitantil-111/apnasapnaapnaghar/main/logo.png" alt="Logo" />
+      <h1>Apna Sapna Apna Ghar</h1>
+    </div>
+    <div class="details">
+      <p><strong>Owner:</strong> Amit</p>
+      <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
+      <p><strong>Contact:</strong> 8053****43 | <strong>Email:</strong> Amitrudher24@gmail.com</p>
+    </div>
+  </header>
 
-<div id="splash">
-  <img src="https://raw.githubusercontent.com/Amitantil123/apnasapnaapnaghar/main/735b9851-b47c-45c4-8d0f-6fbf26003028.png" alt="Welcome Image">
-</div>
+  <h2>Seller Form</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="text" placeholder="Property Location" required>
+    <input type="file" accept="image/*" required>
+    <textarea placeholder="Describe your property features..." required></textarea>
+    <button type="submit">Submit Property</button>
+  </form>
 
-<div id="main">
-  <h1>Welcome to Apna Sapna Apna Ghar</h1>
-  <button>Explore More</button>
-</div>
-
-<script>
-  setTimeout(() => {
-    document.getElementById('splash').style.display = 'none';
-    document.getElementById('main').style.display = 'flex';
-  }, 3000);
-</script>
-
+  <h2>Buyer Form</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="text" placeholder="Looking for location" required>
+    <textarea placeholder="Message to Seller..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </body>
 </html>
