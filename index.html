@@ -6,9 +6,9 @@
   <title>Apna Sapna Apna Ghar</title>
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
-    header { background: #007BFF; color: white; padding: 10px; display: flex; align-items: center; justify-content: space-between; }
+    header { background: #007BFF; color: white; padding: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
     header img { width: 30px; margin-right: 10px; }
-    header input[type="text"] { padding: 5px; border-radius: 5px; border: none; width: 150px; }
+    header input[type="text"] { padding: 5px; border-radius: 5px; border: none; width: 120px; margin: 2px; }
     .container { padding: 20px; padding-bottom: 80px; }
     .property { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 10px; margin-bottom: 10px; text-align: center; }
     .property img { width: 100%; max-width: 200px; border-radius: 5px; }
@@ -31,6 +31,10 @@
     </div>
   </header>
 
+  <div style="padding: 10px;">
+    <button onclick="showPage('propertyListPage')">📑 My Property List</button>
+  </div>
+
   <div id="homePage" class="container">
     <div class="property">
       <img src="property1.jpg" alt="Property 1">
@@ -52,8 +56,27 @@
       <img src="property5.jpg" alt="Property 5">
       <p>₹30,00,000 - Rohtak, India</p>
     </div>
+  </div>
 
-    <button onclick="showPage('propertyListPage')">📑 My Property List</button>
+  <div id="propertyListPage" class="container hidden">
+    <h2>📑 My Property List</h2>
+    <p>All your listed properties will appear here.</p>
+  </div>
+
+  <div id="accountPage" class="container hidden">
+    <h2>👤 Account</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button class="login" style="background: #007BFF; color: white;">Login</button>
+    <button class="create" style="background: #28a745; color: white;">Create Account</button>
+
+    <h3>⚙️ Settings</h3>
+    <label>Language:</label>
+    <select>
+      <option>English</option>
+      <option>Hindi</option>
+    </select>
+
     <div class="share-options">
       <h3>📤 Share this Website</h3>
       <button onclick="shareSite('link')">Copy Link</button>
@@ -63,11 +86,16 @@
       <button onclick="shareSite('bluetooth')">Bluetooth</button>
       <button onclick="shareSite('email')">Email</button>
     </div>
-  </div>
 
-  <div id="propertyListPage" class="container hidden">
-    <h2>📑 My Property List</h2>
-    <p>All your listed properties will appear here.</p>
+    <h3>ℹ️ About</h3>
+    <p><strong>Name:</strong> Amit</p>
+    <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
+    <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
+    <p><strong>Contact:</strong> 8053****43</p>
+    <p>This site helps buyers and sellers connect for real estate opportunities.</p>
+
+    <h3>❓ Help</h3>
+    <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
   </div>
 
   <div class="nav">
@@ -75,12 +103,12 @@
     <button onclick="alert('Chats will open')">💬 Chats</button>
     <button onclick="alert('Sell form will open')">➕ Sell</button>
     <button onclick="showPage('propertyListPage')">📑 My Ads</button>
-    <button onclick="alert('Account page will open')">👤 Account</button>
+    <button onclick="showPage('accountPage')">👤 Account</button>
   </div>
 
   <script>
     function showPage(pageId) {
-      const pages = ['homePage', 'propertyListPage'];
+      const pages = ['homePage', 'propertyListPage', 'accountPage'];
       pages.forEach(id => {
         document.getElementById(id).classList.add('hidden');
       });
