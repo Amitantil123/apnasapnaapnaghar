@@ -5,124 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
-    body {
+    body, html {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      padding: 0;
+      font-family: sans-serif;
     }
-    header {
-      background: #777;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    .search-bar {
-      margin: 10px auto;
+    #splash {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #333 url('your-logo-or-image.jpg') no-repeat center center;
+      background-size: contain;
       display: flex;
+      align-items: center;
       justify-content: center;
+      color: #fff;
+      font-size: 2em;
     }
-    .search-bar input {
-      width: 50%;
-      padding: 10px;
-    }
-    .search-bar button {
-      padding: 10px;
-    }
-    .property-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 10px;
-      padding: 10px;
-    }
-    .property {
-      background: #fff;
-      padding: 5px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    .property img {
-      width: 100%;
-      border-radius: 5px;
-    }
-    .property-info {
-      padding: 5px 0;
-    }
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #eee;
-      padding: 10px;
-      display: flex;
-      justify-content: space-around;
-    }
-    .settings {
-      position: fixed;
-      top: 10px;
-      right: 10px;
+    #main {
+      display: none;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
 
-<header>
+<div id="splash">
+  <div>Welcome to Apna Sapna Apna Ghar</div>
+</div>
+
+<div id="main">
   <h1>Welcome to Apna Sapna Apna Ghar</h1>
   <p>Find your dream home today! Trusted by 1000+ buyers and sellers.</p>
-</header>
-
-<div class="search-bar">
-  <input type="text" placeholder="Search for property...">
+  <input type="text" placeholder="Search for property..." style="width:60%;padding:10px;">
   <button>Search</button>
-</div>
 
-<div class="property-list">
-  <div class="property">
-    <img src="download (1).jpeg" alt="Property 1">
-    <div class="property-info">
-      <strong>₹50 Lakh</strong><br>
-      Sonipat, Haryana
-    </div>
-  </div>
-  <div class="property">
-    <img src="download (2).jpeg" alt="Property 2">
-    <div class="property-info">
-      <strong>₹35 Lakh</strong><br>
-      Panipat, Haryana
-    </div>
-  </div>
-  <div class="property">
-    <img src="download (3).jpeg" alt="Property 3">
-    <div class="property-info">
-      <strong>₹70 Lakh</strong><br>
-      Karnal, Haryana
-    </div>
-  </div>
-  <div class="property">
-    <img src="download (4).jpeg" alt="Property 4">
-    <div class="property-info">
-      <strong>₹45 Lakh</strong><br>
-      Rohtak, Haryana
-    </div>
-  </div>
-  <div class="property">
-    <img src="download (5).jpeg" alt="Property 5">
-    <div class="property-info">
-      <strong>₹80 Lakh</strong><br>
-      Gurugram, Haryana
-    </div>
+  <div style="margin-top:20px;">
+    <!-- Property Listings -->
+    <div><img src="property1.jpg" width="200"><p>Price: ₹50 Lakh | Location: Delhi</p></div>
+    <div><img src="property2.jpg" width="200"><p>Price: ₹80 Lakh | Location: Sonipat</p></div>
+    <div><img src="property3.jpg" width="200"><p>Price: ₹1 Cr | Location: Gurgaon</p></div>
   </div>
 </div>
 
-<footer>
-  <button>Sell Property</button>
-  <button>Chats</button>
-  <button>Location</button>
-  <button>My Ads</button>
-</footer>
-
-<div class="settings">
-  <button>⚙</button>
-</div>
+<script>
+  setTimeout(function() {
+    document.getElementById('splash').style.display = 'none';
+    document.getElementById('main').style.display = 'block';
+  }, 3000); // 3000 milliseconds = 3 seconds
+</script>
 
 </body>
 </html>
