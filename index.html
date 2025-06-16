@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apna Sapna Apna Ghar</title>
   <style>
     body {
@@ -10,92 +10,83 @@
       padding: 0;
       font-family: sans-serif;
       background: linear-gradient(to right, #83a4d4, #b6fbff);
-      text-align: center;
-    }
-    header {
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      border-bottom: 2px solid #007acc;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
     }
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    header {
+      text-align: center;
+      padding: 20px;
     }
-    .logo-container img {
-      width: 60px;
-      height: 60px;
+    header img {
+      width: 100px;
       border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
-    .logo-container h1 {
+    h1 {
       font-size: 2em;
-      color: #007acc;
-      margin: 0;
-      font-weight: bold;
+      color: #333;
     }
-    .details {
-      font-size: 1em;
-      color: #444;
-      margin-bottom: 10px;
+    p {
+      color: #555;
     }
     form {
       background: white;
       padding: 20px;
       border-radius: 10px;
-      display: inline-block;
-      margin: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+      margin-bottom: 20px;
     }
-    input, textarea {
-      display: block;
+    form input, form textarea {
       width: 100%;
-      padding: 8px;
       margin: 10px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
-    button {
+    form button {
       background: #007acc;
       color: white;
-      padding: 10px 15px;
+      padding: 10px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-    button:hover {
+    form button:hover {
       background: #005f99;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #333;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/Amitantil-111/apnasapnaapnaghar/main/logo.png" alt="Logo" />
-      <h1>Apna Sapna Apna Ghar</h1>
-    </div>
-    <div class="details">
-      <p><strong>Owner:</strong> Amit</p>
-      <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
-      <p><strong>Contact:</strong> 8053****43 | <strong>Email:</strong> Amitrudher24@gmail.com</p>
-    </div>
+    <img src="https://raw.githubusercontent.com/Amitantil123/apnasapnaapnaghar/main/logo.png" alt="Logo" />
+    <h1>Welcome to Apna Sapna Apna Ghar</h1>
+    <p>Find your dream home today! Trusted by 1000+ buyers and sellers.</p>
   </header>
 
-  <h2>Seller Form</h2>
   <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="text" placeholder="Property Location" required>
-    <input type="file" accept="image/*" required>
-    <textarea placeholder="Describe your property features..." required></textarea>
+    <h2>Seller Form</h2>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <input type="text" placeholder="Your Contact Number" required />
+    <input type="file" accept="image/*" />
+    <textarea placeholder="Describe your property features..." rows="4" required></textarea>
     <button type="submit">Submit Property</button>
   </form>
 
-  <h2>Buyer Form</h2>
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="text" placeholder="Looking for location" required>
-    <textarea placeholder="Message to Seller..." required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <footer>
+    <p>Amit, Sonipat 131001, Haryana, India</p>
+    <p>Email: Amitrudher24@gmail.com | Phone: 8053****43</p>
+  </footer>
+
 </body>
 </html>
