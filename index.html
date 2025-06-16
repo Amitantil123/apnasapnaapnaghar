@@ -1,169 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
+    .nav { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; background: #007BFF; }
+    .nav button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: #007BFF;
+      color: white;
+      font-size: 18px;
     }
-
     .container {
       padding: 20px;
       padding-bottom: 80px;
     }
-
-    .hidden {
-      display: none;
-    }
-
-    .property-card {
+    .property {
       background: white;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px;
+      margin-bottom: 15px;
     }
-
-    .property-card p {
-      margin: 4px 0;
-      font-size: 16px;
-    }
-
-    .nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      background: white;
-      border-top: 1px solid #ddd;
-      box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.05);
-    }
-
-    .nav button {
-      flex: 1;
-      padding: 12px 0;
-      border: none;
-      background: white;
-      font-size: 16px;
-      color: #007BFF;
-    }
-
-    .section-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 16px;
-      margin-bottom: 12px;
-    }
-
-    input, select {
+    .hidden { display: none; }
+    input, select, button {
       width: 100%;
       padding: 10px;
-      margin-top: 8px;
       margin-bottom: 10px;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
     }
-
-    button.primary {
-      width: 100%;
-      background: #007BFF;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    button.secondary {
-      width: 100%;
-      background: #28A745;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 8px;
-    }
-
-    .icon {
-      font-size: 18px;
-    }
-
-    .text-muted {
-      color: #555;
-    }
+    button.login { background: #007BFF; color: white; }
+    button.create { background: #28a745; color: white; }
+    h2, h3 { color: #333; }
   </style>
 </head>
 <body>
 
-<!-- HOME -->
 <div id="homePage" class="container">
-  <div class="property-card">
-    <p><strong>🏠 Property 1</strong> — ₹35,00,000</p>
-    <p class="text-muted">📍 Delhi, India</p>
+  <div class="property">
+    <p>🏠 <strong>Property 1</strong> — ₹35,00,000</p>
+    <p>📍 Delhi, India</p>
   </div>
-  <div class="property-card">
-    <p><strong>🏠 Property 2</strong> — ₹45,00,000</p>
-    <p class="text-muted">📍 Gurgaon, India</p>
+  <div class="property">
+    <p>🏠 <strong>Property 2</strong> — ₹45,00,000</p>
+    <p>📍 Gurgaon, India</p>
   </div>
-  <div class="property-card">
-    <p><strong>🏠 Property 3</strong> — ₹25,00,000</p>
-    <p class="text-muted">📍 Sonipat, India</p>
+  <div class="property">
+    <p>🏠 <strong>Property 3</strong> — ₹25,00,000</p>
+    <p>📍 Sonipat, India</p>
   </div>
 </div>
 
-<!-- CHATS -->
 <div id="chatsPage" class="container hidden">
-  <h2 class="section-title">💬 Chats</h2>
-  <p>No chats yet. Start messaging with property owners or buyers.</p>
+  <h2>💬 Chats</h2>
+  <p>No chats available yet.</p>
 </div>
 
-<!-- SELL -->
 <div id="sellPage" class="container hidden">
-  <h2 class="section-title">➕ Sell Property</h2>
-  <p>Form to upload property details will be placed here.</p>
+  <h2>➕ Sell Property</h2>
+  <p>Form to upload property details will go here.</p>
 </div>
 
-<!-- MY ADS -->
 <div id="myAdsPage" class="container hidden">
-  <h2 class="section-title">📄 My Ads</h2>
-  <p>You haven't posted any property yet.</p>
+  <h2>📄 My Ads</h2>
+  <p>Your posted properties will appear here.</p>
 </div>
 
-<!-- ACCOUNT -->
 <div id="accountPage" class="container hidden">
-  <h2 class="section-title">👤 Account</h2>
-  <input type="text" placeholder="Username"/>
-  <input type="password" placeholder="Password"/>
-  <button class="primary">Login</button>
-  <button class="secondary">Create Account</button>
+  <h2>👤 Account</h2>
+  <input type="text" placeholder="Username">
+  <input type="password" placeholder="Password">
+  <button class="login">Login</button>
+  <button class="create">Create Account</button>
 
-  <h3 class="section-title">⚙️ Settings</h3>
-  <label>Language</label>
+  <h3>⚙️ Settings</h3>
+  <label>Language:</label>
   <select>
     <option>English</option>
     <option>Hindi</option>
   </select>
 
-  <h3 class="section-title">ℹ️ About</h3>
+  <h3>ℹ️ About</h3>
   <p><strong>Name:</strong> Amit</p>
   <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
   <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
   <p><strong>Contact:</strong> 8053****43</p>
-  <p class="text-muted">This site helps buyers and sellers connect for real estate opportunities.</p>
+  <p>This site helps buyers and sellers connect for real estate opportunities.</p>
 
-  <h3 class="section-title">🆘 Help</h3>
+  <h3>❓ Help</h3>
   <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
 </div>
 
-<!-- BOTTOM NAV -->
 <div class="nav">
   <button onclick="showPage('homePage')">🏠<br>Home</button>
   <button onclick="showPage('chatsPage')">💬<br>Chats</button>
@@ -172,7 +104,6 @@
   <button onclick="showPage('accountPage')">👤<br>Account</button>
 </div>
 
-<!-- SCRIPT -->
 <script>
 function showPage(pageId) {
   const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
