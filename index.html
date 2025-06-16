@@ -5,43 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
-    .header { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; background: #007BFF; color: white; flex-wrap: wrap; }
-    .logo-name { display: flex; align-items: center; }
-    .logo-name img { width: 40px; height: 40px; margin-right: 10px; }
-    .search-loc { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; width: 100%; }
-    .search-loc input, .search-loc select {
-      padding: 5px;
-      border-radius: 4px;
-      border: none;
-      width: 100%;
-      max-width: 150px;
-    }
-    .container { padding: 10px; padding-bottom: 80px; }
-    .property { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 10px; margin-bottom: 10px; }
-    .property img { width: 100%; border-radius: 5px; margin-bottom: 5px; }
-    .nav { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; background: #007BFF; }
-    .nav button { flex: 1; padding: 10px; border: none; background: #007BFF; color: white; font-size: 16px; }
+    body { margin: 0; font-family: sans-serif; background: #f2f2f2; }
     .hidden { display: none; }
-    #welcome { position: fixed; top:0; left:0; width:100%; height:100%; background:white; display:flex; flex-direction: column; align-items: center; justify-content: center; z-index:999; }
-    #welcome img { width: 100px; }
+
+    #welcome {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: white; display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      z-index: 1000;
+    }
+    #welcome img { width: 150px; margin-bottom: 10px; }
+
+    .header {
+      background: #007BFF; color: white;
+      padding: 10px; display: flex;
+      align-items: center; justify-content: space-between; flex-wrap: wrap;
+    }
+    .header-left { display: flex; align-items: center; }
+    .header-left img { width: 40px; margin-right: 10px; }
+    .header-controls { display: flex; gap: 5px; flex-wrap: wrap; width: 100%; margin-top: 5px; }
+    .header-controls input, .header-controls select {
+      padding: 5px; border-radius: 4px; border: none; max-width: 150px;
+    }
+
+    .container { padding: 10px; padding-bottom: 70px; }
+
+    .property {
+      background: white; padding: 10px; border-radius: 6px;
+      margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .property img { width: 100%; border-radius: 4px; margin-bottom: 5px; }
+
+    .nav {
+      position: fixed; bottom: 0; left: 0; width: 100%;
+      background: #007BFF; display: flex; justify-content: space-around;
+    }
+    .nav button {
+      flex: 1; padding: 8px; border: none;
+      background: #007BFF; color: white; font-size: 14px;
+    }
   </style>
 </head>
 <body>
 
 <div id="welcome">
   <img src="welcome.jpg" alt="Welcome">
-  <h1>Apna Sapna Apna Ghar</h1>
+  <h2>Apna Sapna Apna Ghar</h2>
 </div>
 
 <div id="homePage" class="container hidden">
   <div class="header">
-    <div class="logo-name">
+    <div class="header-left">
       <img src="logo.png" alt="Logo">
       <strong>Apna Sapna Apna Ghar</strong>
     </div>
-    <div class="search-loc">
-      <input type="text" placeholder="🔍 Search property">
+    <div class="header-controls">
+      <input type="text" placeholder="🔍 Search">
       <select>
         <option>Select Location</option>
         <option>Delhi</option>
@@ -56,27 +75,27 @@
   <div class="property">
     <img src="property1.jpg" alt="Property 1">
     <p>🏠 <strong>Property 1</strong> — ₹35,00,000</p>
-    <p>📍 Delhi, India</p>
+    <p>📍 Delhi</p>
   </div>
   <div class="property">
     <img src="property2.jpg" alt="Property 2">
     <p>🏠 <strong>Property 2</strong> — ₹45,00,000</p>
-    <p>📍 Gurgaon, India</p>
+    <p>📍 Gurgaon</p>
   </div>
   <div class="property">
     <img src="property3.jpg" alt="Property 3">
     <p>🏠 <strong>Property 3</strong> — ₹25,00,000</p>
-    <p>📍 Sonipat, India</p>
+    <p>📍 Sonipat</p>
   </div>
   <div class="property">
     <img src="property4.jpg" alt="Property 4">
     <p>🏠 <strong>Property 4</strong> — ₹55,00,000</p>
-    <p>📍 Noida, India</p>
+    <p>📍 Noida</p>
   </div>
   <div class="property">
     <img src="property5.jpg" alt="Property 5">
     <p>🏠 <strong>Property 5</strong> — ₹30,00,000</p>
-    <p>📍 Faridabad, India</p>
+    <p>📍 Faridabad</p>
   </div>
 </div>
 
@@ -87,12 +106,12 @@
 
 <div id="sellPage" class="container hidden">
   <h2>➕ Sell Property</h2>
-  <p>Upload your property details form will go here.</p>
+  <p>Upload your property details here.</p>
 </div>
 
 <div id="myAdsPage" class="container hidden">
   <h2>📄 My Ads</h2>
-  <p>Your posted properties will appear here.</p>
+  <p>Your ads will appear here.</p>
 </div>
 
 <div id="accountPage" class="container hidden">
@@ -101,22 +120,6 @@
   <input type="password" placeholder="Password">
   <button>Login</button>
   <button>Create Account</button>
-
-  <h3>⚙️ Settings</h3>
-  <label>Language:</label>
-  <select>
-    <option>English</option>
-    <option>Hindi</option>
-  </select>
-
-  <h3>ℹ️ About</h3>
-  <p><strong>Name:</strong> Amit</p>
-  <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
-  <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
-  <p><strong>Contact:</strong> 8053****43</p>
-
-  <h3>❓ Help</h3>
-  <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
 </div>
 
 <div class="nav">
@@ -128,17 +131,17 @@
 </div>
 
 <script>
-function showPage(pageId) {
+function showPage(id) {
   const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
-  pages.forEach(id => {
-    document.getElementById(id).classList.add('hidden');
+  pages.forEach(page => {
+    document.getElementById(page).classList.add('hidden');
   });
-  document.getElementById(pageId).classList.remove('hidden');
+  document.getElementById(id).classList.remove('hidden');
 }
 
-window.onload = function() {
+window.onload = () => {
   setTimeout(() => {
-    document.getElementById('welcome').style.display = 'none';
+    document.getElementById('welcome').classList.add('hidden');
     showPage('homePage');
   }, 2000);
 }
