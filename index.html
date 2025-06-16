@@ -12,34 +12,55 @@
       background: linear-gradient(to right, #83a4d4, #b6fbff);
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       min-height: 100vh;
       text-align: center;
+    }
+    #mainContent {
+      display: none;
     }
     img {
       max-width: 300px;
       border-radius: 10px;
       margin: 20px 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     h1 {
       color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #007acc;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005f99;
     }
   </style>
 </head>
 <body>
 
-  <img id="welcomeImage" src="https://raw.githubusercontent.com/Amitantil123/apnasapnaapnaghar/main/735b9851-b47c-45c4-8d0f-6fbf26003028.png" alt="Welcome" />
+  <!-- 3 sec welcome image -->
+  <img id="welcomeImage" src="https://raw.githubusercontent.com/Amitantil123/apnasapnaapnaghar/main/735b9851-b47c-45c4-8d0f-6fbf26003028.png" alt="Welcome Image">
 
-  <h1 style="display: none;">Welcome to Apna Sapna Apna Ghar</h1>
-  <p style="display: none;">Find your dream home today! Trusted by 1000+ buyers and sellers.</p>
+  <!-- Main content -->
+  <div id="mainContent">
+    <img src="https://raw.githubusercontent.com/Amitantil123/apnasapnaapnaghar/main/logo.png" alt="Logo">
+    <h1>Welcome to Apna Sapna Apna Ghar</h1>
+    <p>Find your dream home today! Trusted by 1000+ buyers and sellers.</p>
+    <button>Explore More</button>
+  </div>
 
   <script>
     setTimeout(() => {
       document.getElementById('welcomeImage').style.display = 'none';
-      document.querySelector('h1').style.display = 'block';
-      document.querySelector('p').style.display = 'block';
-    }, 3000); // 3000 ms = 3 sec
+      document.getElementById('mainContent').style.display = 'block';
+    }, 3000); // 3 seconds
   </script>
 
 </body>
