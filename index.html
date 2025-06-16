@@ -1,79 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apna Ghar</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apna Sapna Apna Ghar</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
-    header, footer { background: #007bff; color: #fff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
-    header h1 { margin: 0; display: flex; align-items: center; }
-    header h1 img { width: 30px; margin-right: 10px; }
-    .location-select { padding: 5px; }
-    .property-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 10px; }
-    .property { background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 10px; width: 200px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .property img { width: 100%; height: 120px; object-fit: cover; border-radius: 5px; }
-    .account-section { background: #fff; padding: 15px; margin: 10px; border-radius: 8px; }
-    footer { position: fixed; bottom: 0; left: 0; width: 100%; justify-content: space-around; }
-    footer div { text-align: center; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .nav { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; background: #007BFF; color: white; }
+    .nav button { flex: 1; padding: 10px; border: none; background: #007BFF; color: white; font-size: 16px; }
+    .container { padding: 20px; padding-bottom: 60px; }
+    .property { border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin: 10px 0; }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
-  <header>
-    <h1><img src="https://img.icons8.com/emoji/48/000000/house-emoji.png" alt="logo"> Apna Ghar</h1>
-    <input class="location-select" type="text" placeholder="📍 Select Location">
-  </header>
 
-  <div class="property-list">
-    <div class="property">
-      <img src="https://via.placeholder.com/200x120?text=Property+1" alt="Property 1">
-      <strong>₹35,00,000</strong><br>
-      Delhi, India
-    </div>
-    <div class="property">
-      <img src="https://via.placeholder.com/200x120?text=Property+2" alt="Property 2">
-      <strong>₹45,00,000</strong><br>
-      Gurgaon, India
-    </div>
-    <div class="property">
-      <img src="https://via.placeholder.com/200x120?text=Property+3" alt="Property 3">
-      <strong>₹25,00,000</strong><br>
-      Sonipat, India
-    </div>
+<div id="homePage" class="container">
+  <div class="property">
+    <p>🏠 Property 1 <strong>₹35,00,000</strong></p>
+    <p>Delhi, India</p>
   </div>
-
-  <div class="account-section">
-    <h2>Account</h2>
-    <input type="text" placeholder="Username" style="width:100%; padding:5px; margin-bottom:5px;">
-    <input type="password" placeholder="Password" style="width:100%; padding:5px; margin-bottom:5px;">
-    <button style="width:100%; padding:5px; background:#007bff; color:#fff; border:none; border-radius:5px; margin-bottom:5px;">Login</button>
-    <button style="width:100%; padding:5px; background:#28a745; color:#fff; border:none; border-radius:5px;">Create Account</button>
-
-    <h3>Settings</h3>
-    Language: 
-    <select>
-      <option>English</option>
-      <option>Hindi</option>
-      <option>Punjabi</option>
-    </select>
-
-    <h3>About</h3>
-    <p><strong>Name:</strong> Amit<br>
-    <strong>Address:</strong> Sonipat 131001, Haryana, India<br>
-    <strong>Email:</strong> Amitrudher24@gmail.com<br>
-    <strong>Contact:</strong> 8053****43<br>
-    This site helps buyers and sellers connect for real estate opportunities.</p>
-
-    <h3>Help</h3>
-    <p>For assistance, contact <em>support@apnaghar.com</em> or call <em>1800-000-000</em>.</p>
+  <div class="property">
+    <p>🏠 Property 2 <strong>₹45,00,000</strong></p>
+    <p>Gurgaon, India</p>
   </div>
+  <div class="property">
+    <p>🏠 Property 3 <strong>₹25,00,000</strong></p>
+    <p>Sonipat, India</p>
+  </div>
+</div>
 
-  <footer>
-    <div>🏠 Home</div>
-    <div>💬 Chats</div>
-    <div>➕ Sell</div>
-    <div>📑 My Ads</div>
-    <div>👤 Account</div>
-  </footer>
+<div id="chatsPage" class="container hidden">
+  <h2>Chats</h2>
+  <p>No chats available yet.</p>
+</div>
+
+<div id="sellPage" class="container hidden">
+  <h2>Sell Property</h2>
+  <p>Form to upload property details will go here.</p>
+</div>
+
+<div id="myAdsPage" class="container hidden">
+  <h2>My Ads</h2>
+  <p>Your posted properties will appear here.</p>
+</div>
+
+<div id="accountPage" class="container hidden">
+  <h2>Account</h2>
+  <input type="text" placeholder="Username" style="width:100%; margin-bottom:5px;"><br>
+  <input type="password" placeholder="Password" style="width:100%; margin-bottom:5px;"><br>
+  <button style="width:100%; background:#007BFF; color:white; padding:10px; margin-bottom:5px;">Login</button>
+  <button style="width:100%; background:green; color:white; padding:10px;">Create Account</button>
+
+  <h3 style="margin-top:20px;">Settings</h3>
+  <label for="lang">Language:</label>
+  <select id="lang">
+    <option>English</option>
+    <option>Hindi</option>
+  </select>
+
+  <h3 style="margin-top:20px;">About</h3>
+  <p><strong>Name:</strong> Amit</p>
+  <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
+  <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
+  <p><strong>Contact:</strong> 8053****43</p>
+  <p>This site helps buyers and sellers connect for real estate opportunities.</p>
+
+  <h3 style="margin-top:20px;">Help</h3>
+  <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
+</div>
+
+<div class="nav">
+  <button onclick="showPage('homePage')">🏠 Home</button>
+  <button onclick="showPage('chatsPage')">💬 Chats</button>
+  <button onclick="showPage('sellPage')">➕ Sell</button>
+  <button onclick="showPage('myAdsPage')">📄 My Ads</button>
+  <button onclick="showPage('accountPage')">👤 Account</button>
+</div>
+
+<script>
+function showPage(pageId) {
+  const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
+  pages.forEach(id => {
+    document.getElementById(id).classList.add('hidden');
+  });
+  document.getElementById(pageId).classList.remove('hidden');
+}
+</script>
+
 </body>
 </html>
