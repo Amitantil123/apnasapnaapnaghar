@@ -7,102 +7,109 @@
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
     .nav { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; background: #007BFF; }
-    .nav button { flex: 1; padding: 12px; border: none; background: #007BFF; color: white; font-size: 18px; }
+    .nav button { flex: 1; padding: 12px; border: none; background: #007BFF; color: white; font-size: 16px; }
     .container { padding: 20px; padding-bottom: 80px; }
-    .property { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px; margin-bottom: 15px; }
+    .property { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 10px; margin-bottom: 15px; }
     .property img { width: 100%; border-radius: 5px; margin-bottom: 5px; }
     .hidden { display: none; }
     input, select, button { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; }
     button.login { background: #007BFF; color: white; }
     button.create { background: #28a745; color: white; }
     h2, h3 { color: #333; }
-    #welcomePage { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #007BFF; color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+    #welcome { position: fixed; top:0; left:0; width:100%; height:100%; background:white; display:flex; flex-direction: column; align-items: center; justify-content: center; z-index:999; }
+    #welcome img { width: 100px; }
   </style>
 </head>
 <body>
-  <div id="welcomePage">Welcome to Apna Sapna Apna Ghar</div>
 
-  <div id="homePage" class="container hidden">
-    <div class="property">
-      <img src="https://via.placeholder.com/400x200?text=Property+1" alt="Property 1">
-      <p>🏠 <strong>Property 1</strong> — ₹35,00,000</p>
-      <p>📍 Delhi, India</p>
-    </div>
-    <div class="property">
-      <img src="https://via.placeholder.com/400x200?text=Property+2" alt="Property 2">
-      <p>🏠 <strong>Property 2</strong> — ₹45,00,000</p>
-      <p>📍 Gurgaon, India</p>
-    </div>
-    <div class="property">
-      <img src="https://via.placeholder.com/400x200?text=Property+3" alt="Property 3">
-      <p>🏠 <strong>Property 3</strong> — ₹25,00,000</p>
-      <p>📍 Sonipat, India</p>
-    </div>
+<div id="welcome">
+  <img src="https://img.icons8.com/emoji/96/000000/house-emoji.png" alt="Logo">
+  <h1>Apna Sapna Apna Ghar</h1>
+</div>
+
+<div id="homePage" class="container hidden">
+  <div class="property">
+    <img src="https://via.placeholder.com/300x150?text=Property+1" alt="Property 1">
+    <p>🏠 <strong>Property 1</strong> — ₹35,00,000</p>
+    <p>📍 Delhi, India</p>
   </div>
-
-  <div id="chatsPage" class="container hidden">
-    <h2>💬 Chats</h2>
-    <p>No chats available yet.</p>
+  <div class="property">
+    <img src="https://via.placeholder.com/300x150?text=Property+2" alt="Property 2">
+    <p>🏠 <strong>Property 2</strong> — ₹45,00,000</p>
+    <p>📍 Gurgaon, India</p>
   </div>
-
-  <div id="sellPage" class="container hidden">
-    <h2>➕ Sell Property</h2>
-    <p>Form to upload property details will go here.</p>
+  <div class="property">
+    <img src="https://via.placeholder.com/300x150?text=Property+3" alt="Property 3">
+    <p>🏠 <strong>Property 3</strong> — ₹25,00,000</p>
+    <p>📍 Sonipat, India</p>
   </div>
+</div>
 
-  <div id="myAdsPage" class="container hidden">
-    <h2>📄 My Ads</h2>
-    <p>Your posted properties will appear here.</p>
-  </div>
+<div id="chatsPage" class="container hidden">
+  <h2>💬 Chats</h2>
+  <p>No chats available yet.</p>
+</div>
 
-  <div id="accountPage" class="container hidden">
-    <h2>👤 Account</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <button class="login">Login</button>
-    <button class="create">Create Account</button>
+<div id="sellPage" class="container hidden">
+  <h2>➕ Sell Property</h2>
+  <p>Form to upload property details will go here.</p>
+</div>
 
-    <h3>⚙️ Settings</h3>
-    <label>Language:</label>
-    <select>
-      <option>English</option>
-      <option>Hindi</option>
-    </select>
+<div id="myAdsPage" class="container hidden">
+  <h2>📄 My Ads</h2>
+  <p>Your posted properties will appear here.</p>
+</div>
 
-    <h3>ℹ️ About</h3>
-    <p><strong>Name:</strong> Amit</p>
-    <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
-    <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
-    <p><strong>Contact:</strong> 8053****43</p>
-    <p>This site helps buyers and sellers connect for real estate opportunities.</p>
+<div id="accountPage" class="container hidden">
+  <h2>👤 Account</h2>
+  <input type="text" placeholder="Username">
+  <input type="password" placeholder="Password">
+  <button class="login">Login</button>
+  <button class="create">Create Account</button>
 
-    <h3>❓ Help</h3>
-    <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
-  </div>
+  <h3>⚙️ Settings</h3>
+  <label>Language:</label>
+  <select>
+    <option>English</option>
+    <option>Hindi</option>
+  </select>
 
-  <div class="nav">
-    <button onclick="showPage('homePage')">🏠<br>Home</button>
-    <button onclick="showPage('chatsPage')">💬<br>Chats</button>
-    <button onclick="showPage('sellPage')">➕<br>Sell</button>
-    <button onclick="showPage('myAdsPage')">📄<br>My Ads</button>
-    <button onclick="showPage('accountPage')">👤<br>Account</button>
-  </div>
+  <h3>ℹ️ About</h3>
+  <p><strong>Name:</strong> Amit</p>
+  <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
+  <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
+  <p><strong>Contact:</strong> 8053****43</p>
+  <p>This site helps buyers and sellers connect for real estate opportunities.</p>
 
-  <script>
-    function showPage(pageId) {
-      const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
-      pages.forEach(id => {
-        document.getElementById(id).classList.add('hidden');
-      });
-      document.getElementById(pageId).classList.remove('hidden');
-    }
+  <h3>❓ Help</h3>
+  <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
+</div>
 
-    window.onload = function() {
-      setTimeout(() => {
-        document.getElementById('welcomePage').style.display = 'none';
-        showPage('homePage');
-      }, 2000);
-    }
-  </script>
+<div class="nav">
+  <button onclick="showPage('homePage')">🏠<br>Home</button>
+  <button onclick="showPage('chatsPage')">💬<br>Chats</button>
+  <button onclick="showPage('sellPage')">➕<br>Sell</button>
+  <button onclick="showPage('myAdsPage')">📄<br>My Ads</button>
+  <button onclick="showPage('accountPage')">👤<br>Account</button>
+</div>
+
+<script>
+function showPage(pageId) {
+  const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
+  pages.forEach(id => {
+    document.getElementById(id).classList.add('hidden');
+  });
+  document.getElementById(pageId).classList.remove('hidden');
+}
+
+// Splash screen timeout
+window.onload = function() {
+  setTimeout(() => {
+    document.getElementById('welcome').style.display = 'none';
+    showPage('homePage');
+  }, 2000);
+}
+</script>
+
 </body>
 </html>
