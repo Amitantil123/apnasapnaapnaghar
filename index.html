@@ -7,82 +7,69 @@
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: sans-serif;
-      background: #f0f0f0;
-    }
-    header {
-      background: #007acc;
+      background: url('https://amitantil123.github.io/apnasapnaapnaghar/download.jpeg') no-repeat center center fixed;
+      background-size: cover;
       color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
-    .logo {
-      font-weight: bold;
-      font-size: 1.5em;
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px;
+      text-align: center;
     }
-    .search-bar input {
-      padding: 5px 10px;
-      border-radius: 4px;
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    .search-bar {
+      margin: 20px 0;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 60%;
+      font-size: 1em;
+      border-radius: 5px;
       border: none;
-      width: 200px;
     }
-    .right-icons {
-      display: flex;
-      gap: 10px;
-    }
-    .right-icons span {
-      cursor: pointer;
-      font-size: 1.2em;
-    }
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 50px;
-    }
-    .actions {
-      position: fixed;
-      bottom: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-    }
-    .actions button {
-      padding: 10px 20px;
+    button {
+      padding: 10px 15px;
+      margin: 5px;
       border: none;
       border-radius: 5px;
       background: #007acc;
       color: white;
-      font-size: 1em;
       cursor: pointer;
+    }
+    button:hover {
+      background: #005f99;
+    }
+    .footer-buttons {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">🏠 Apna Sapna</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search properties..." />
-    </div>
-    <div class="right-icons">
-      <span title="Chats">💬</span>
-      <span title="Settings">⚙️</span>
-      <span title="Profile">👤</span>
-    </div>
-  </header>
-
-  <main>
+  <div class="overlay">
     <h1>Welcome to Apna Sapna Apna Ghar</h1>
     <p>Find your dream home today! Trusted by 1000+ buyers and sellers.</p>
-  </main>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for property...">
+      <button>Search</button>
+    </div>
+  </div>
 
-  <div class="actions">
-    <button onclick="alert('Sell your property')">Sell</button>
-    <button onclick="alert('Open chats')">Chats</button>
-    <button onclick="alert('Select location')">Location</button>
-    <button onclick="alert('Settings')">Settings</button>
+  <div class="footer-buttons">
+    <button>Sell Property</button>
+    <button>Chats</button>
+    <button>Location</button>
+    <button>My Ads</button>
   </div>
 </body>
 </html>
