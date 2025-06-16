@@ -7,61 +7,82 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: sans-serif;
-      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      background: #f0f0f0;
+    }
+    header {
+      background: #007acc;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    .search-bar input {
+      padding: 5px 10px;
+      border-radius: 4px;
+      border: none;
+      width: 200px;
+    }
+    .right-icons {
+      display: flex;
+      gap: 10px;
+    }
+    .right-icons span {
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+    main {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      text-align: center;
+      margin-top: 50px;
     }
-    #mainContent {
-      display: none;
+    .actions {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
     }
-    img {
-      max-width: 300px;
-      border-radius: 10px;
-      margin: 20px 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    h1 {
-      color: #333;
-    }
-    button {
+    .actions button {
       padding: 10px 20px;
-      font-size: 1em;
       border: none;
       border-radius: 5px;
-      background-color: #007acc;
+      background: #007acc;
       color: white;
+      font-size: 1em;
       cursor: pointer;
-    }
-    button:hover {
-      background-color: #005f99;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">🏠 Apna Sapna</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search properties..." />
+    </div>
+    <div class="right-icons">
+      <span title="Chats">💬</span>
+      <span title="Settings">⚙️</span>
+      <span title="Profile">👤</span>
+    </div>
+  </header>
 
-  <!-- 3 sec welcome image -->
-  <img id="welcomeImage" src="https://raw.githubusercontent.com/Amitantil123/apnasapnaapnaghar/main/735b9851-b47c-45c4-8d0f-6fbf26003028.png" alt="Welcome Image">
-
-  <!-- Main content -->
-  <div id="mainContent">
-    <img src="https://raw.githubusercontent.com/Amitantil123/apnasapnaapnaghar/main/logo.png" alt="Logo">
+  <main>
     <h1>Welcome to Apna Sapna Apna Ghar</h1>
     <p>Find your dream home today! Trusted by 1000+ buyers and sellers.</p>
-    <button>Explore More</button>
+  </main>
+
+  <div class="actions">
+    <button onclick="alert('Sell your property')">Sell</button>
+    <button onclick="alert('Open chats')">Chats</button>
+    <button onclick="alert('Select location')">Location</button>
+    <button onclick="alert('Settings')">Settings</button>
   </div>
-
-  <script>
-    setTimeout(() => {
-      document.getElementById('welcomeImage').style.display = 'none';
-      document.getElementById('mainContent').style.display = 'block';
-    }, 3000); // 3 seconds
-  </script>
-
 </body>
 </html>
