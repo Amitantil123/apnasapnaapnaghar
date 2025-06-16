@@ -5,70 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f2f2f2; }
-    header { background: #007BFF; color: white; padding: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    header img { width: 30px; margin-right: 10px; }
-    header input[type="text"] { padding: 5px; border-radius: 5px; border: none; width: 120px; margin: 2px; }
-    .container { padding: 20px; padding-bottom: 80px; }
-    .property { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 10px; margin-bottom: 10px; text-align: center; }
-    .property img { width: 100%; max-width: 200px; border-radius: 5px; }
-    .nav { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; background: #007BFF; }
-    .nav button { flex: 1; padding: 10px; border: none; background: #007BFF; color: white; font-size: 14px; }
+    body { margin: 0; padding: 0; font-family: sans-serif; background: #f2f2f2; }
+    #welcomeScreen {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #welcomeScreen img {
+      max-width: 100%;
+      max-height: 100%;
+    }
     .hidden { display: none; }
-    .share-options { background: white; padding: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 10px; }
+
+    header {
+      background: #007BFF;
+      color: white;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header img { height: 30px; margin-right: 10px; }
+    header span { font-weight: bold; font-size: 18px; margin-right: 10px; }
+    header input { padding: 5px; margin: 5px; }
+
+    .property-list { padding: 10px; }
+    .property { background: white; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+    .property img { width: 100%; border-radius: 5px; }
+
+    .account-section { padding: 10px; }
+
+    footer {
+      position: fixed; bottom: 0; width: 100%;
+      background: #007BFF; color: white;
+      display: flex; justify-content: space-around; padding: 5px 0;
+    }
+    footer div { text-align: center; }
+    button { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none; }
+
+    .login { background: #007BFF; color: white; }
+    .create { background: #28a745; color: white; }
   </style>
 </head>
 <body>
 
-  <header>
-    <div style="display: flex; align-items: center;">
-      <img src="logo.png" alt="Logo">
-      <strong>Apna Sapna Apna Ghar</strong>
-    </div>
-    <div>
-      <input type="text" placeholder="Search...">
-      <input type="text" placeholder="📍 Location">
-    </div>
-  </header>
-
-  <div style="padding: 10px;">
-    <button onclick="showPage('propertyListPage')">📑 My Property List</button>
+  <!-- Welcome Screen -->
+  <div id="welcomeScreen">
+    <img src="welcome.jpg" alt="Welcome">
   </div>
 
-  <div id="homePage" class="container">
+  <!-- Main Content -->
+  <header class="hidden" id="mainHeader">
+    <img src="logo.png" alt="Logo">
+    <span>Apna Sapna Apna Ghar</span>
+    <input type="text" placeholder="Search...">
+    <input type="text" placeholder="Select Location">
+  </header>
+
+  <div id="propertyList" class="hidden property-list">
+    <h2>🏠 My Property List</h2>
     <div class="property">
       <img src="property1.jpg" alt="Property 1">
-      <p>₹35,00,000 - Delhi, India</p>
+      <p>₹35,00,000 - Delhi</p>
     </div>
     <div class="property">
       <img src="property2.jpg" alt="Property 2">
-      <p>₹45,00,000 - Gurgaon, India</p>
+      <p>₹45,00,000 - Gurgaon</p>
     </div>
     <div class="property">
       <img src="property3.jpg" alt="Property 3">
-      <p>₹25,00,000 - Sonipat, India</p>
+      <p>₹25,00,000 - Sonipat</p>
     </div>
     <div class="property">
       <img src="property4.jpg" alt="Property 4">
-      <p>₹50,00,000 - Panipat, India</p>
+      <p>₹55,00,000 - Noida</p>
     </div>
     <div class="property">
       <img src="property5.jpg" alt="Property 5">
-      <p>₹30,00,000 - Rohtak, India</p>
+      <p>₹60,00,000 - Chandigarh</p>
     </div>
   </div>
 
-  <div id="propertyListPage" class="container hidden">
-    <h2>📑 My Property List</h2>
-    <p>All your listed properties will appear here.</p>
-  </div>
-
-  <div id="accountPage" class="container hidden">
+  <div id="accountSection" class="hidden account-section">
     <h2>👤 Account</h2>
     <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">
-    <button class="login" style="background: #007BFF; color: white;">Login</button>
-    <button class="create" style="background: #28a745; color: white;">Create Account</button>
+    <button class="login">Login</button>
+    <button class="create">Create Account</button>
 
     <h3>⚙️ Settings</h3>
     <label>Language:</label>
@@ -77,16 +104,6 @@
       <option>Hindi</option>
     </select>
 
-    <div class="share-options">
-      <h3>📤 Share this Website</h3>
-      <button onclick="shareSite('link')">Copy Link</button>
-      <button onclick="shareSite('whatsapp')">WhatsApp</button>
-      <button onclick="shareSite('facebook')">Facebook</button>
-      <button onclick="shareSite('instagram')">Instagram</button>
-      <button onclick="shareSite('bluetooth')">Bluetooth</button>
-      <button onclick="shareSite('email')">Email</button>
-    </div>
-
     <h3>ℹ️ About</h3>
     <p><strong>Name:</strong> Amit</p>
     <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
@@ -94,49 +111,41 @@
     <p><strong>Contact:</strong> 8053****43</p>
     <p>This site helps buyers and sellers connect for real estate opportunities.</p>
 
+    <h3>🔗 Share</h3>
+    <p>
+      <a href="https://wa.me/?text=Check%20this%20site%20Apna%20Sapna%20Apna%20Ghar" target="_blank">Share via WhatsApp</a><br>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank">Share via Facebook</a><br>
+      <a href="https://www.instagram.com/" target="_blank">Share via Instagram</a><br>
+      <a href="#" onclick="alert('Use Bluetooth share from your device')">Share via Bluetooth</a><br>
+      <a href="mailto:?subject=Check this site&body=Visit Apna Sapna Apna Ghar at https://example.com">Share via Email</a>
+    </p>
+
     <h3>❓ Help</h3>
     <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
   </div>
 
-  <div class="nav">
-    <button onclick="showPage('homePage')">🏠 Home</button>
-    <button onclick="alert('Chats will open')">💬 Chats</button>
-    <button onclick="alert('Sell form will open')">➕ Sell</button>
-    <button onclick="showPage('propertyListPage')">📑 My Ads</button>
-    <button onclick="showPage('accountPage')">👤 Account</button>
-  </div>
+  <footer class="hidden" id="mainFooter">
+    <div onclick="showSection('propertyList')">🏠<br>Home</div>
+    <div onclick="alert('Chats coming soon!')">💬<br>Chats</div>
+    <div onclick="alert('Sell form coming soon!')">➕<br>Sell</div>
+    <div onclick="alert('Your ads coming soon!')">📄<br>My Ads</div>
+    <div onclick="showSection('accountSection')">👤<br>Account</div>
+  </footer>
 
   <script>
-    function showPage(pageId) {
-      const pages = ['homePage', 'propertyListPage', 'accountPage'];
-      pages.forEach(id => {
-        document.getElementById(id).classList.add('hidden');
-      });
-      document.getElementById(pageId).classList.remove('hidden');
-    }
+    // 3 sec splash logic
+    setTimeout(() => {
+      document.getElementById('welcomeScreen').classList.add('hidden');
+      document.getElementById('mainHeader').classList.remove('hidden');
+      document.getElementById('propertyList').classList.remove('hidden');
+      document.getElementById('mainFooter').classList.remove('hidden');
+    }, 3000);
 
-    function shareSite(method) {
-      const url = window.location.href;
-      switch(method) {
-        case 'link':
-          navigator.clipboard.writeText(url);
-          alert('Link copied!');
-          break;
-        case 'whatsapp':
-          window.open(`https://wa.me/?text=${encodeURIComponent(url)}`);
-          break;
-        case 'facebook':
-          window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-          break;
-        case 'instagram':
-          alert('Instagram sharing not supported directly. Copy link and paste in Insta.');
-          break;
-        case 'bluetooth':
-          alert('Bluetooth sharing depends on device OS — use file share.');
-          break;
-        case 'email':
-          window.location.href = `mailto:?subject=Check this site&body=${encodeURIComponent(url)}`;
-          break;
+    function showSection(id) {
+      document.getElementById('propertyList').classList.add('hidden');
+      document.getElementById('accountSection').classList.add('hidden');
+      if (document.getElementById(id)) {
+        document.getElementById(id).classList.remove('hidden');
       }
     }
   </script>
