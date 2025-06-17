@@ -60,38 +60,11 @@
     .section {
       display: none;
     }
-    .property-list img {
-      width: 100%;
-      border-radius: 6px;
-    }
-    .nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      background: #fff;
-      border-top: 1px solid #ccc;
-    }
-    .nav button {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      background: #fff;
-      color: #007bff;
-      font-size: 14px;
-    }
     .account-options {
       background: #fff;
       padding: 10px;
       border-radius: 6px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .account-options div {
-      margin: 5px 0;
-      padding: 6px;
-      background: #f1f1f1;
-      border-radius: 4px;
-      cursor: pointer;
     }
     .account-dp {
       display: flex;
@@ -103,6 +76,13 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
+    }
+    .account-options div {
+      margin: 5px 0;
+      padding: 6px;
+      background: #f1f1f1;
+      border-radius: 4px;
+      cursor: pointer;
     }
     .sub-options {
       margin-left: 15px;
@@ -126,7 +106,6 @@
 <div id="searchBar">
   <input type="text" id="locationInput" placeholder="Search location...">
   <button onclick="searchLocation()">Search</button>
-  <button onclick="showAllProperties()">Property List</button>
 </div>
 
 <!-- ACCOUNT SECTION -->
@@ -136,7 +115,7 @@
       <img src="dp.png" alt="DP">
       <div>
         <strong>Username</strong>
-        <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
+        <div style="font-size:12px;color:gray;">View & Edit Profile</div>
       </div>
     </div>
     <div onclick="alert('Login clicked')">👤 Login</div>
@@ -152,7 +131,7 @@
     <div class="sub-options" id="helpSub" style="display:none;">
       <div onclick="alert('Help Center clicked')">📖 Help Center</div>
       <div onclick="alert('Rate Us clicked')">⭐ Rate Us</div>
-      <div onclick="alert('Invite clicked')">👨‍👩‍👧‍👦 Invite Family & Friends</div>
+      <div onclick="alert('Invite clicked')">👨‍👩‍👧‍👦 Invite Family & Friends to Apna Sapna Apna Ghar</div>
       <div onclick="alert('Beta Tester clicked')">🧪 Become a Beta Tester</div>
     </div>
     <div onclick="alert('Select Language clicked')">🌐 Select Language</div>
@@ -177,12 +156,13 @@ window.onload = function() {
 
 function showSection(id) {
   document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
+  const el = document.getElementById(id);
+  if (el) el.style.display = 'block';
 }
 
 function toggleSub(id) {
   const el = document.getElementById(id);
-  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
 }
 
 function searchLocation() {
@@ -192,10 +172,6 @@ function searchLocation() {
   } else {
     alert('Please enter a location');
   }
-}
-
-function showAllProperties() {
-  alert('Showing all properties (dummy action)');
 }
 </script>
 
