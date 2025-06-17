@@ -92,16 +92,13 @@
   <div id="mainContent" class="hidden">
     <header>
       <img src="logo.png" alt="Logo">
-      <strong>Apna Sapna Apna Ghar</strong>
+      <input type="text" placeholder="Search properties...">
+      <input type="text" placeholder="Location">
     </header>
 
     <div id="homePage" class="container">
-      <input type="text" placeholder="Search properties..." id="searchBox">
-      <input type="text" placeholder="Location" id="locationBox">
-      <div id="propertyList">
-        <div class="property-card">Property 1 - Delhi - ₹35,00,000</div>
-        <div class="property-card">Property 2 - Gurgaon - ₹45,00,000</div>
-      </div>
+      <div class="property-card">Property 1 - Delhi - ₹35,00,000</div>
+      <div class="property-card">Property 2 - Gurgaon - ₹45,00,000</div>
     </div>
 
     <div id="chatsPage" class="container hidden">
@@ -111,29 +108,33 @@
 
     <div id="sellPage" class="container hidden">
       <h3>Sell Property</h3>
-      <div class="form-group"><input type="file" id="imgUpload"></div>
-      <div class="form-group"><input type="text" placeholder="Property" id="propertyName"></div>
-      <div class="form-group"><input type="text" placeholder="Location" id="propertyLocation"></div>
-      <div class="form-group"><input type="text" placeholder="Price" id="propertyPrice"></div>
-      <div class="form-group"><textarea placeholder="Description" id="propertyDesc"></textarea></div>
-      <div class="form-group"><input type="text" placeholder="Owner" id="propertyOwner"></div>
-      <div class="form-group"><input type="text" placeholder="Features" id="propertyFeatures"></div>
-      <button class="submit-btn" onclick="submitProperty()">Submit</button>
+      <div class="form-group"><input type="file"></div>
+      <div class="form-group"><input type="text" placeholder="Property"></div>
+      <div class="form-group"><input type="text" placeholder="Location"></div>
+      <div class="form-group"><input type="text" placeholder="Price"></div>
+      <div class="form-group"><textarea placeholder="Description"></textarea></div>
+      <div class="form-group"><input type="text" placeholder="Owner"></div>
+      <div class="form-group"><input type="text" placeholder="Features"></div>
+      <button class="submit-btn" onclick="submitAd()">Submit</button>
     </div>
 
     <div id="myAdsPage" class="container hidden">
       <h3>My Ads</h3>
+      <p>Your posted ads will appear here.</p>
       <div id="adsList"></div>
     </div>
 
     <div id="accountPage" class="container hidden">
       <h3>Account</h3>
-      <button onclick="alert('Login clicked')">Login</button>
-      <button onclick="alert('Create Account clicked')">Create Account</button>
-      <button onclick="alert('Settings clicked')">Settings</button>
-      <button onclick="alert('About clicked')">About</button>
-      <button onclick="alert('Help clicked')">Help</button>
-      <button onclick="shareSite()">Share</button>
+      <ul>
+        <li>Login</li>
+        <li>Create Account</li>
+        <li>Settings</li>
+        <li>Language</li>
+        <li>About</li>
+        <li>Help</li>
+        <li><button onclick="shareSite()">Share</button></li>
+      </ul>
     </div>
   </div>
 
@@ -156,40 +157,19 @@
         document.getElementById(id).classList.add('hidden');
       });
       document.getElementById(pageId).classList.remove('hidden');
-      if(pageId === 'myAdsPage') loadAds();
     }
 
-    function submitProperty() {
-      const ad = {
-        name: document.getElementById('propertyName').value,
-        location: document.getElementById('propertyLocation').value,
-        price: document.getElementById('propertyPrice').value,
-        desc: document.getElementById('propertyDesc').value,
-        owner: document.getElementById('propertyOwner').value,
-        features: document.getElementById('propertyFeatures').value
-      };
-      let ads = JSON.parse(localStorage.getItem('ads') || '[]');
-      ads.push(ad);
-      localStorage.setItem('ads', JSON.stringify(ads));
+    function submitAd() {
+      const adsList = document.getElementById('adsList');
+      const ad = document.createElement('div');
+      ad.className = 'property-card';
+      ad.textContent = 'New Property Ad (dummy)';
+      adsList.appendChild(ad);
       alert('Property submitted successfully!');
     }
 
-    function loadAds() {
-      let ads = JSON.parse(localStorage.getItem('ads') || '[]');
-      let adsList = document.getElementById('adsList');
-      adsList.innerHTML = ads.map(ad => `<div class="property-card">${ad.name} - ${ad.location} - ₹${ad.price}</div>`).join('') || '<p>No ads posted yet.</p>';
-    }
-
     function shareSite() {
-      if (navigator.share) {
-        navigator.share({
-          title: 'Apna Sapna Apna Ghar',
-          text: 'Check out this amazing property site!',
-          url: window.location.href
-        }).catch(console.error);
-      } else {
-        alert('Share not supported on this browser');
-      }
+      alert('Share this site link: https://apnasapnaapnaghar.example.com');
     }
   </script>
 </body>
