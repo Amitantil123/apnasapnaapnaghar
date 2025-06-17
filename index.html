@@ -1,73 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
       background: #f0f2f5;
-    }
-    .container {
-      padding: 20px;
-      padding-bottom: 80px;
+      overflow-x: hidden;
     }
     .hidden {
       display: none;
-    }
-    .property-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .property-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .property-card p {
-      margin: 6px 0;
-      font-size: 16px;
-    }
-    .nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      background: #fff;
-      border-top: 1px solid #ccc;
-    }
-    .nav button {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      background: #fff;
-      font-size: 14px;
-      color: #007bff;
     }
     .welcome {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 30vh;
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: #fff;
-      font-size: 20px;
+      height: 100vh;
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      color: white;
       flex-direction: column;
       text-align: center;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease-in-out;
     }
     .welcome img {
-      width: 120px;
-      margin-bottom: 10px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      width: 150px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 15px;
+      animation: popIn 1s ease forwards;
+    }
+    .container {
+      padding: 20px;
+      animation: slideIn 0.5s ease-out;
+    }
+    .property-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .property-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .property-card img {
+      width: 100%;
+      display: block;
+    }
+    .property-card p {
+      padding: 10px;
+      margin: 0;
+      font-size: 16px;
     }
     .search-bar {
       display: flex;
@@ -76,66 +64,92 @@
     }
     .search-bar input, .search-bar select {
       flex: 1;
-      padding: 8px;
+      padding: 10px;
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: 8px;
     }
     .add-btn {
-      padding: 15px 20px;
-      background: #007bff;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #28a745, #218838);
       color: #fff;
-      font-size: 18px;
       border: none;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      font-size: 16px;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
     }
     .add-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      background: linear-gradient(135deg, #218838, #28a745);
     }
     .badge {
-      display: inline-block;
       background: #28a745;
-      color: #fff;
-      font-size: 12px;
+      color: white;
       padding: 2px 6px;
       border-radius: 4px;
+      font-size: 12px;
       margin-left: 5px;
     }
-    .footer-note {
-      text-align: center;
-      font-size: 12px;
-      color: #555;
-      margin-top: 10px;
+    .nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      background: #fff;
+      box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .nav button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: none;
+      font-size: 14px;
+      color: #007bff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nav button:hover {
+      background: rgba(0,123,255,0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes popIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-<!-- Welcome -->
+<!-- Welcome Screen -->
 <div id="welcomeScreen" class="welcome">
   <img src="logo.png" alt="Logo">
-  <div>🏡 Welcome to <strong>Apna Sapna Apna Ghar</strong></div>
-  <small>Trusted by 1000+ users 🔒</small>
+  <div style="font-size: 24px;"><strong>🏡 Apna Sapna Apna Ghar</strong></div>
+  <small style="margin-top: 8px;">Trusted by 1000+ users 🔒</small>
 </div>
 
-<!-- Home -->
+<!-- Home Page -->
 <div id="homePage" class="container hidden">
   <div class="search-bar">
     <input type="text" placeholder="Search properties..." oninput="filterProperties()">
-    <select onchange="filterProperties()" id="locationFilter">
+    <select id="locationFilter" onchange="filterProperties()">
       <option value="">All Locations</option>
       <option value="Delhi">Delhi</option>
       <option value="Gurgaon">Gurgaon</option>
       <option value="Sonipat">Sonipat</option>
     </select>
   </div>
-
   <button class="add-btn" onclick="addProperty()">➕ Add Property</button>
-
   <div id="propertyList">
     <div class="property-card" data-location="Delhi">
       <img src="property1.jpg" alt="Property 1">
@@ -152,62 +166,7 @@
       <p><strong>Property 3</strong> ₹25,00,000</p>
       <p>Sonipat, India</p>
     </div>
-    <div class="property-card" data-location="Delhi">
-      <img src="property4.jpg" alt="Property 4">
-      <p><strong>Property 4</strong> ₹55,00,000</p>
-      <p>Delhi, India</p>
-    </div>
-    <div class="property-card" data-location="Gurgaon">
-      <img src="property5.jpg" alt="Property 5">
-      <p><strong>Property 5</strong> ₹65,00,000 <span class="badge">Verified</span></p>
-      <p>Gurgaon, India</p>
-    </div>
   </div>
-
-  <div class="footer-note">
-    🔒 Secure deals | 📞 Contact support anytime
-  </div>
-</div>
-
-<!-- Other Pages -->
-<div id="chatsPage" class="container hidden">
-  <h2>💬 Chats</h2>
-  <p>No chats yet. Start connecting!</p>
-</div>
-
-<div id="sellPage" class="container hidden">
-  <h2>➕ Sell Property</h2>
-  <p>Upload your property details below.</p>
-</div>
-
-<div id="myAdsPage" class="container hidden">
-  <h2>📄 My Ads</h2>
-  <p>Your posted properties appear here.</p>
-</div>
-
-<div id="accountPage" class="container hidden">
-  <h2>👤 Account</h2>
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
-  <button>Login</button>
-  <button>Create Account</button>
-
-  <h3>⚙️ Settings</h3>
-  <label>Language:</label>
-  <select>
-    <option>English</option>
-    <option>Hindi</option>
-  </select>
-
-  <h3>ℹ️ About</h3>
-  <p><strong>Name:</strong> Amit</p>
-  <p><strong>Address:</strong> Sonipat 131001, Haryana</p>
-  <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
-  <p><strong>Contact:</strong> 8053****43</p>
-  <p>This platform connects buyers and sellers of property safely and easily.</p>
-
-  <h3>❓ Help</h3>
-  <p>Contact support@apnaghar.com or 1800-000-000</p>
 </div>
 
 <!-- Nav -->
@@ -219,25 +178,31 @@
   <button onclick="showPage('accountPage')">👤<br>Account</button>
 </div>
 
+<!-- Placeholder pages -->
+<div id="chatsPage" class="container hidden"><h2>💬 Chats</h2><p>No chats yet. Start connecting!</p></div>
+<div id="sellPage" class="container hidden"><h2>➕ Sell</h2><p>Post your property for sale!</p></div>
+<div id="myAdsPage" class="container hidden"><h2>📄 My Ads</h2><p>Your posted ads appear here.</p></div>
+<div id="accountPage" class="container hidden"><h2>👤 Account</h2><p>Login or create your account.</p></div>
+
 <script>
-function showPage(pageId) {
-  ['homePage','chatsPage','sellPage','myAdsPage','accountPage'].forEach(id=>{
-    document.getElementById(id).classList.add('hidden');
+function showPage(id) {
+  ['homePage','chatsPage','sellPage','myAdsPage','accountPage'].forEach(page=>{
+    document.getElementById(page).classList.add('hidden');
   });
-  document.getElementById(pageId).classList.remove('hidden');
+  document.getElementById(id).classList.remove('hidden');
 }
-setTimeout(()=>{
+setTimeout(() => {
   document.getElementById('welcomeScreen').classList.add('hidden');
   document.getElementById('homePage').classList.remove('hidden');
-}, 3000); // 3 seconds
+}, 3000);
 
 function filterProperties(){
   const searchVal = document.querySelector('.search-bar input').value.toLowerCase();
   const locationVal = document.getElementById('locationFilter').value;
-  document.querySelectorAll('.property-card').forEach(card=>{
+  document.querySelectorAll('.property-card').forEach(card => {
     const location = card.getAttribute('data-location');
     const text = card.innerText.toLowerCase();
-    if((locationVal=="" || location==locationVal) && text.includes(searchVal)){
+    if((!locationVal || location === locationVal) && text.includes(searchVal)){
       card.style.display = "";
     } else {
       card.style.display = "none";
