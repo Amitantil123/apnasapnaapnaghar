@@ -1,174 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background: #f2f2f2; }
-    #welcomeScreen {
-      position: fixed; top:0; left:0; width:100%; height:100%;
-      background:#000; display:flex; justify-content:center; align-items:center;
-      z-index:1000;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f2f5;
     }
-    #welcomeScreen img { max-width: 90%; max-height: 90%; }
-
-    header {
-      background: #007BFF; color: white; padding: 10px;
-      display: flex; align-items: center; justify-content: space-between;
+    .container {
+      padding: 20px;
+      padding-bottom: 80px;
     }
-    header img { width: 40px; height: 40px; margin-right: 10px; }
-    .top-bar { display:flex; align-items: center; }
-    .search-location { display:flex; flex:1; gap:5px; }
-    .search-location input {
-      flex:1; padding:5px; border-radius:4px; border:1px solid #ccc;
+    .hidden {
+      display: none;
     }
-
-    .property-list {
-      padding:10px;
+    .property-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .property {
-      background:white; padding:10px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom:10px;
+    .property-card img {
+      width: 100%;
+      border-radius: 8px;
     }
-    .property img { width:100%; height:120px; object-fit:cover; border-radius:4px; }
-
-    .container { padding:10px; padding-bottom:70px; }
-    .hidden { display:none; }
-
-    footer {
-      position:fixed; bottom:0; left:0; width:100%;
-      background:#007BFF; color:white; display:flex; justify-content:space-around;
+    .property-card p {
+      margin: 6px 0;
+      font-size: 16px;
     }
-    footer div { padding:8px; text-align:center; }
-
-    input, select, button {
-      width:100%; padding:8px; margin-bottom:8px;
-      border-radius:5px; border:1px solid #ccc;
+    .nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      background: #fff;
+      border-top: 1px solid #ccc;
     }
-    button.login { background:#007BFF; color:white; }
-    button.create { background:#28a745; color:white; }
+    .nav button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #fff;
+      font-size: 14px;
+      color: #007bff;
+    }
+    .welcome {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #007bff;
+      color: #fff;
+      font-size: 24px;
+      flex-direction: column;
+    }
+    .welcome img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Welcome Screen -->
-  <div id="welcomeScreen">
-    <img src="welcome.jpg" alt="Welcome">
+<!-- Welcome Splash Screen -->
+<div id="welcomeScreen" class="welcome">
+  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo">
+  <div>Welcome to Apna Sapna Apna Ghar</div>
+</div>
+
+<!-- Home Page -->
+<div id="homePage" class="container hidden">
+  <div class="property-card">
+    <p>🏠 <strong>Property 1</strong> — ₹35,00,000</p>
+    <p>📍 Delhi, India</p>
   </div>
-
-  <!-- Header -->
-  <header class="hidden" id="mainHeader">
-    <div class="top-bar">
-      <img src="logo.png" alt="Logo">
-      <strong>Apna Sapna Apna Ghar</strong>
-    </div>
-    <div class="search-location">
-      <input type="text" placeholder="Search...">
-      <input type="text" placeholder="📍 Location">
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <div id="homePage" class="container hidden">
-    <h2>My Property List</h2>
-    <div class="property-list">
-      <div class="property">
-        <img src="property1.jpg" alt="Property 1">
-        <p>₹35,00,000 - Delhi, India</p>
-      </div>
-      <div class="property">
-        <img src="property2.jpg" alt="Property 2">
-        <p>₹45,00,000 - Gurgaon, India</p>
-      </div>
-      <div class="property">
-        <img src="property3.jpg" alt="Property 3">
-        <p>₹25,00,000 - Sonipat, India</p>
-      </div>
-    </div>
+  <div class="property-card">
+    <p>🏠 <strong>Property 2</strong> — ₹45,00,000</p>
+    <p>📍 Gurgaon, India</p>
   </div>
-
-  <div id="chatsPage" class="container hidden">
-    <h2>💬 Chats</h2>
-    <p>No chats yet.</p>
+  <div class="property-card">
+    <p>🏠 <strong>Property 3</strong> — ₹25,00,000</p>
+    <p>📍 Sonipat, India</p>
   </div>
+</div>
 
-  <div id="sellPage" class="container hidden">
-    <h2>➕ Sell Property</h2>
-    <p>Property upload form here.</p>
-  </div>
+<!-- Chats Page -->
+<div id="chatsPage" class="container hidden">
+  <h2>💬 Chats</h2>
+  <p>No chats available yet.</p>
+</div>
 
-  <div id="myAdsPage" class="container hidden">
-    <h2>📄 My Ads</h2>
-    <p>Your ads will show here.</p>
-  </div>
+<!-- Sell Page -->
+<div id="sellPage" class="container hidden">
+  <h2>➕ Sell Property</h2>
+  <p>Form to upload property details will go here.</p>
+</div>
 
-  <div id="accountPage" class="container hidden">
-    <h2>👤 Account</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <button class="login">Login</button>
-    <button class="create">Create Account</button>
+<!-- My Ads Page -->
+<div id="myAdsPage" class="container hidden">
+  <h2>📄 My Ads</h2>
+  <p>Your posted properties will appear here.</p>
+</div>
 
-    <h3>⚙️ Settings</h3>
-    <label>Language:</label>
-    <select>
-      <option>English</option>
-      <option>Hindi</option>
-    </select>
+<!-- Account Page -->
+<div id="accountPage" class="container hidden">
+  <h2>👤 Account</h2>
+  <input type="text" placeholder="Username">
+  <input type="password" placeholder="Password">
+  <button class="login">Login</button>
+  <button class="create">Create Account</button>
 
-    <h3>ℹ️ About</h3>
-    <p><strong>Name:</strong> Amit</p>
-    <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
-    <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
-    <p><strong>Contact:</strong> 8053****43</p>
-    <p>This site helps buyers & sellers connect for real estate opportunities.</p>
+  <h3>⚙️ Settings</h3>
+  <label>Language:</label>
+  <select>
+    <option>English</option>
+    <option>Hindi</option>
+  </select>
 
-    <h3>🔗 Share Website</h3>
-    <button onclick="shareSite()">Share Link</button>
-  </div>
+  <h3>ℹ️ About</h3>
+  <p><strong>Name:</strong> Amit</p>
+  <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
+  <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
+  <p><strong>Contact:</strong> 8053****43</p>
+  <p>This site helps buyers and sellers connect for real estate opportunities.</p>
 
-  <!-- Footer Nav -->
-  <footer class="hidden" id="mainFooter">
-    <div onclick="showPage('homePage')">🏠 Home</div>
-    <div onclick="showPage('chatsPage')">💬 Chats</div>
-    <div onclick="showPage('sellPage')">➕ Sell</div>
-    <div onclick="showPage('myAdsPage')">📄 My Ads</div>
-    <div onclick="showPage('accountPage')">👤 Account</div>
-  </footer>
+  <h3>❓ Help</h3>
+  <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
 
-  <script>
-    // 3 sec baad welcome hata do image aaye ya na aaye
-    document.addEventListener("DOMContentLoaded", function() {
-      setTimeout(() => {
-        document.getElementById("welcomeScreen").classList.add("hidden");
-        document.getElementById("mainHeader").classList.remove("hidden");
-        document.getElementById("homePage").classList.remove("hidden");
-        document.getElementById("mainFooter").classList.remove("hidden");
-      }, 3000);
-    });
+  <h3>🔗 Share</h3>
+  <p>Share via WhatsApp, Facebook, Instagram, Bluetooth, Email</p>
+</div>
 
-    function showPage(pageId) {
-      const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
-      pages.forEach(id => document.getElementById(id).classList.add('hidden'));
-      document.getElementById(pageId).classList.remove('hidden');
-    }
+<!-- Navigation -->
+<div class="nav">
+  <button onclick="showPage('homePage')">🏠<br>Home</button>
+  <button onclick="showPage('chatsPage')">💬<br>Chats</button>
+  <button onclick="showPage('sellPage')">➕<br>Sell</button>
+  <button onclick="showPage('myAdsPage')">📄<br>My Ads</button>
+  <button onclick="showPage('accountPage')">👤<br>Account</button>
+</div>
 
-    function shareSite() {
-      if (navigator.share) {
-        navigator.share({
-          title: 'Apna Sapna Apna Ghar',
-          text: 'Check out this amazing property site!',
-          url: window.location.href
-        }).then(() => {
-          console.log('Thanks for sharing!');
-        })
-        .catch(console.error);
-      } else {
-        alert('Share not supported on this browser.');
-      }
-    }
-  </script>
+<script>
+function showPage(pageId) {
+  const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
+  pages.forEach(id => {
+    document.getElementById(id).classList.add('hidden');
+  });
+  document.getElementById(pageId).classList.remove('hidden');
+}
+
+// Splash screen logic
+setTimeout(() => {
+  document.getElementById('welcomeScreen').classList.add('hidden');
+  document.getElementById('homePage').classList.remove('hidden');
+}, 3000);
+</script>
 
 </body>
 </html>
