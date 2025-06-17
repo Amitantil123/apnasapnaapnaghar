@@ -11,33 +11,37 @@
       padding: 0;
       background: #f0f2f5;
     }
+    .hidden { display: none; }
+
+    /* Welcome screen */
+    .welcome {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: #fff;
+      font-size: 24px;
+      animation: fadeIn 3s;
+      text-align: center;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .welcome img {
+      width: 150px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
     .container {
       padding: 20px;
       padding-bottom: 80px;
     }
-    .hidden {
-      display: none;
-    }
-    .property-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-    .property-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .property-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .property-card p {
-      margin: 6px 0;
-      font-size: 16px;
-    }
+
     .nav {
       position: fixed;
       bottom: 0;
@@ -45,6 +49,7 @@
       display: flex;
       background: #fff;
       border-top: 1px solid #ccc;
+      box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
     }
     .nav button {
       flex: 1;
@@ -53,130 +58,85 @@
       background: #fff;
       font-size: 14px;
       color: #007bff;
+      cursor: pointer;
     }
-    .welcome {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 30vh;
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: #fff;
-      font-size: 20px;
-      flex-direction: column;
-      text-align: center;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      animation: fadein 3s;
-    }
-    @keyframes fadein {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .welcome img {
-      width: 120px;
-      margin-bottom: 10px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-    .search-bar {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .search-bar input, .search-bar select {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
+
     .add-btn {
-      padding: 15px 20px;
+      display: block;
+      width: 100%;
+      padding: 15px;
       background: #007bff;
       color: #fff;
-      font-size: 18px;
+      font-size: 16px;
       border: none;
       border-radius: 8px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      margin: 10px 0;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
+
     .add-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      background: #0056b3;
     }
-    .badge {
-      display: inline-block;
+
+    .property-card {
+      background: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+
+    .property-card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .share-btn {
       background: #28a745;
       color: #fff;
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: 5px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      width: 100%;
+      cursor: pointer;
     }
-    .footer-note {
-      text-align: center;
-      font-size: 12px;
-      color: #555;
-      margin-top: 10px;
+
+    .share-btn:hover {
+      background: #218838;
     }
   </style>
 </head>
 <body>
 
-<!-- Welcome -->
+<!-- Welcome Screen -->
 <div id="welcomeScreen" class="welcome">
   <img src="logo.png" alt="Logo">
   <div>🏡 Welcome to <strong>Apna Sapna Apna Ghar</strong></div>
-  <small>Trusted by 1000+ users 🔒</small>
 </div>
 
 <!-- Home -->
 <div id="homePage" class="container hidden">
-  <div class="search-bar">
-    <input type="text" placeholder="Search properties..." oninput="filterProperties()">
-    <select onchange="filterProperties()" id="locationFilter">
-      <option value="">All Locations</option>
-      <option value="Delhi">Delhi</option>
-      <option value="Gurgaon">Gurgaon</option>
-      <option value="Sonipat">Sonipat</option>
-    </select>
-  </div>
-
+  <h2>🏠 Home</h2>
   <button class="add-btn" onclick="addProperty()">➕ Add Property</button>
-
-  <div id="propertyList">
-    <div class="property-card" data-location="Delhi">
-      <img src="property1.jpg" alt="Property 1">
-      <p><strong>Property 1</strong> ₹35,00,000 <span class="badge">Verified</span></p>
-      <p>Delhi, India</p>
-    </div>
-    <div class="property-card" data-location="Gurgaon">
-      <img src="property2.jpg" alt="Property 2">
-      <p><strong>Property 2</strong> ₹45,00,000 <span class="badge">Verified</span></p>
-      <p>Gurgaon, India</p>
-    </div>
-    <div class="property-card" data-location="Sonipat">
-      <img src="property3.jpg" alt="Property 3">
-      <p><strong>Property 3</strong> ₹25,00,000</p>
-      <p>Sonipat, India</p>
-    </div>
-    <div class="property-card" data-location="Delhi">
-      <img src="property4.jpg" alt="Property 4">
-      <p><strong>Property 4</strong> ₹55,00,000</p>
-      <p>Delhi, India</p>
-    </div>
-    <div class="property-card" data-location="Gurgaon">
-      <img src="property5.jpg" alt="Property 5">
-      <p><strong>Property 5</strong> ₹65,00,000 <span class="badge">Verified</span></p>
-      <p>Gurgaon, India</p>
-    </div>
+  <div class="property-card">
+    <img src="property1.jpg" alt="Property 1">
+    <p><strong>Property 1</strong> ₹35,00,000</p>
+    <p>Delhi, India</p>
   </div>
+  <button class="share-btn" onclick="shareSite()">📤 Share Site</button>
+</div>
 
-  <div class="footer-note">
-    🔒 Secure deals | 📞 Contact support anytime
-  </div>
+<!-- Sell -->
+<div id="sellPage" class="container hidden">
+  <h2>➕ Sell Property</h2>
+  <p>Upload your property details here.</p>
+</div>
+
+<!-- My Ads -->
+<div id="myAdsPage" class="container hidden">
+  <h2>📄 My Ads</h2>
+  <p>Your ads will appear here.</p>
 </div>
 
 <!-- Chats -->
@@ -185,25 +145,11 @@
   <p>No chats yet. Start connecting!</p>
 </div>
 
-<!-- Sell -->
-<div id="sellPage" class="container hidden">
-  <h2>➕ Sell Property</h2>
-  <p>Upload your property details below.</p>
-</div>
-
-<!-- My Ads -->
-<div id="myAdsPage" class="container hidden">
-  <h2>📄 My Ads</h2>
-  <p>Your posted properties appear here.</p>
-</div>
-
 <!-- Account -->
 <div id="accountPage" class="container hidden">
   <h2>👤 Account</h2>
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
-  <button>Login</button>
-  <button>Create Account</button>
+  <button class="add-btn">Login</button>
+  <button class="add-btn">Create Account</button>
 
   <h3>⚙️ Settings</h3>
   <label>Language:</label>
@@ -214,20 +160,16 @@
 
   <h3>ℹ️ About</h3>
   <p><strong>Name:</strong> Amit</p>
-  <p><strong>Address:</strong> Sonipat 131001, Haryana</p>
+  <p><strong>Address:</strong> Sonipat 131001</p>
   <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
   <p><strong>Contact:</strong> 8053****43</p>
-  <p>This platform connects buyers and sellers of property safely and easily.</p>
 
   <h3>❓ Help</h3>
-  <p>Contact support@apnaghar.com or 1800-000-000</p>
-
-  <h3>📤 Share Our Site</h3>
-  <button class="add-btn" onclick="shareSite()">📤 Share Apna Sapna Apna Ghar</button>
+  <p>support@apnaghar.com | 1800-000-000</p>
 </div>
 
-<!-- Nav -->
-<div class="nav">
+<!-- Navigation -->
+<div class="nav hidden" id="navBar">
   <button onclick="showPage('homePage')">🏠<br>Home</button>
   <button onclick="showPage('chatsPage')">💬<br>Chats</button>
   <button onclick="showPage('sellPage')">➕<br>Sell</button>
@@ -243,50 +185,32 @@ function showPage(pageId) {
   document.getElementById(pageId).classList.remove('hidden');
 }
 
-setTimeout(()=>{
+// 3 sec welcome + nav show
+setTimeout(() => {
   document.getElementById('welcomeScreen').classList.add('hidden');
   document.getElementById('homePage').classList.remove('hidden');
-},3000);
+  document.getElementById('navBar').classList.remove('hidden');
+}, 3000);
 
-function filterProperties(){
-  const searchVal = document.querySelector('.search-bar input').value.toLowerCase();
-  const locationVal = document.getElementById('locationFilter').value;
-  document.querySelectorAll('.property-card').forEach(card=>{
-    const location = card.getAttribute('data-location');
-    const text = card.innerText.toLowerCase();
-    if((locationVal=="" || location==locationVal) && text.includes(searchVal)){
-      card.style.display = "";
-    } else {
-      card.style.display = "none";
-    }
-  });
-}
-
-function addProperty(){
-  const list = document.getElementById('propertyList');
-  const card = document.createElement('div');
-  card.className = 'property-card';
-  card.setAttribute('data-location', 'Custom');
-  card.innerHTML = `
+function addProperty() {
+  const list = document.createElement('div');
+  list.className = 'property-card';
+  list.innerHTML = `
     <img src="property1.jpg" alt="New Property">
-    <p><strong>New Property</strong> ₹40,00,000 <span class="badge">Verified</span></p>
+    <p><strong>New Property</strong> ₹40,00,000</p>
     <p>Custom Location</p>`;
-  list.appendChild(card);
+  document.getElementById('homePage').appendChild(list);
 }
 
-function shareSite(){
+function shareSite() {
   if (navigator.share) {
     navigator.share({
       title: 'Apna Sapna Apna Ghar',
-      text: 'Check out amazing properties on Apna Sapna Apna Ghar!',
+      text: 'Check out this awesome property site!',
       url: window.location.href
-    }).then(() => {
-      console.log('Shared successfully!');
-    }).catch((err) => {
-      console.log('Share failed:', err);
-    });
+    }).then(() => console.log('Shared!')).catch(err => console.error(err));
   } else {
-    alert('Sharing not supported. Copy URL: ' + window.location.href);
+    alert('Share not supported on this browser. Copy URL: ' + window.location.href);
   }
 }
 </script>
