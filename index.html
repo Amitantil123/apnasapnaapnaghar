@@ -85,6 +85,19 @@
       color: #555;
       margin-top: 10px;
     }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
@@ -130,7 +143,37 @@
 
 <div id="sellPage" class="container hidden">
   <h2>➕ Sell Property</h2>
-  <p>Coming soon!</p>
+  <form onsubmit="submitSellForm(event)">
+    <div class="form-group">
+      <label>Upload Images</label>
+      <input type="file" multiple>
+    </div>
+    <div class="form-group">
+      <label>Property</label>
+      <input type="text" required>
+    </div>
+    <div class="form-group">
+      <label>Location</label>
+      <input type="text" required>
+    </div>
+    <div class="form-group">
+      <label>Price</label>
+      <input type="number" required>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea required></textarea>
+    </div>
+    <div class="form-group">
+      <label>Owner</label>
+      <input type="text" required>
+    </div>
+    <div class="form-group">
+      <label>Features</label>
+      <input type="text">
+    </div>
+    <button type="submit">Submit Property</button>
+  </form>
 </div>
 
 <div id="myAdsPage" class="container hidden">
@@ -205,6 +248,11 @@ function shareSite() {
   }).catch(()=>{
     alert('Failed to copy link.');
   });
+}
+
+function submitSellForm(e){
+  e.preventDefault();
+  alert('Property submitted successfully (dummy)!');
 }
 </script>
 
