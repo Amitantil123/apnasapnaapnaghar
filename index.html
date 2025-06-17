@@ -104,34 +104,35 @@
 
     <div id="chatsPage" class="container hidden">
       <h3>Chats</h3>
-      <div class="property-card">No messages yet.</div>
+      <p>No messages yet.</p>
     </div>
 
     <div id="sellPage" class="container hidden">
       <h3>Sell Property</h3>
-      <div class="form-group"><input type="file" id="imageUpload"></div>
-      <div class="form-group"><input type="text" id="propertyName" placeholder="Property"></div>
-      <div class="form-group"><input type="text" id="propertyLocation" placeholder="Location"></div>
-      <div class="form-group"><input type="text" id="propertyPrice" placeholder="Price"></div>
-      <div class="form-group"><textarea id="propertyDescription" placeholder="Description"></textarea></div>
-      <div class="form-group"><input type="text" id="propertyOwner" placeholder="Owner"></div>
-      <div class="form-group"><input type="text" id="propertyFeatures" placeholder="Features"></div>
-      <button class="submit-btn" onclick="submitProperty()">Submit</button>
+      <div class="form-group"><input type="file"></div>
+      <div class="form-group"><input type="text" placeholder="Property"></div>
+      <div class="form-group"><input type="text" placeholder="Location"></div>
+      <div class="form-group"><input type="text" placeholder="Price"></div>
+      <div class="form-group"><textarea placeholder="Description"></textarea></div>
+      <div class="form-group"><input type="text" placeholder="Owner"></div>
+      <div class="form-group"><input type="text" placeholder="Features"></div>
+      <button class="submit-btn" onclick="alert('Property submitted successfully (dummy)!')">Submit</button>
     </div>
 
     <div id="myAdsPage" class="container hidden">
       <h3>My Ads</h3>
-      <div id="adsList">Your posted ads will appear here.</div>
+      <p>Your posted ads will appear here.</p>
     </div>
 
     <div id="accountPage" class="container hidden">
       <h3>Account</h3>
-      <p><button onclick="alert('Login form coming soon')">Login</button></p>
-      <p><button onclick="alert('Create Account coming soon')">Create Account</button></p>
-      <p><button onclick="alert('Settings coming soon')">Settings</button></p>
-      <p><button onclick="alert('About: Apna Sapna Apna Ghar - Best Real Estate Site')">About</button></p>
-      <p><button onclick="alert('Help section coming soon')">Help</button></p>
-      <p><button onclick="shareSite()">Share</button></p>
+      <button onclick="alert('Login clicked')">Login</button>
+      <button onclick="alert('Create Account clicked')">Create Account</button>
+      <button onclick="alert('Settings clicked')">Settings</button>
+      <button onclick="alert('Language Selection clicked')">Language</button>
+      <button onclick="alert('About clicked')">About</button>
+      <button onclick="alert('Help clicked')">Help</button>
+      <button onclick="alert('Share clicked')">Share Site</button>
     </div>
   </div>
 
@@ -154,26 +155,6 @@
         document.getElementById(id).classList.add('hidden');
       });
       document.getElementById(pageId).classList.remove('hidden');
-    }
-
-    function submitProperty() {
-      const name = document.getElementById('propertyName').value;
-      const location = document.getElementById('propertyLocation').value;
-      const price = document.getElementById('propertyPrice').value;
-      const desc = document.getElementById('propertyDescription').value;
-      const owner = document.getElementById('propertyOwner').value;
-      const features = document.getElementById('propertyFeatures').value;
-      const ad = `<div class='property-card'><strong>${name}</strong> - ${location} - ₹${price}<br>${desc}<br>Owner: ${owner}<br>Features: ${features}</div>`;
-      const adsList = document.getElementById('adsList');
-      if (adsList.innerHTML.includes('Your posted ads')) {
-        adsList.innerHTML = '';
-      }
-      adsList.innerHTML += ad;
-      alert('Property submitted successfully!');
-    }
-
-    function shareSite() {
-      alert('Share this site: https://apnasapnaapnaghar.example.com');
     }
   </script>
 </body>
