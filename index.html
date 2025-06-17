@@ -124,9 +124,6 @@
     <p><strong>Contact:</strong> 8053****43</p>
     <p>This site helps buyers & sellers connect for real estate opportunities.</p>
 
-    <h3>❓ Help</h3>
-    <p>Contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
-
     <h3>🔗 Share Website</h3>
     <button onclick="shareSite()">Share Link</button>
   </div>
@@ -141,13 +138,15 @@
   </footer>
 
   <script>
-    // Directly start the timer
-    setTimeout(() => {
-      document.getElementById("welcomeScreen").classList.add("hidden");
-      document.getElementById("mainHeader").classList.remove("hidden");
-      document.getElementById("homePage").classList.remove("hidden");
-      document.getElementById("mainFooter").classList.remove("hidden");
-    }, 3000);
+    // 3 sec baad welcome hata do image aaye ya na aaye
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(() => {
+        document.getElementById("welcomeScreen").classList.add("hidden");
+        document.getElementById("mainHeader").classList.remove("hidden");
+        document.getElementById("homePage").classList.remove("hidden");
+        document.getElementById("mainFooter").classList.remove("hidden");
+      }, 3000);
+    });
 
     function showPage(pageId) {
       const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
@@ -166,7 +165,7 @@
         })
         .catch(console.error);
       } else {
-        alert('Share feature not supported on this browser.');
+        alert('Share not supported on this browser.');
       }
     }
   </script>
