@@ -95,16 +95,19 @@
       <strong>Apna Sapna Apna Ghar</strong>
     </header>
 
-    <div id="homePage" class="container">
+    <div class="container">
       <input type="text" placeholder="Search properties...">
       <input type="text" placeholder="Location">
+    </div>
+
+    <div id="homePage" class="container">
       <div class="property-card">Property 1 - Delhi - ₹35,00,000</div>
       <div class="property-card">Property 2 - Gurgaon - ₹45,00,000</div>
     </div>
 
     <div id="chatsPage" class="container hidden">
       <h3>Chats</h3>
-      <p>No messages yet.</p>
+      <p>No messages yet. Start chatting soon!</p>
     </div>
 
     <div id="sellPage" class="container hidden">
@@ -116,7 +119,7 @@
       <div class="form-group"><textarea placeholder="Description"></textarea></div>
       <div class="form-group"><input type="text" placeholder="Owner"></div>
       <div class="form-group"><input type="text" placeholder="Features"></div>
-      <button class="submit-btn" onclick="alert('Property submitted successfully (dummy)!')">Submit</button>
+      <button class="submit-btn" onclick="alert('Property submitted successfully!')">Submit</button>
     </div>
 
     <div id="myAdsPage" class="container hidden">
@@ -126,13 +129,15 @@
 
     <div id="accountPage" class="container hidden">
       <h3>Account</h3>
-      <button onclick="alert('Login clicked')">Login</button>
-      <button onclick="alert('Create Account clicked')">Create Account</button>
-      <button onclick="alert('Settings clicked')">Settings</button>
-      <button onclick="alert('Language Selection clicked')">Language</button>
-      <button onclick="alert('About clicked')">About</button>
-      <button onclick="alert('Help clicked')">Help</button>
-      <button onclick="alert('Share clicked')">Share Site</button>
+      <ul>
+        <li>Login</li>
+        <li>Create Account</li>
+        <li>Settings</li>
+        <li>Language</li>
+        <li>About</li>
+        <li>Help</li>
+        <li><button onclick="shareSite()">Share Site</button></li>
+      </ul>
     </div>
   </div>
 
@@ -155,6 +160,10 @@
         document.getElementById(id).classList.add('hidden');
       });
       document.getElementById(pageId).classList.remove('hidden');
+    }
+
+    function shareSite() {
+      alert('Share this site: https://your-site-url.com');
     }
   </script>
 </body>
