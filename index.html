@@ -18,6 +18,21 @@
     .hidden {
       display: none;
     }
+    .property-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .property-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .property-card p {
+      margin: 6px 0;
+      font-size: 16px;
+    }
     .nav {
       position: fixed;
       bottom: 0;
@@ -38,11 +53,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height: 30vh;
       background: #007bff;
       color: #fff;
+      font-size: 20px;
       flex-direction: column;
       text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .welcome img {
+      width: 120px;
+      margin-bottom: 10px;
+      border-radius: 12px;
     }
     .search-bar {
       display: flex;
@@ -55,42 +79,26 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
-    .property-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .property-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .property-card p {
-      margin: 6px 0;
-    }
-    .add-btn {
-      padding: 10px;
-      background: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
 <div id="welcomeScreen" class="welcome">
-  <img src="welcome.jpg" alt="Welcome" style="width:150px; border-radius:12px; margin-bottom:10px;">
-  <h1>Welcome to Apna Sapna Apna Ghar</h1>
+  <img src="welcome.jpg" alt="Welcome">
+  <div>🏡 Welcome to <strong>Apna Sapna Apna Ghar</strong></div>
 </div>
 
 <div id="homePage" class="container hidden">
   <div class="search-bar">
     <input type="text" placeholder="Search properties..." oninput="filterProperties()">
     <select onchange="filterProperties()" id="locationFilter">
-      <option value="">All</option>
+      <option value="">All Locations</option>
       <option value="Delhi">Delhi</option>
       <option value="Gurgaon">Gurgaon</option>
       <option value="Sonipat">Sonipat</option>
@@ -99,108 +107,103 @@
 
   <div id="propertyList">
     <div class="property-card" data-location="Delhi">
-      <img src="property1.jpg" alt="P1">
+      <img src="property1.jpg" alt="Property 1">
       <p><strong>Property 1</strong> ₹35,00,000</p>
-      <p>Delhi</p>
+      <p>Delhi, India</p>
     </div>
     <div class="property-card" data-location="Gurgaon">
-      <img src="property2.jpg" alt="P2">
+      <img src="property2.jpg" alt="Property 2">
       <p><strong>Property 2</strong> ₹45,00,000</p>
-      <p>Gurgaon</p>
+      <p>Gurgaon, India</p>
     </div>
+  </div>
+
+  <div class="footer-note">
+    🔒 Secure deals | 📞 Contact support anytime
   </div>
 </div>
 
 <div id="chatsPage" class="container hidden">
-  <h2>Chats</h2>
-  <p>Coming soon...</p>
+  <h2>💬 Chats</h2>
+  <p>Coming soon!</p>
 </div>
 
 <div id="sellPage" class="container hidden">
-  <h2>Sell Property</h2>
-  <input type="file" multiple><br><br>
-  <input type="text" placeholder="Property Name"><br><br>
-  <input type="text" placeholder="Location"><br><br>
-  <input type="text" placeholder="Price"><br><br>
-  <textarea placeholder="Description"></textarea><br><br>
-  <input type="text" placeholder="Owner"><br><br>
-  <input type="text" placeholder="Features"><br><br>
-  <button class="add-btn">Submit Property</button>
+  <h2>➕ Sell Property</h2>
+  <p>Coming soon!</p>
 </div>
 
 <div id="myAdsPage" class="container hidden">
-  <h2>My Ads</h2>
-  <p>Your ads will appear here.</p>
+  <h2>📄 My Ads</h2>
+  <p>Coming soon!</p>
 </div>
 
 <div id="accountPage" class="container hidden">
-  <h2>Account</h2>
-  <input type="text" placeholder="Username" id="username">
-  <input type="password" placeholder="Password" id="password">
-  <button onclick="login()">Login</button>
-  <button onclick="createAccount()">Create Account</button>
-  <h3>Settings</h3>
-  <select onchange="changeLanguage(this)">
+  <h2>👤 Account</h2>
+  <input type="text" placeholder="Username">
+  <input type="password" placeholder="Password">
+  <button onclick="alert('Login successful (dummy)!')">Login</button>
+  <button onclick="alert('Account created (dummy)!')">Create Account</button>
+
+  <h3>⚙️ Settings</h3>
+  <label>Language:</label>
+  <select onchange="alert('Language set (dummy)!')">
     <option>English</option>
     <option>Hindi</option>
   </select>
-  <h3>About</h3>
-  <p>Name: Amit</p>
-  <p>Address: Sonipat 131001</p>
-  <p>Email: Amitrudher24@gmail.com</p>
-  <p>Contact: 8053****43</p>
-  <h3>Help</h3>
-  <p>support@apnaghar.com | 1800-000-000</p>
-  <h3>Share</h3>
+
+  <h3>ℹ️ About</h3>
+  <p><strong>Name:</strong> Amit</p>
+  <p><strong>Address:</strong> Sonipat 131001</p>
+  <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
+
+  <h3>❓ Help</h3>
+  <p>Contact support@apnaghar.com</p>
+
+  <h3>📤 Share</h3>
   <button onclick="shareSite()">Share this site</button>
 </div>
 
 <div class="nav">
-  <button onclick="showPage('homePage')">Home</button>
-  <button onclick="showPage('chatsPage')">Chats</button>
-  <button onclick="showPage('sellPage')">Sell</button>
-  <button onclick="showPage('myAdsPage')">My Ads</button>
-  <button onclick="showPage('accountPage')">Account</button>
+  <button onclick="showPage('homePage')">🏠<br>Home</button>
+  <button onclick="showPage('chatsPage')">💬<br>Chats</button>
+  <button onclick="showPage('sellPage')">➕<br>Sell</button>
+  <button onclick="showPage('myAdsPage')">📄<br>My Ads</button>
+  <button onclick="showPage('accountPage')">👤<br>Account</button>
 </div>
 
 <script>
-function showPage(id) {
-  ['homePage','chatsPage','sellPage','myAdsPage','accountPage'].forEach(p => {
-    document.getElementById(p).classList.add('hidden');
+function showPage(pageId) {
+  ['homePage','chatsPage','sellPage','myAdsPage','accountPage'].forEach(id=>{
+    document.getElementById(id).classList.add('hidden');
   });
-  document.getElementById(id).classList.remove('hidden');
+  document.getElementById(pageId).classList.remove('hidden');
 }
 
-setTimeout(() => {
+setTimeout(()=>{
   document.getElementById('welcomeScreen').classList.add('hidden');
   document.getElementById('homePage').classList.remove('hidden');
 }, 3000);
 
-function filterProperties() {
-  const search = document.querySelector('.search-bar input').value.toLowerCase();
-  const loc = document.getElementById('locationFilter').value;
-  document.querySelectorAll('.property-card').forEach(card => {
+function filterProperties(){
+  const searchVal = document.querySelector('.search-bar input').value.toLowerCase();
+  const locationVal = document.getElementById('locationFilter').value;
+  document.querySelectorAll('.property-card').forEach(card=>{
     const location = card.getAttribute('data-location');
     const text = card.innerText.toLowerCase();
-    card.style.display = (text.includes(search) && (loc === "" || location === loc)) ? "" : "none";
+    if((locationVal=="" || location==locationVal) && text.includes(searchVal)){
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
   });
 }
 
-function login() {
-  alert("Login successful!");
-}
-
-function createAccount() {
-  alert("Account created!");
-}
-
-function changeLanguage(sel) {
-  alert("Language changed to " + sel.value);
-}
-
 function shareSite() {
-  navigator.clipboard.writeText(window.location.href).then(() => {
-    alert("Site link copied!");
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    alert('Site link copied to clipboard!');
+  }).catch(()=>{
+    alert('Failed to copy link.');
   });
 }
 </script>
