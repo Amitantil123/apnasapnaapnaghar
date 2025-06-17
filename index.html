@@ -1,176 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #f0f2f5;
+      margin: 0; 
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+    .welcome {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .welcome img {
+      max-width: 80%;
+      border-radius: 10px;
     }
     header {
       background: #007bff;
-      color: white;
+      color: #fff;
       padding: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
     header img {
-      width: 40px;
-      border-radius: 6px;
+      height: 40px;
+    }
+    #searchBar {
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+      background: #e9ecef;
+    }
+    #searchBar input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #searchBar button {
+      padding: 8px 12px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
     }
     .container {
-      padding: 10px;
+      padding: 15px;
     }
-    .hidden {
+    .section {
       display: none;
+    }
+    .property-list {
+      background: #fff;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form button {
+      background: #28a745;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
     .nav {
       position: fixed;
       bottom: 0;
-      display: flex;
       width: 100%;
+      display: flex;
       background: #fff;
       border-top: 1px solid #ccc;
     }
     .nav button {
       flex: 1;
-      padding: 8px;
-      background: #fff;
+      padding: 10px;
       border: none;
-      font-size: 12px;
+      background: #fff;
+      color: #007bff;
+      font-size: 14px;
     }
-    .property-card {
+    .account-options {
       background: #fff;
       padding: 10px;
-      margin-bottom: 10px;
       border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    #welcomeScreen {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #007bff;
-      color: #fff;
-      flex-direction: column;
-    }
-    #welcomeScreen img {
-      width: 150px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .form-group {
-      margin-bottom: 8px;
-    }
-    input, textarea, select {
-      width: 100%;
+    .account-options div {
+      margin: 5px 0;
       padding: 6px;
-      border: 1px solid #ccc;
+      background: #f1f1f1;
       border-radius: 4px;
-    }
-    button.submit-btn {
-      background: #007bff;
-      color: #fff;
-      padding: 8px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div id="welcomeScreen">
-    <img src="welcome.jpg" alt="Welcome">
-    <h2>Welcome to Apna Sapna Apna Ghar</h2>
+
+<!-- WELCOME SCREEN -->
+<div class="welcome" id="welcomeScreen">
+  <img src="welcome.jpg" alt="Welcome">
+</div>
+
+<!-- HEADER -->
+<header>
+  <img src="logo.png" alt="Logo">
+  <strong>Apna Sapna Apna Ghar</strong>
+</header>
+
+<!-- SEARCH -->
+<div id="searchBar">
+  <input type="text" id="locationInput" placeholder="Search location...">
+  <button onclick="searchLocation()">Search</button>
+</div>
+
+<!-- PROPERTY LIST -->
+<div class="container section" id="homeSection">
+  <div class="property-list">🏠 Property 1 - Sample Data</div>
+  <div class="property-list">🏠 Property 2 - Sample Data</div>
+</div>
+
+<!-- SELL FORM -->
+<div class="container section" id="sellSection">
+  <h3>➕ Sell Property</h3>
+  <form id="sellForm">
+    <input type="file" multiple>
+    <input type="text" placeholder="Property Name" required>
+    <input type="text" placeholder="Location" required>
+    <input type="number" placeholder="Price" required>
+    <textarea placeholder="Description" required></textarea>
+    <input type="text" placeholder="Owner Name" required>
+    <input type="text" placeholder="Features (e.g. 3BHK, Garden)">
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<!-- ABOUT -->
+<div class="container section" id="aboutSection">
+  <h3>ℹ️ About Us</h3>
+  <p>We connect buyers and sellers to make property deals simple and safe across India.</p>
+</div>
+
+<!-- ACCOUNT -->
+<div class="container section" id="accountSection">
+  <div class="account-options">
+    <div>👤 Login / Create Account</div>
+    <div>⚙️ Settings</div>
+    <div>🌐 Language</div>
+    <div>📖 About</div>
+    <div>❓ Help</div>
+    <div>🔗 Share Site</div>
   </div>
+</div>
 
-  <div id="mainContent" class="hidden">
-    <header>
-      <img src="logo.png" alt="Logo">
-      <input type="text" placeholder="Search properties...">
-      <input type="text" placeholder="Location">
-    </header>
+<!-- NAV -->
+<div class="nav">
+  <button onclick="showSection('homeSection')">🏠 Home</button>
+  <button onclick="showSection('sellSection')">➕ Sell</button>
+  <button onclick="showSection('aboutSection')">ℹ️ About</button>
+  <button onclick="showSection('accountSection')">👤 Account</button>
+</div>
 
-    <div id="homePage" class="container">
-      <div class="property-card">Property 1 - Delhi - ₹35,00,000</div>
-      <div class="property-card">Property 2 - Gurgaon - ₹45,00,000</div>
-    </div>
+<script>
+window.onload = function() {
+  setTimeout(() => {
+    document.getElementById('welcomeScreen').style.display = 'none';
+    showSection('homeSection');
+  }, 3000);
+}
 
-    <div id="chatsPage" class="container hidden">
-      <h3>Chats</h3>
-      <p>No messages yet.</p>
-    </div>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
 
-    <div id="sellPage" class="container hidden">
-      <h3>Sell Property</h3>
-      <div class="form-group"><input type="file"></div>
-      <div class="form-group"><input type="text" placeholder="Property"></div>
-      <div class="form-group"><input type="text" placeholder="Location"></div>
-      <div class="form-group"><input type="text" placeholder="Price"></div>
-      <div class="form-group"><textarea placeholder="Description"></textarea></div>
-      <div class="form-group"><input type="text" placeholder="Owner"></div>
-      <div class="form-group"><input type="text" placeholder="Features"></div>
-      <button class="submit-btn" onclick="submitAd()">Submit</button>
-    </div>
+function searchLocation() {
+  const val = document.getElementById('locationInput').value;
+  if(val) {
+    alert(`Searching for properties in: ${val}`);
+  } else {
+    alert('Please enter a location');
+  }
+}
 
-    <div id="myAdsPage" class="container hidden">
-      <h3>My Ads</h3>
-      <p>Your posted ads will appear here.</p>
-      <div id="adsList"></div>
-    </div>
+document.getElementById('sellForm').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('Property submitted successfully!');
+});
+</script>
 
-    <div id="accountPage" class="container hidden">
-      <h3>Account</h3>
-      <ul>
-        <li>Login</li>
-        <li>Create Account</li>
-        <li>Settings</li>
-        <li>Language</li>
-        <li>About</li>
-        <li>Help</li>
-        <li><button onclick="shareSite()">Share</button></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="nav">
-    <button onclick="showPage('homePage')">Home</button>
-    <button onclick="showPage('chatsPage')">Chats</button>
-    <button onclick="showPage('sellPage')">Sell</button>
-    <button onclick="showPage('myAdsPage')">My Ads</button>
-    <button onclick="showPage('accountPage')">Account</button>
-  </div>
-
-  <script>
-    setTimeout(() => {
-      document.getElementById('welcomeScreen').classList.add('hidden');
-      document.getElementById('mainContent').classList.remove('hidden');
-    }, 3000);
-
-    function showPage(pageId) {
-      ['homePage','chatsPage','sellPage','myAdsPage','accountPage'].forEach(id => {
-        document.getElementById(id).classList.add('hidden');
-      });
-      document.getElementById(pageId).classList.remove('hidden');
-    }
-
-    function submitAd() {
-      const adsList = document.getElementById('adsList');
-      const ad = document.createElement('div');
-      ad.className = 'property-card';
-      ad.textContent = 'New Property Ad (dummy)';
-      adsList.appendChild(ad);
-      alert('Property submitted successfully!');
-    }
-
-    function shareSite() {
-      alert('Share this site link: https://apnasapnaapnaghar.example.com');
-    }
-  </script>
 </body>
 </html>
