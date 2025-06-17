@@ -1,98 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
     body {
-      margin: 0; 
       font-family: Arial, sans-serif;
       background: #f4f4f4;
-    }
-    .welcome {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
-    .welcome img {
-      max-width: 80%;
-      border-radius: 10px;
+      margin: 0;
+      padding: 0;
     }
     header {
       background: #007bff;
       color: #fff;
       padding: 10px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
     header img {
       height: 40px;
     }
-    #searchBar {
-      display: flex;
-      gap: 5px;
-      padding: 10px;
-      background: #e9ecef;
+    .container {
+      padding: 15px;
     }
-    #searchBar input {
-      flex: 1;
+    .box {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .box input, .box select {
+      width: 100%;
       padding: 8px;
+      margin: 5px 0;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-    #searchBar button {
-      padding: 8px 12px;
+    .box button {
+      padding: 10px;
       background: #007bff;
       color: #fff;
       border: none;
       border-radius: 4px;
-    }
-    .container {
-      padding: 15px;
-    }
-    .section {
-      display: none;
-    }
-    .property-list {
-      background: #fff;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .property-list img {
-      width: 100%;
-      border-radius: 6px;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    form button {
-      background: #28a745;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
       cursor: pointer;
+      margin-top: 5px;
+    }
+    .box button:hover {
+      background: #0056b3;
+    }
+    .box img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 10px;
     }
     .nav {
       position: fixed;
       bottom: 0;
       width: 100%;
       display: flex;
-      background: #fff;
       border-top: 1px solid #ccc;
+      background: #fff;
     }
     .nav button {
       flex: 1;
@@ -100,232 +73,163 @@
       border: none;
       background: #fff;
       color: #007bff;
-      font-size: 14px;
-    }
-    .account-options {
-      background: #fff;
-      padding: 10px;
-      border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .account-options div {
-      margin: 5px 0;
-      padding: 6px;
-      background: #f1f1f1;
-      border-radius: 4px;
+      font-weight: bold;
       cursor: pointer;
     }
-    .account-dp {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .account-dp img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-    }
-    .sub-options {
-      margin-left: 15px;
-    }
-    .top-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      padding: 5px 10px;
-    }
-    .top-actions button {
-      padding: 5px 8px;
-      font-size: 12px;
-      background: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-    }
-    .trusted-line {
-      background: #e0ffe0;
-      padding: 10px;
-      border-radius: 6px;
-      color: #2e7d32;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 10px;
-    }
   </style>
+
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
+
 <body>
 
-<div class="welcome" id="welcomeScreen">
-  <img src="welcome.jpg" alt="Welcome">
-</div>
+  <header>
+    <img src="logo.png" alt="Logo">
+    <div>Apna Sapna Apna Ghar</div>
+  </header>
 
-<header>
-  <img src="logo.png" alt="Logo">
-  <strong>Apna Sapna Apna Ghar</strong>
-</header>
+  <div class="container">
 
-<div class="top-actions">
-  <button onclick="showMyAds()">📂 My Ads</button>
-  <button onclick="showPropertyList()">📋 Property List</button>
-</div>
-
-<div id="searchBar">
-  <input type="text" id="locationInput" placeholder="Search location...">
-  <button onclick="searchLocation()">Search</button>
-</div>
-
-<div class="container section" id="homeSection">
-  <div class="property-list"><img src="property1.jpg" alt="Property 1"></div>
-  <div class="property-list"><img src="property2.jpg" alt="Property 2"></div>
-  <div class="property-list"><img src="property3.jpg" alt="Property 3"></div>
-  <div class="property-list"><img src="property4.jpg" alt="Property 4"></div>
-  <div class="property-list"><img src="property5.jpg" alt="Property 5"></div>
-</div>
-
-<div class="container section" id="sellSection">
-  <h3>➕ Sell Property</h3>
-  <form id="sellForm">
-    <input type="file" multiple>
-    <input type="text" placeholder="Property Name" required>
-    <input type="text" placeholder="Location" required>
-    <input type="number" placeholder="Price" required>
-    <textarea placeholder="Description" required></textarea>
-    <input type="text" placeholder="Owner Name" required>
-    <input type="text" placeholder="Features (e.g. 3BHK, Garden)">
-    <button type="submit">Submit</button>
-  </form>
-</div>
-
-<div class="container section" id="aboutSection">
-  <h3>ℹ️ About Us</h3>
-  <p>We connect buyers and sellers to make property deals simple and safe across India.</p>
-  <p class="trusted-line">✅ Trusted by 10,000+ happy families and growing every day! Join our community and make your dream home a reality with <em>Apna Sapna Apna Ghar</em>.</p>
-</div>
-
-<div class="container section" id="accountSection">
-  <div class="account-options">
-    <div class="account-dp">
-      <img src="dp.png" alt="DP">
-      <div>
-        <strong id="userStatus">Guest</strong>
-        <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
-      </div>
+    <div class="box" id="authBox">
+      <h3>Authentication</h3>
+      <input type="email" id="emailInput" placeholder="Email">
+      <input type="password" id="passInput" placeholder="Password">
+      <button onclick="signup()">Signup</button>
+      <button onclick="login()">Login</button>
+      <button onclick="logout()">Logout</button>
     </div>
-    <div onclick="showLogin()">👤 Login</div>
-    <div onclick="logout()">🚪 Logout</div>
-    <div onclick="showSignup()">➕ Create Account</div>
-    <div onclick="toggleSub('settingsSub')">⚙️ Settings</div>
-    <div class="sub-options" id="settingsSub" style="display:none;">
-      <div>🔒 Privacy</div>
-      <div>🔔 Notification</div>
-      <div>🗑️ Delete Account</div>
+
+    <div class="box" id="profileBox" style="display:none;">
+      <h3>My Profile</h3>
+      <img id="profileDp" src="dp.png" alt="DP">
+      <input type="file" id="dpInput" accept="image/*">
+      <input type="email" id="profileEmail" readonly>
+      <input type="text" id="profileAddress" placeholder="Address">
+      <input type="date" id="profileDob">
+      <input type="text" id="profilePin" placeholder="Pin Code">
+      <input type="text" id="profileState" placeholder="State">
+      <button onclick="saveProfile()">Save Profile</button>
     </div>
-    <div onclick="toggleSub('helpSub')">❓ Help & Support</div>
-    <div class="sub-options" id="helpSub" style="display:none;">
-      <div>📖 Help Center</div>
-      <div>⭐ Rate Us</div>
-      <div>👨‍👩‍👧‍👦 Invite Family & Friends</div>
-      <div>🧪 Become a Beta Tester</div>
-    </div>
-    <div>🌐 Select Language</div>
-    <div>🔗 Share Site</div>
-    <p class="trusted-line">✅ Trusted by 10,000+ happy families and growing every day! Join our community and make your dream home a reality with <em>Apna Sapna Apna Ghar</em>.</p>
+
   </div>
-</div>
 
-<div class="nav">
-  <button onclick="showSection('homeSection')">🏠 Home</button>
-  <button onclick="showSection('sellSection')">➕ Sell</button>
-  <button onclick="showSection('aboutSection')">ℹ️ About</button>
-  <button onclick="showSection('accountSection')">👤 Account</button>
-</div>
+  <div class="nav">
+    <button onclick="loadProfile()">Profile</button>
+  </div>
 
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBOTWxvWiESaz1EK9mpRFerPeTBH5e8p0c",
-  authDomain: "apnasapnaapnaghar-3ef02.firebaseapp.com",
-  projectId: "apnasapnaapnaghar-3ef02",
-  storageBucket: "apnasapnaapnaghar-3ef02.appspot.com",
-  messagingSenderId: "664489681158",
-  appId: "1:664489681158:web:f7cbfa996d78b52236fe87",
-};
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBOTWxvWiESaz1EK9mpRFerPeTBH5e8p0c",
+      authDomain: "apnasapnaapnaghar-3ef02.firebaseapp.com",
+      projectId: "apnasapnaapnaghar-3ef02",
+      storageBucket: "apnasapnaapnaghar-3ef02.appspot.com",
+      messagingSenderId: "664489681158",
+      appId: "1:664489681158:web:f7cbfa996d78b52236fe87"
+    };
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
-window.onload = function() {
-  setTimeout(() => {
-    document.getElementById('welcomeScreen').style.display = 'none';
-    showSection('homeSection');
-  }, 3000);
+    // Auth State Listener
+    auth.onAuthStateChanged(user => {
+      if(user){
+        document.getElementById("authBox").style.display = "none";
+        document.getElementById("profileBox").style.display = "block";
+        document.getElementById("profileEmail").value = user.email;
+        loadProfile();
+      } else {
+        document.getElementById("authBox").style.display = "block";
+        document.getElementById("profileBox").style.display = "none";
+      }
+    });
 
-  auth.onAuthStateChanged(user => {
-    if (user) {
-      document.getElementById('userStatus').innerText = user.email;
-    } else {
-      document.getElementById('userStatus').innerText = "Guest";
+    // Signup
+    function signup(){
+      const email = document.getElementById("emailInput").value;
+      const pass = document.getElementById("passInput").value;
+      if(email && pass){
+        auth.createUserWithEmailAndPassword(email, pass)
+          .then(()=> alert("Signup successful"))
+          .catch(e => alert(e.message));
+      } else {
+        alert("Enter email & password");
+      }
     }
-  });
-}
 
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
-}
+    // Login
+    function login(){
+      const email = document.getElementById("emailInput").value;
+      const pass = document.getElementById("passInput").value;
+      if(email && pass){
+        auth.signInWithEmailAndPassword(email, pass)
+          .then(()=> alert("Login successful"))
+          .catch(e => alert(e.message));
+      } else {
+        alert("Enter email & password");
+      }
+    }
 
-function toggleSub(id) {
-  const el = document.getElementById(id);
-  el.style.display = el.style.display === 'none' ? 'block' : 'none';
-}
+    // Logout
+    function logout(){
+      auth.signOut()
+        .then(()=> alert("Logged out"));
+    }
 
-function searchLocation() {
-  const val = document.getElementById('locationInput').value;
-  alert(val ? `Searching for properties in: ${val}` : 'Please enter a location');
-}
+    // DP Preview
+    document.getElementById("dpInput").addEventListener("change", function(){
+      const file = this.files[0];
+      if(file){
+        const reader = new FileReader();
+        reader.onload = function(e){
+          document.getElementById("profileDp").src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+    });
 
-function showMyAds() {
-  alert("Showing your ads...");
-  showSection('sellSection');
-}
+    // Save Profile
+    function saveProfile(){
+      const user = auth.currentUser;
+      if(!user) return alert("Login first");
 
-function showPropertyList() {
-  alert("Showing property list...");
-  showSection('homeSection');
-}
+      const data = {
+        email: user.email,
+        address: document.getElementById("profileAddress").value,
+        dob: document.getElementById("profileDob").value,
+        pin: document.getElementById("profilePin").value,
+        state: document.getElementById("profileState").value,
+        dp: document.getElementById("profileDp").src
+      };
 
-document.getElementById('sellForm').addEventListener('submit', e => {
-  e.preventDefault();
-  alert('Property submitted successfully!');
-});
+      db.collection("profiles").doc(user.uid).set(data)
+        .then(()=> alert("Profile saved"))
+        .catch(e => alert(e.message));
+    }
 
-function showLogin() {
-  const email = prompt("Enter email:");
-  const password = prompt("Enter password:");
-  if(email && password) {
-    auth.signInWithEmailAndPassword(email, password)
-    .then(() => alert("Logged in!"))
-    .catch(err => alert(err.message));
-  }
-}
+    // Load Profile
+    function loadProfile(){
+      const user = auth.currentUser;
+      if(!user) return;
+      db.collection("profiles").doc(user.uid).get()
+        .then(doc=>{
+          if(doc.exists){
+            const d = doc.data();
+            document.getElementById("profileEmail").value = d.email || user.email;
+            document.getElementById("profileAddress").value = d.address || "";
+            document.getElementById("profileDob").value = d.dob || "";
+            document.getElementById("profilePin").value = d.pin || "";
+            document.getElementById("profileState").value = d.state || "";
+            if(d.dp){
+              document.getElementById("profileDp").src = d.dp;
+            }
+          }
+        });
+    }
 
-function showSignup() {
-  const email = prompt("Enter email:");
-  const password = prompt("Enter password:");
-  if(email && password) {
-    auth.createUserWithEmailAndPassword(email, password)
-    .then(() => alert("Account created!"))
-    .catch(err => alert(err.message));
-  }
-}
-
-function logout() {
-  auth.signOut()
-  .then(() => alert("Logged out!"));
-}
-</script>
-
+  </script>
 </body>
 </html>
