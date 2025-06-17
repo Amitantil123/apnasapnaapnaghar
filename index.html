@@ -18,29 +18,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height: 60vh;
       background: linear-gradient(135deg, #007bff, #00c6ff);
       color: white;
       flex-direction: column;
       text-align: center;
-      animation: fadeIn 2s ease-in-out;
+      animation: fadeIn 1.5s ease-in-out;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
     }
     .welcome img {
-      width: 150px;
+      width: 120px;
       border-radius: 16px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       animation: popIn 1s ease forwards;
     }
     .container {
-      padding: 20px;
-      animation: slideIn 0.5s ease-out;
+      padding: 15px;
+      animation: slideIn 0.4s ease-out;
     }
     .property-card {
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
     }
@@ -53,43 +55,9 @@
       display: block;
     }
     .property-card p {
-      padding: 10px;
+      padding: 8px;
       margin: 0;
-      font-size: 16px;
-    }
-    .search-bar {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .search-bar input, .search-bar select {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    .add-btn {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, #28a745, #218838);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .add-btn:hover {
-      background: linear-gradient(135deg, #218838, #28a745);
-    }
-    .badge {
-      background: #28a745;
-      color: white;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 12px;
-      margin-left: 5px;
+      font-size: 14px;
     }
     .nav {
       position: fixed;
@@ -103,10 +71,10 @@
     }
     .nav button {
       flex: 1;
-      padding: 10px;
+      padding: 8px;
       border: none;
       background: none;
-      font-size: 14px;
+      font-size: 12px;
       color: #007bff;
       cursor: pointer;
       transition: background 0.3s;
@@ -114,7 +82,23 @@
     .nav button:hover {
       background: rgba(0,123,255,0.1);
     }
-
+    .settings-list {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 10px;
+    }
+    .settings-list div {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+    .settings-list div:last-child {
+      border-bottom: none;
+    }
+    .settings-list div:hover {
+      background: #f1f1f1;
+    }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -134,38 +118,38 @@
 <!-- Welcome Screen -->
 <div id="welcomeScreen" class="welcome">
   <img src="logo.png" alt="Logo">
-  <div style="font-size: 24px;"><strong>🏡 Apna Sapna Apna Ghar</strong></div>
-  <small style="margin-top: 8px;">Trusted by 1000+ users 🔒</small>
+  <div style="font-size: 20px;"><strong>🏡 Apna Sapna Apna Ghar</strong></div>
+  <small style="margin-top: 6px;">Your trusted property partner</small>
 </div>
 
-<!-- Home Page -->
+<!-- Home -->
 <div id="homePage" class="container hidden">
-  <div class="search-bar">
-    <input type="text" placeholder="Search properties..." oninput="filterProperties()">
-    <select id="locationFilter" onchange="filterProperties()">
-      <option value="">All Locations</option>
-      <option value="Delhi">Delhi</option>
-      <option value="Gurgaon">Gurgaon</option>
-      <option value="Sonipat">Sonipat</option>
-    </select>
-  </div>
-  <button class="add-btn" onclick="addProperty()">➕ Add Property</button>
-  <div id="propertyList">
-    <div class="property-card" data-location="Delhi">
-      <img src="property1.jpg" alt="Property 1">
-      <p><strong>Property 1</strong> ₹35,00,000 <span class="badge">Verified</span></p>
-      <p>Delhi, India</p>
-    </div>
-    <div class="property-card" data-location="Gurgaon">
-      <img src="property2.jpg" alt="Property 2">
-      <p><strong>Property 2</strong> ₹45,00,000 <span class="badge">Verified</span></p>
-      <p>Gurgaon, India</p>
-    </div>
-    <div class="property-card" data-location="Sonipat">
-      <img src="property3.jpg" alt="Property 3">
-      <p><strong>Property 3</strong> ₹25,00,000</p>
-      <p>Sonipat, India</p>
-    </div>
+  <p><strong>Welcome to Home</strong></p>
+</div>
+
+<!-- Chats -->
+<div id="chatsPage" class="container hidden">
+  <p><strong>Chats section</strong></p>
+</div>
+
+<!-- Sell -->
+<div id="sellPage" class="container hidden">
+  <p><strong>Sell your property</strong></p>
+</div>
+
+<!-- My Ads -->
+<div id="myAdsPage" class="container hidden">
+  <p><strong>Your Ads</strong></p>
+</div>
+
+<!-- Account -->
+<div id="accountPage" class="container hidden">
+  <div class="settings-list">
+    <div onclick="alert('Login/Create Account clicked')">🔑 Login / Create Account</div>
+    <div onclick="alert('Settings clicked')">⚙️ Settings</div>
+    <div onclick="alert('Language selection clicked')">🌐 Language Selection</div>
+    <div onclick="alert('About clicked')">ℹ️ About</div>
+    <div onclick="alert('Help clicked')">❓ Help</div>
   </div>
 </div>
 
@@ -178,12 +162,6 @@
   <button onclick="showPage('accountPage')">👤<br>Account</button>
 </div>
 
-<!-- Placeholder pages -->
-<div id="chatsPage" class="container hidden"><h2>💬 Chats</h2><p>No chats yet. Start connecting!</p></div>
-<div id="sellPage" class="container hidden"><h2>➕ Sell</h2><p>Post your property for sale!</p></div>
-<div id="myAdsPage" class="container hidden"><h2>📄 My Ads</h2><p>Your posted ads appear here.</p></div>
-<div id="accountPage" class="container hidden"><h2>👤 Account</h2><p>Login or create your account.</p></div>
-
 <script>
 function showPage(id) {
   ['homePage','chatsPage','sellPage','myAdsPage','accountPage'].forEach(page=>{
@@ -194,32 +172,7 @@ function showPage(id) {
 setTimeout(() => {
   document.getElementById('welcomeScreen').classList.add('hidden');
   document.getElementById('homePage').classList.remove('hidden');
-}, 3000);
-
-function filterProperties(){
-  const searchVal = document.querySelector('.search-bar input').value.toLowerCase();
-  const locationVal = document.getElementById('locationFilter').value;
-  document.querySelectorAll('.property-card').forEach(card => {
-    const location = card.getAttribute('data-location');
-    const text = card.innerText.toLowerCase();
-    if((!locationVal || location === locationVal) && text.includes(searchVal)){
-      card.style.display = "";
-    } else {
-      card.style.display = "none";
-    }
-  });
-}
-function addProperty(){
-  const list = document.getElementById('propertyList');
-  const card = document.createElement('div');
-  card.className = 'property-card';
-  card.setAttribute('data-location', 'Custom');
-  card.innerHTML = `
-    <img src="property1.jpg" alt="New Property">
-    <p><strong>New Property</strong> ₹40,00,000 <span class="badge">Verified</span></p>
-    <p>Custom Location</p>`;
-  list.appendChild(card);
-}
+}, 2000);
 </script>
 
 </body>
