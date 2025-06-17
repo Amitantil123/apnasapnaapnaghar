@@ -6,81 +6,17 @@
   <title>Apna Sapna Apna Ghar</title>
   <style>
     body {
-      margin: 0; 
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-    }
-    .welcome {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
-    .welcome img {
-      max-width: 80%;
-      border-radius: 10px;
-    }
-    header {
-      background: #007bff;
-      color: #fff;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    header img {
-      height: 40px;
-    }
-    #searchBar {
-      display: flex;
-      gap: 5px;
-      padding: 10px;
-      background: #e9ecef;
-    }
-    #searchBar input {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    #searchBar button {
-      padding: 8px 12px;
-      background: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f2f5;
     }
     .container {
-      padding: 15px;
+      padding: 20px;
+      padding-bottom: 80px;
     }
-    .section {
+    .hidden {
       display: none;
-    }
-    .property-list {
-      background: #fff;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    form button {
-      background: #28a745;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
     }
     .nav {
       position: fixed;
@@ -95,115 +31,178 @@
       padding: 10px;
       border: none;
       background: #fff;
-      color: #007bff;
       font-size: 14px;
+      color: #007bff;
     }
-    .account-options {
-      background: #fff;
-      padding: 10px;
+    .welcome {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #007bff;
+      color: #fff;
+      flex-direction: column;
+      text-align: center;
+    }
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .search-bar input, .search-bar select {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
       border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    .account-options div {
-      margin: 5px 0;
-      padding: 6px;
-      background: #f1f1f1;
-      border-radius: 4px;
+    .property-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .property-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .property-card p {
+      margin: 6px 0;
+    }
+    .add-btn {
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-<!-- WELCOME SCREEN -->
-<div class="welcome" id="welcomeScreen">
-  <img src="welcome.jpg" alt="Welcome">
+<div id="welcomeScreen" class="welcome">
+  <img src="welcome.jpg" alt="Welcome" style="width:150px; border-radius:12px; margin-bottom:10px;">
+  <h1>Welcome to Apna Sapna Apna Ghar</h1>
 </div>
 
-<!-- HEADER -->
-<header>
-  <img src="logo.png" alt="Logo">
-  <strong>Apna Sapna Apna Ghar</strong>
-</header>
+<div id="homePage" class="container hidden">
+  <div class="search-bar">
+    <input type="text" placeholder="Search properties..." oninput="filterProperties()">
+    <select onchange="filterProperties()" id="locationFilter">
+      <option value="">All</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Gurgaon">Gurgaon</option>
+      <option value="Sonipat">Sonipat</option>
+    </select>
+  </div>
 
-<!-- SEARCH -->
-<div id="searchBar">
-  <input type="text" id="locationInput" placeholder="Search location...">
-  <button onclick="searchLocation()">Search</button>
-</div>
-
-<!-- PROPERTY LIST -->
-<div class="container section" id="homeSection">
-  <div class="property-list">🏠 Property 1 - Sample Data</div>
-  <div class="property-list">🏠 Property 2 - Sample Data</div>
-</div>
-
-<!-- SELL FORM -->
-<div class="container section" id="sellSection">
-  <h3>➕ Sell Property</h3>
-  <form id="sellForm">
-    <input type="file" multiple>
-    <input type="text" placeholder="Property Name" required>
-    <input type="text" placeholder="Location" required>
-    <input type="number" placeholder="Price" required>
-    <textarea placeholder="Description" required></textarea>
-    <input type="text" placeholder="Owner Name" required>
-    <input type="text" placeholder="Features (e.g. 3BHK, Garden)">
-    <button type="submit">Submit</button>
-  </form>
-</div>
-
-<!-- ABOUT -->
-<div class="container section" id="aboutSection">
-  <h3>ℹ️ About Us</h3>
-  <p>We connect buyers and sellers to make property deals simple and safe across India.</p>
-</div>
-
-<!-- ACCOUNT -->
-<div class="container section" id="accountSection">
-  <div class="account-options">
-    <div>👤 Login / Create Account</div>
-    <div>⚙️ Settings</div>
-    <div>🌐 Language</div>
-    <div>📖 About</div>
-    <div>❓ Help</div>
-    <div>🔗 Share Site</div>
+  <div id="propertyList">
+    <div class="property-card" data-location="Delhi">
+      <img src="property1.jpg" alt="P1">
+      <p><strong>Property 1</strong> ₹35,00,000</p>
+      <p>Delhi</p>
+    </div>
+    <div class="property-card" data-location="Gurgaon">
+      <img src="property2.jpg" alt="P2">
+      <p><strong>Property 2</strong> ₹45,00,000</p>
+      <p>Gurgaon</p>
+    </div>
   </div>
 </div>
 
-<!-- NAV -->
+<div id="chatsPage" class="container hidden">
+  <h2>Chats</h2>
+  <p>Coming soon...</p>
+</div>
+
+<div id="sellPage" class="container hidden">
+  <h2>Sell Property</h2>
+  <input type="file" multiple><br><br>
+  <input type="text" placeholder="Property Name"><br><br>
+  <input type="text" placeholder="Location"><br><br>
+  <input type="text" placeholder="Price"><br><br>
+  <textarea placeholder="Description"></textarea><br><br>
+  <input type="text" placeholder="Owner"><br><br>
+  <input type="text" placeholder="Features"><br><br>
+  <button class="add-btn">Submit Property</button>
+</div>
+
+<div id="myAdsPage" class="container hidden">
+  <h2>My Ads</h2>
+  <p>Your ads will appear here.</p>
+</div>
+
+<div id="accountPage" class="container hidden">
+  <h2>Account</h2>
+  <input type="text" placeholder="Username" id="username">
+  <input type="password" placeholder="Password" id="password">
+  <button onclick="login()">Login</button>
+  <button onclick="createAccount()">Create Account</button>
+  <h3>Settings</h3>
+  <select onchange="changeLanguage(this)">
+    <option>English</option>
+    <option>Hindi</option>
+  </select>
+  <h3>About</h3>
+  <p>Name: Amit</p>
+  <p>Address: Sonipat 131001</p>
+  <p>Email: Amitrudher24@gmail.com</p>
+  <p>Contact: 8053****43</p>
+  <h3>Help</h3>
+  <p>support@apnaghar.com | 1800-000-000</p>
+  <h3>Share</h3>
+  <button onclick="shareSite()">Share this site</button>
+</div>
+
 <div class="nav">
-  <button onclick="showSection('homeSection')">🏠 Home</button>
-  <button onclick="showSection('sellSection')">➕ Sell</button>
-  <button onclick="showSection('aboutSection')">ℹ️ About</button>
-  <button onclick="showSection('accountSection')">👤 Account</button>
+  <button onclick="showPage('homePage')">Home</button>
+  <button onclick="showPage('chatsPage')">Chats</button>
+  <button onclick="showPage('sellPage')">Sell</button>
+  <button onclick="showPage('myAdsPage')">My Ads</button>
+  <button onclick="showPage('accountPage')">Account</button>
 </div>
 
 <script>
-window.onload = function() {
-  setTimeout(() => {
-    document.getElementById('welcomeScreen').style.display = 'none';
-    showSection('homeSection');
-  }, 3000);
+function showPage(id) {
+  ['homePage','chatsPage','sellPage','myAdsPage','accountPage'].forEach(p => {
+    document.getElementById(p).classList.add('hidden');
+  });
+  document.getElementById(id).classList.remove('hidden');
 }
 
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
+setTimeout(() => {
+  document.getElementById('welcomeScreen').classList.add('hidden');
+  document.getElementById('homePage').classList.remove('hidden');
+}, 3000);
+
+function filterProperties() {
+  const search = document.querySelector('.search-bar input').value.toLowerCase();
+  const loc = document.getElementById('locationFilter').value;
+  document.querySelectorAll('.property-card').forEach(card => {
+    const location = card.getAttribute('data-location');
+    const text = card.innerText.toLowerCase();
+    card.style.display = (text.includes(search) && (loc === "" || location === loc)) ? "" : "none";
+  });
 }
 
-function searchLocation() {
-  const val = document.getElementById('locationInput').value;
-  if(val) {
-    alert(`Searching for properties in: ${val}`);
-  } else {
-    alert('Please enter a location');
-  }
+function login() {
+  alert("Login successful!");
 }
 
-document.getElementById('sellForm').addEventListener('submit', e => {
-  e.preventDefault();
-  alert('Property submitted successfully!');
-});
+function createAccount() {
+  alert("Account created!");
+}
+
+function changeLanguage(sel) {
+  alert("Language changed to " + sel.value);
+}
+
+function shareSite() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    alert("Site link copied!");
+  });
+}
 </script>
 
 </body>
