@@ -169,25 +169,22 @@
   </div>
 </div>
 
-<!-- Chats -->
+<!-- Other Pages -->
 <div id="chatsPage" class="container hidden">
   <h2>💬 Chats</h2>
   <p>No chats yet. Start connecting!</p>
 </div>
 
-<!-- Sell -->
 <div id="sellPage" class="container hidden">
   <h2>➕ Sell Property</h2>
   <p>Upload your property details below.</p>
 </div>
 
-<!-- My Ads -->
 <div id="myAdsPage" class="container hidden">
   <h2>📄 My Ads</h2>
   <p>Your posted properties appear here.</p>
 </div>
 
-<!-- Account -->
 <div id="accountPage" class="container hidden">
   <h2>👤 Account</h2>
   <input type="text" placeholder="Username">
@@ -232,7 +229,8 @@ function showPage(pageId) {
 setTimeout(()=>{
   document.getElementById('welcomeScreen').classList.add('hidden');
   document.getElementById('homePage').classList.remove('hidden');
-},1500);
+}, 3000); // 3 seconds
+
 function filterProperties(){
   const searchVal = document.querySelector('.search-bar input').value.toLowerCase();
   const locationVal = document.getElementById('locationFilter').value;
