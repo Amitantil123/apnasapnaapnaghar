@@ -63,29 +63,53 @@
       width: 120px;
       margin-bottom: 20px;
     }
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .search-bar input, .search-bar select {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
 
 <!-- Welcome Splash Screen -->
 <div id="welcomeScreen" class="welcome">
-  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo">
+  <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home Logo">
   <div>Welcome to Apna Sapna Apna Ghar</div>
 </div>
 
 <!-- Home Page -->
 <div id="homePage" class="container hidden">
-  <div class="property-card">
-    <p>🏠 <strong>Property 1</strong> — ₹35,00,000</p>
-    <p>📍 Delhi, India</p>
+  <div class="search-bar">
+    <input type="text" placeholder="Search properties..." oninput="filterProperties()">
+    <select onchange="filterProperties()" id="locationFilter">
+      <option value="">All Locations</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Gurgaon">Gurgaon</option>
+      <option value="Sonipat">Sonipat</option>
+    </select>
   </div>
-  <div class="property-card">
-    <p>🏠 <strong>Property 2</strong> — ₹45,00,000</p>
-    <p>📍 Gurgaon, India</p>
+
+  <div class="property-card" data-location="Delhi">
+    <img src="https://source.unsplash.com/400x200/?house,delhi" alt="Property 1">
+    <p><strong>Property 1</strong> — ₹35,00,000</p>
+    <p>Delhi, India</p>
   </div>
-  <div class="property-card">
-    <p>🏠 <strong>Property 3</strong> — ₹25,00,000</p>
-    <p>📍 Sonipat, India</p>
+  <div class="property-card" data-location="Gurgaon">
+    <img src="https://source.unsplash.com/400x200/?house,gurgaon" alt="Property 2">
+    <p><strong>Property 2</strong> — ₹45,00,000</p>
+    <p>Gurgaon, India</p>
+  </div>
+  <div class="property-card" data-location="Sonipat">
+    <img src="https://source.unsplash.com/400x200/?house,sonipat" alt="Property 3">
+    <p><strong>Property 3</strong> — ₹25,00,000</p>
+    <p>Sonipat, India</p>
   </div>
 </div>
 
@@ -112,8 +136,8 @@
   <h2>👤 Account</h2>
   <input type="text" placeholder="Username">
   <input type="password" placeholder="Password">
-  <button class="login">Login</button>
-  <button class="create">Create Account</button>
+  <button>Login</button>
+  <button>Create Account</button>
 
   <h3>⚙️ Settings</h3>
   <label>Language:</label>
@@ -130,7 +154,7 @@
   <p>This site helps buyers and sellers connect for real estate opportunities.</p>
 
   <h3>❓ Help</h3>
-  <p>For assistance, contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i>.</p>
+  <p>Contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i></p>
 
   <h3>🔗 Share</h3>
   <p>Share via WhatsApp, Facebook, Instagram, Bluetooth, Email</p>
@@ -159,6 +183,25 @@ setTimeout(() => {
   document.getElementById('welcomeScreen').classList.add('hidden');
   document.getElementById('homePage').classList.remove('hidden');
 }, 3000);
+
+function filterProperties() {
+  const searchVal = document.querySelector('.search-bar input').value.toLowerCase();
+  const locationVal = document.getElementById('locationFilter').value;
+
+  document.querySelectorAll('.property-card').forEach(card => {
+    const location = card.getAttribute('data-location');
+    const text = card.innerText.toLowerCase();
+
+    if (
+      (locationVal === "" || location === locationVal) &&
+      text.includes(searchVal)
+    ) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
 </script>
 
 </body>
