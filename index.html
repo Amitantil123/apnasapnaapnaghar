@@ -60,31 +60,9 @@
     .section {
       display: none;
     }
-    .property-list {
-      background: #fff;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
     .property-list img {
       width: 100%;
       border-radius: 6px;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    form button {
-      background: #28a745;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
     }
     .nav {
       position: fixed;
@@ -115,6 +93,20 @@
       border-radius: 4px;
       cursor: pointer;
     }
+    .account-dp {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .account-dp img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    .sub-options {
+      margin-left: 15px;
+    }
   </style>
 </head>
 <body>
@@ -130,89 +122,67 @@
   <strong>Apna Sapna Apna Ghar</strong>
 </header>
 
-<!-- SEARCH + PROPERTY LIST BUTTON -->
+<!-- SEARCH -->
 <div id="searchBar">
   <input type="text" id="locationInput" placeholder="Search location...">
   <button onclick="searchLocation()">Search</button>
   <button onclick="showAllProperties()">Property List</button>
 </div>
 
-<!-- HOME SECTION -->
-<div class="container section" id="homeSection">
-  <div class="property-list">
-    <img src="property1.jpg" alt="Property 1">
-    <div>🏠 Property 1 - ₹35,00,000</div>
-  </div>
-  <div class="property-list">
-    <img src="property2.jpg" alt="Property 2">
-    <div>🏠 Property 2 - ₹45,00,000</div>
-  </div>
-  <div class="property-list">
-    <img src="property3.jpg" alt="Property 3">
-    <div>🏠 Property 3 - ₹55,00,000</div>
-  </div>
-  <div class="property-list">
-    <img src="property4.jpg" alt="Property 4">
-    <div>🏠 Property 4 - ₹65,00,000</div>
-  </div>
-  <div class="property-list">
-    <img src="property5.jpg" alt="Property 5">
-    <div>🏠 Property 5 - ₹75,00,000</div>
-  </div>
-</div>
-
-<!-- SELL SECTION -->
-<div class="container section" id="sellSection">
-  <h3>➕ Sell Property</h3>
-  <form id="sellForm">
-    <input type="file" multiple>
-    <input type="text" placeholder="Property Name" required>
-    <input type="text" placeholder="Location" required>
-    <input type="number" placeholder="Price" required>
-    <textarea placeholder="Description" required></textarea>
-    <input type="text" placeholder="Owner Name" required>
-    <input type="text" placeholder="Features (e.g. 3BHK, Garden)">
-    <button type="submit">Submit</button>
-  </form>
-</div>
-
-<!-- ABOUT SECTION -->
-<div class="container section" id="aboutSection">
-  <h3>ℹ️ About Us</h3>
-  <p>We connect buyers and sellers to make property deals simple and safe across India.</p>
-</div>
-
 <!-- ACCOUNT SECTION -->
 <div class="container section" id="accountSection">
   <div class="account-options">
-    <div onclick="alert('Login / Create Account clicked')">👤 Login / Create Account</div>
-    <div onclick="alert('Settings clicked')">⚙️ Settings</div>
-    <div onclick="alert('Language selection clicked')">🌐 Language</div>
-    <div onclick="alert('About clicked')">📖 About</div>
-    <div onclick="alert('Help clicked')">❓ Help</div>
-    <div onclick="alert('Share Site clicked')">🔗 Share Site</div>
+    <div class="account-dp">
+      <img src="dp.png" alt="DP">
+      <div>
+        <strong>Username</strong>
+        <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
+      </div>
+    </div>
+    <div onclick="alert('Login clicked')">👤 Login</div>
+    <div onclick="alert('Logout clicked')">🚪 Logout</div>
+    <div onclick="alert('Create Account clicked')">➕ Create Account</div>
+    <div onclick="toggleSub('settingsSub')">⚙️ Settings</div>
+    <div class="sub-options" id="settingsSub" style="display:none;">
+      <div onclick="alert('Privacy clicked')">🔒 Privacy</div>
+      <div onclick="alert('Notification clicked')">🔔 Notification</div>
+      <div onclick="alert('Delete Account clicked')">🗑️ Delete Account</div>
+    </div>
+    <div onclick="toggleSub('helpSub')">❓ Help & Support</div>
+    <div class="sub-options" id="helpSub" style="display:none;">
+      <div onclick="alert('Help Center clicked')">📖 Help Center</div>
+      <div onclick="alert('Rate Us clicked')">⭐ Rate Us</div>
+      <div onclick="alert('Invite clicked')">👨‍👩‍👧‍👦 Invite Family & Friends</div>
+      <div onclick="alert('Beta Tester clicked')">🧪 Become a Beta Tester</div>
+    </div>
+    <div onclick="alert('Select Language clicked')">🌐 Select Language</div>
   </div>
 </div>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <div class="nav">
+  <button onclick="showSection('accountSection')">👤 Account</button>
   <button onclick="showSection('homeSection')">🏠 Home</button>
   <button onclick="showSection('sellSection')">➕ Sell</button>
   <button onclick="showSection('aboutSection')">ℹ️ About</button>
-  <button onclick="showSection('accountSection')">👤 Account</button>
 </div>
 
 <script>
 window.onload = function() {
   setTimeout(() => {
     document.getElementById('welcomeScreen').style.display = 'none';
-    showSection('homeSection');
+    showSection('accountSection');
   }, 3000);
 }
 
 function showSection(id) {
   document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
   document.getElementById(id).style.display = 'block';
+}
+
+function toggleSub(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
 
 function searchLocation() {
@@ -227,11 +197,6 @@ function searchLocation() {
 function showAllProperties() {
   alert('Showing all properties (dummy action)');
 }
-
-document.getElementById('sellForm').addEventListener('submit', e => {
-  e.preventDefault();
-  alert('Property submitted successfully!');
-});
 </script>
 
 </body>
