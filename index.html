@@ -53,15 +53,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height: 60vh; /* 👈 Chhoti ki splash screen height */
       background: #007bff;
       color: #fff;
       font-size: 24px;
       flex-direction: column;
     }
     .welcome img {
-      width: 120px;
-      margin-bottom: 20px;
+      width: 100px;
+      margin-bottom: 15px;
     }
     .search-bar {
       display: flex;
@@ -73,6 +73,14 @@
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 6px;
+    }
+    .add-btn {
+      padding: 10px 15px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 15px;
     }
   </style>
 </head>
@@ -96,20 +104,24 @@
     </select>
   </div>
 
-  <div class="property-card" data-location="Delhi">
-    <img src="https://source.unsplash.com/400x200/?house,delhi" alt="Property 1">
-    <p><strong>Property 1</strong> — ₹35,00,000</p>
-    <p>Delhi, India</p>
-  </div>
-  <div class="property-card" data-location="Gurgaon">
-    <img src="https://source.unsplash.com/400x200/?house,gurgaon" alt="Property 2">
-    <p><strong>Property 2</strong> — ₹45,00,000</p>
-    <p>Gurgaon, India</p>
-  </div>
-  <div class="property-card" data-location="Sonipat">
-    <img src="https://source.unsplash.com/400x200/?house,sonipat" alt="Property 3">
-    <p><strong>Property 3</strong> — ₹25,00,000</p>
-    <p>Sonipat, India</p>
+  <button class="add-btn" onclick="addProperty()">➕ Add Property</button>
+
+  <div id="propertyList">
+    <div class="property-card" data-location="Delhi">
+      <img src="https://source.unsplash.com/400x200/?house,delhi" alt="Property 1">
+      <p><strong>Property 1</strong> — ₹35,00,000</p>
+      <p>Delhi, India</p>
+    </div>
+    <div class="property-card" data-location="Gurgaon">
+      <img src="https://source.unsplash.com/400x200/?house,gurgaon" alt="Property 2">
+      <p><strong>Property 2</strong> — ₹45,00,000</p>
+      <p>Gurgaon, India</p>
+    </div>
+    <div class="property-card" data-location="Sonipat">
+      <img src="https://source.unsplash.com/400x200/?house,sonipat" alt="Property 3">
+      <p><strong>Property 3</strong> — ₹25,00,000</p>
+      <p>Sonipat, India</p>
+    </div>
   </div>
 </div>
 
@@ -182,7 +194,7 @@ function showPage(pageId) {
 setTimeout(() => {
   document.getElementById('welcomeScreen').classList.add('hidden');
   document.getElementById('homePage').classList.remove('hidden');
-}, 3000);
+}, 2000); // splash chhoti hai, 2 sec hi
 
 function filterProperties() {
   const searchVal = document.querySelector('.search-bar input').value.toLowerCase();
@@ -201,6 +213,18 @@ function filterProperties() {
       card.style.display = "none";
     }
   });
+}
+
+function addProperty() {
+  const list = document.getElementById('propertyList');
+  const card = document.createElement('div');
+  card.className = 'property-card';
+  card.setAttribute('data-location', 'Custom');
+  card.innerHTML = `
+    <img src="https://source.unsplash.com/400x200/?house,india" alt="New Property">
+    <p><strong>New Property</strong> — ₹40,00,000</p>
+    <p>Custom Location</p>`;
+  list.appendChild(card);
 }
 </script>
 
