@@ -30,7 +30,7 @@
       padding: 10px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
     }
     header img {
       height: 40px;
@@ -69,8 +69,7 @@
     }
     .property-list img {
       width: 100%;
-      border-radius: 4px;
-      margin-bottom: 5px;
+      border-radius: 6px;
     }
     form input, form textarea {
       width: 100%;
@@ -109,60 +108,83 @@
       border-radius: 6px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    .account-options div, .account-options button {
+    .account-options div {
       margin: 5px 0;
       padding: 6px;
       background: #f1f1f1;
       border-radius: 4px;
-      border: none;
       cursor: pointer;
     }
+    .account-dp {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .account-dp img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    .sub-options {
+      margin-left: 15px;
+    }
+    .top-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 5px 10px;
+    }
+    .top-actions button {
+      padding: 5px 8px;
+      font-size: 12px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+    .trusted-line {
+      background: #e0ffe0;
+      padding: 10px;
+      border-radius: 6px;
+      color: #2e7d32;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
   </style>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 </head>
 <body>
 
-<!-- WELCOME SCREEN -->
 <div class="welcome" id="welcomeScreen">
   <img src="welcome.jpg" alt="Welcome">
 </div>
 
-<!-- HEADER -->
 <header>
   <img src="logo.png" alt="Logo">
   <strong>Apna Sapna Apna Ghar</strong>
 </header>
 
-<!-- SEARCH -->
+<div class="top-actions">
+  <button onclick="showMyAds()">📂 My Ads</button>
+  <button onclick="showPropertyList()">📋 Property List</button>
+</div>
+
 <div id="searchBar">
   <input type="text" id="locationInput" placeholder="Search location...">
   <button onclick="searchLocation()">Search</button>
 </div>
 
-<!-- PROPERTY LIST -->
 <div class="container section" id="homeSection">
-  <div class="property-list">
-    <img src="property1.jpg" alt="Property 1">
-    🏠 Property 1 - Sample Data
-  </div>
-  <div class="property-list">
-    <img src="property2.jpg" alt="Property 2">
-    🏠 Property 2 - Sample Data
-  </div>
-  <div class="property-list">
-    <img src="property3.jpg" alt="Property 3">
-    🏠 Property 3 - Sample Data
-  </div>
-  <div class="property-list">
-    <img src="property4.jpg" alt="Property 4">
-    🏠 Property 4 - Sample Data
-  </div>
-  <div class="property-list">
-    <img src="property5.jpg" alt="Property 5">
-    🏠 Property 5 - Sample Data
-  </div>
+  <div class="property-list"><img src="property1.jpg" alt="Property 1"></div>
+  <div class="property-list"><img src="property2.jpg" alt="Property 2"></div>
+  <div class="property-list"><img src="property3.jpg" alt="Property 3"></div>
+  <div class="property-list"><img src="property4.jpg" alt="Property 4"></div>
+  <div class="property-list"><img src="property5.jpg" alt="Property 5"></div>
 </div>
 
-<!-- SELL FORM -->
 <div class="container section" id="sellSection">
   <h3>➕ Sell Property</h3>
   <form id="sellForm">
@@ -177,30 +199,43 @@
   </form>
 </div>
 
-<!-- ABOUT -->
 <div class="container section" id="aboutSection">
   <h3>ℹ️ About Us</h3>
   <p>We connect buyers and sellers to make property deals simple and safe across India.</p>
-  <p>💖 10000+ people trusted Apna Sapna Apna Ghar for their dream property!</p>
+  <p class="trusted-line">✅ Trusted by 10,000+ happy families and growing every day! Join our community and make your dream home a reality with <em>Apna Sapna Apna Ghar</em>.</p>
 </div>
 
-<!-- ACCOUNT -->
 <div class="container section" id="accountSection">
   <div class="account-options">
-    <h3>💖 10000+ people trusted Apna Sapna Apna Ghar!</h3>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="signup(email.value, password.value)">Sign Up</button>
-    <button onclick="login(email.value, password.value)">Login</button>
-    <button onclick="logout()">Logout</button>
-    <div onclick="alert('Settings coming soon')">⚙️ Settings</div>
-    <div onclick="alert('Language selector coming soon')">🌐 Language</div>
-    <div onclick="alert('Help center coming soon')">❓ Help</div>
-    <div onclick="alert('Share this site!')">🔗 Share Site</div>
+    <div class="account-dp">
+      <img src="dp.png" alt="DP">
+      <div>
+        <strong id="userStatus">Guest</strong>
+        <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
+      </div>
+    </div>
+    <div onclick="showLogin()">👤 Login</div>
+    <div onclick="logout()">🚪 Logout</div>
+    <div onclick="showSignup()">➕ Create Account</div>
+    <div onclick="toggleSub('settingsSub')">⚙️ Settings</div>
+    <div class="sub-options" id="settingsSub" style="display:none;">
+      <div>🔒 Privacy</div>
+      <div>🔔 Notification</div>
+      <div>🗑️ Delete Account</div>
+    </div>
+    <div onclick="toggleSub('helpSub')">❓ Help & Support</div>
+    <div class="sub-options" id="helpSub" style="display:none;">
+      <div>📖 Help Center</div>
+      <div>⭐ Rate Us</div>
+      <div>👨‍👩‍👧‍👦 Invite Family & Friends</div>
+      <div>🧪 Become a Beta Tester</div>
+    </div>
+    <div>🌐 Select Language</div>
+    <div>🔗 Share Site</div>
+    <p class="trusted-line">✅ Trusted by 10,000+ happy families and growing every day! Join our community and make your dream home a reality with <em>Apna Sapna Apna Ghar</em>.</p>
   </div>
 </div>
 
-<!-- NAV -->
 <div class="nav">
   <button onclick="showSection('homeSection')">🏠 Home</button>
   <button onclick="showSection('sellSection')">➕ Sell</button>
@@ -209,37 +244,6 @@
 </div>
 
 <script>
-window.onload = function() {
-  setTimeout(() => {
-    document.getElementById('welcomeScreen').style.display = 'none';
-    showSection('homeSection');
-  }, 3000);
-}
-
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
-}
-
-function searchLocation() {
-  const val = document.getElementById('locationInput').value;
-  if(val) {
-    alert(`Searching for properties in: ${val}`);
-  } else {
-    alert('Please enter a location');
-  }
-}
-
-document.getElementById('sellForm').addEventListener('submit', e => {
-  e.preventDefault();
-  alert('Property submitted successfully!');
-});
-</script>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyBOTWxvWiESaz1EK9mpRFerPeTBH5e8p0c",
   authDomain: "apnasapnaapnaghar-3ef02.firebaseapp.com",
@@ -247,26 +251,79 @@ const firebaseConfig = {
   storageBucket: "apnasapnaapnaghar-3ef02.appspot.com",
   messagingSenderId: "664489681158",
   appId: "1:664489681158:web:f7cbfa996d78b52236fe87",
-  measurementId: "G-YFC2VBV4X6"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-window.signup = function(email, password) {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => alert("Signup successful!"))
-    .catch((error) => alert("Error: " + error.message));
+window.onload = function() {
+  setTimeout(() => {
+    document.getElementById('welcomeScreen').style.display = 'none';
+    showSection('homeSection');
+  }, 3000);
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      document.getElementById('userStatus').innerText = user.email;
+    } else {
+      document.getElementById('userStatus').innerText = "Guest";
+    }
+  });
 }
 
-window.login = function(email, password) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => alert("Login successful!"))
-    .catch((error) => alert("Error: " + error.message));
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
 }
 
-window.logout = function() {
-  signOut(auth).then(() => alert("Logged out!"));
+function toggleSub(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function searchLocation() {
+  const val = document.getElementById('locationInput').value;
+  alert(val ? `Searching for properties in: ${val}` : 'Please enter a location');
+}
+
+function showMyAds() {
+  alert("Showing your ads...");
+  showSection('sellSection');
+}
+
+function showPropertyList() {
+  alert("Showing property list...");
+  showSection('homeSection');
+}
+
+document.getElementById('sellForm').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('Property submitted successfully!');
+});
+
+function showLogin() {
+  const email = prompt("Enter email:");
+  const password = prompt("Enter password:");
+  if(email && password) {
+    auth.signInWithEmailAndPassword(email, password)
+    .then(() => alert("Logged in!"))
+    .catch(err => alert(err.message));
+  }
+}
+
+function showSignup() {
+  const email = prompt("Enter email:");
+  const password = prompt("Enter password:");
+  if(email && password) {
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(() => alert("Account created!"))
+    .catch(err => alert(err.message));
+  }
+}
+
+function logout() {
+  auth.signOut()
+  .then(() => alert("Logged out!"));
 }
 </script>
 
