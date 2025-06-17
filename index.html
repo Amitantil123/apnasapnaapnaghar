@@ -143,6 +143,15 @@
       border: none;
       border-radius: 4px;
     }
+    .trusted-line {
+      background: #e0ffe0;
+      padding: 10px;
+      border-radius: 6px;
+      color: #2e7d32;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -160,8 +169,8 @@
 
 <!-- TOP ACTIONS -->
 <div class="top-actions">
-  <button onclick="alert('My Ads clicked')">📂 My Ads</button>
-  <button onclick="alert('Property List clicked')">📋 Property List</button>
+  <button onclick="showMyAds()">📂 My Ads</button>
+  <button onclick="showPropertyList()">📋 Property List</button>
 </div>
 
 <!-- SEARCH -->
@@ -198,10 +207,7 @@
 <div class="container section" id="aboutSection">
   <h3>ℹ️ About Us</h3>
   <p>We connect buyers and sellers to make property deals simple and safe across India.</p>
-  <p style="background: #e0ffe0; padding: 10px; border-radius: 6px; color: #2e7d32; font-weight: bold; text-align: center;">
-    ✅ Trusted by 10,000+ happy families and growing every day!  
-    Join our community and make your dream home a reality with <em>Apna Sapna Apna Ghar</em>.
-  </p>
+  <p class="trusted-line">✅ Trusted by 10,000+ happy families and growing every day! Join our community and make your dream home a reality with <em>Apna Sapna Apna Ghar</em>.</p>
 </div>
 
 <!-- ACCOUNT -->
@@ -231,6 +237,8 @@
       <div onclick="alert('Beta Tester clicked')">🧪 Become a Beta Tester</div>
     </div>
     <div onclick="alert('Select Language clicked')">🌐 Select Language</div>
+    <div onclick="alert('Site shared!')">🔗 Share Site</div>
+    <p class="trusted-line">✅ Trusted by 10,000+ happy families and growing every day! Join our community and make your dream home a reality with <em>Apna Sapna Apna Ghar</em>.</p>
   </div>
 </div>
 
@@ -267,6 +275,16 @@ function searchLocation() {
   } else {
     alert('Please enter a location');
   }
+}
+
+function showMyAds() {
+  alert("Showing your ads...");
+  showSection('sellSection');
+}
+
+function showPropertyList() {
+  alert("Showing property list...");
+  showSection('homeSection');
 }
 
 document.getElementById('sellForm').addEventListener('submit', e => {
