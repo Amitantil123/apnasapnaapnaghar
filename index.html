@@ -23,7 +23,7 @@
       border-radius: 12px;
       padding: 12px;
       margin-bottom: 16px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .property-card img {
       width: 100%;
@@ -53,15 +53,21 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 60vh;
-      background: #007bff;
+      height: 30vh;
+      background: linear-gradient(135deg, #007bff, #0056b3);
       color: #fff;
-      font-size: 24px;
+      font-size: 20px;
       flex-direction: column;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .welcome img {
-      width: 100px;
-      margin-bottom: 15px;
+      width: 120px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     .search-bar {
       display: flex;
@@ -75,24 +81,48 @@
       border-radius: 6px;
     }
     .add-btn {
-      padding: 10px 15px;
+      padding: 15px 20px;
       background: #007bff;
       color: #fff;
+      font-size: 18px;
       border: none;
-      border-radius: 6px;
-      margin-bottom: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .add-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .badge {
+      display: inline-block;
+      background: #28a745;
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 5px;
+    }
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-<!-- Welcome Splash Screen -->
+<!-- Welcome -->
 <div id="welcomeScreen" class="welcome">
-  <img src="logo.png" alt="Home Logo">
-  <div>Welcome to Apna Sapna Apna Ghar</div>
+  <img src="logo.png" alt="Logo">
+  <div>🏡 Welcome to <strong>Apna Sapna Apna Ghar</strong></div>
+  <small>Trusted by 1000+ users 🔒</small>
 </div>
 
-<!-- Home Page -->
+<!-- Home -->
 <div id="homePage" class="container hidden">
   <div class="search-bar">
     <input type="text" placeholder="Search properties..." oninput="filterProperties()">
@@ -109,51 +139,55 @@
   <div id="propertyList">
     <div class="property-card" data-location="Delhi">
       <img src="property1.jpg" alt="Property 1">
-      <p><strong>Property 1</strong> — ₹35,00,000</p>
+      <p><strong>Property 1</strong> ₹35,00,000 <span class="badge">Verified</span></p>
       <p>Delhi, India</p>
     </div>
     <div class="property-card" data-location="Gurgaon">
       <img src="property2.jpg" alt="Property 2">
-      <p><strong>Property 2</strong> — ₹45,00,000</p>
+      <p><strong>Property 2</strong> ₹45,00,000 <span class="badge">Verified</span></p>
       <p>Gurgaon, India</p>
     </div>
     <div class="property-card" data-location="Sonipat">
       <img src="property3.jpg" alt="Property 3">
-      <p><strong>Property 3</strong> — ₹25,00,000</p>
+      <p><strong>Property 3</strong> ₹25,00,000</p>
       <p>Sonipat, India</p>
     </div>
     <div class="property-card" data-location="Delhi">
       <img src="property4.jpg" alt="Property 4">
-      <p><strong>Property 4</strong> — ₹55,00,000</p>
+      <p><strong>Property 4</strong> ₹55,00,000</p>
       <p>Delhi, India</p>
     </div>
     <div class="property-card" data-location="Gurgaon">
       <img src="property5.jpg" alt="Property 5">
-      <p><strong>Property 5</strong> — ₹65,00,000</p>
+      <p><strong>Property 5</strong> ₹65,00,000 <span class="badge">Verified</span></p>
       <p>Gurgaon, India</p>
     </div>
   </div>
+
+  <div class="footer-note">
+    🔒 Secure deals | 📞 Contact support anytime
+  </div>
 </div>
 
-<!-- Chats Page -->
+<!-- Chats -->
 <div id="chatsPage" class="container hidden">
   <h2>💬 Chats</h2>
-  <p>No chats available yet.</p>
+  <p>No chats yet. Start connecting!</p>
 </div>
 
-<!-- Sell Page -->
+<!-- Sell -->
 <div id="sellPage" class="container hidden">
   <h2>➕ Sell Property</h2>
-  <p>Form to upload property details will go here.</p>
+  <p>Upload your property details below.</p>
 </div>
 
-<!-- My Ads Page -->
+<!-- My Ads -->
 <div id="myAdsPage" class="container hidden">
   <h2>📄 My Ads</h2>
-  <p>Your posted properties will appear here.</p>
+  <p>Your posted properties appear here.</p>
 </div>
 
-<!-- Account Page -->
+<!-- Account -->
 <div id="accountPage" class="container hidden">
   <h2>👤 Account</h2>
   <input type="text" placeholder="Username">
@@ -170,19 +204,16 @@
 
   <h3>ℹ️ About</h3>
   <p><strong>Name:</strong> Amit</p>
-  <p><strong>Address:</strong> Sonipat 131001, Haryana, India</p>
+  <p><strong>Address:</strong> Sonipat 131001, Haryana</p>
   <p><strong>Email:</strong> Amitrudher24@gmail.com</p>
   <p><strong>Contact:</strong> 8053****43</p>
-  <p>This site helps buyers and sellers connect for real estate opportunities.</p>
+  <p>This platform connects buyers and sellers of property safely and easily.</p>
 
   <h3>❓ Help</h3>
-  <p>Contact <i>support@apnaghar.com</i> or call <i>1800-000-000</i></p>
-
-  <h3>🔗 Share</h3>
-  <p>Share via WhatsApp, Facebook, Instagram, Bluetooth, Email</p>
+  <p>Contact support@apnaghar.com or 1800-000-000</p>
 </div>
 
-<!-- Navigation -->
+<!-- Nav -->
 <div class="nav">
   <button onclick="showPage('homePage')">🏠<br>Home</button>
   <button onclick="showPage('chatsPage')">💬<br>Chats</button>
@@ -193,45 +224,36 @@
 
 <script>
 function showPage(pageId) {
-  const pages = ['homePage', 'chatsPage', 'sellPage', 'myAdsPage', 'accountPage'];
-  pages.forEach(id => {
+  ['homePage','chatsPage','sellPage','myAdsPage','accountPage'].forEach(id=>{
     document.getElementById(id).classList.add('hidden');
   });
   document.getElementById(pageId).classList.remove('hidden');
 }
-
-setTimeout(() => {
+setTimeout(()=>{
   document.getElementById('welcomeScreen').classList.add('hidden');
   document.getElementById('homePage').classList.remove('hidden');
-}, 2000);
-
-function filterProperties() {
+},1500);
+function filterProperties(){
   const searchVal = document.querySelector('.search-bar input').value.toLowerCase();
   const locationVal = document.getElementById('locationFilter').value;
-
-  document.querySelectorAll('.property-card').forEach(card => {
+  document.querySelectorAll('.property-card').forEach(card=>{
     const location = card.getAttribute('data-location');
     const text = card.innerText.toLowerCase();
-
-    if (
-      (locationVal === "" || location === locationVal) &&
-      text.includes(searchVal)
-    ) {
+    if((locationVal=="" || location==locationVal) && text.includes(searchVal)){
       card.style.display = "";
     } else {
       card.style.display = "none";
     }
   });
 }
-
-function addProperty() {
+function addProperty(){
   const list = document.getElementById('propertyList');
   const card = document.createElement('div');
   card.className = 'property-card';
   card.setAttribute('data-location', 'Custom');
   card.innerHTML = `
     <img src="property1.jpg" alt="New Property">
-    <p><strong>New Property</strong> — ₹40,00,000</p>
+    <p><strong>New Property</strong> ₹40,00,000 <span class="badge">Verified</span></p>
     <p>Custom Location</p>`;
   list.appendChild(card);
 }
