@@ -1,49 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f4; }
-    .welcome { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; z-index: 10; animation: fadeOut 1s ease-out forwards; animation-delay: 3s; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f5; }
+    .welcome { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 10; }
     .welcome img { max-width: 80%; border-radius: 10px; }
     header { background: #007bff; color: #fff; padding: 10px; display: flex; align-items: center; justify-content: space-between; }
     header img { height: 40px; }
+    .trusted-line { background: linear-gradient(90deg, #28a745, #218838); padding: 10px; color: #fff; text-align: center; font-weight: bold; }
+    .tagline { text-align: center; color: #555; font-size: 18px; margin: 5px 0; }
+    .top-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 5px 10px; }
+    .top-actions button { background: #007bff; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; }
     #searchBar { display: flex; gap: 5px; padding: 10px; background: #e9ecef; }
     #searchBar input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-    #searchBar button { padding: 8px 12px; background: #007bff; color: #fff; border: none; border-radius: 4px; }
-    .container { padding: 15px; }
+    #searchBar button { background: #007bff; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; }
+    .container { padding: 10px; }
     .section { display: none; }
-    .property-list { background: #fff; padding: 10px; margin: 10px 0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .property-list { background: #fff; padding: 10px; margin-bottom: 10px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .property-list img { width: 100%; border-radius: 6px; }
     form input, form textarea { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
-    form button { background: #28a745; color: #fff; padding: 10px; border: none; border-radius: 6px; cursor: pointer; }
-    .nav { position: fixed; bottom: 0; width: 100%; display: flex; background: #fff; border-top: 1px solid #ccc; }
+    form button { background: #28a745; color: #fff; border: none; padding: 10px; border-radius: 6px; }
+    .nav { position: fixed; bottom: 0; width: 100%; display: flex; border-top: 1px solid #ccc; background: #fff; }
     .nav button { flex: 1; padding: 10px; border: none; background: #fff; color: #007bff; font-size: 14px; }
-    .account-options { background: #fff; padding: 10px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    .account-options div { margin: 5px 0; padding: 6px; background: #f1f1f1; border-radius: 4px; cursor: pointer; }
     .account-dp { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
     .account-dp img { width: 60px; height: 60px; border-radius: 50%; }
-    .top-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 5px 10px; }
-    .top-actions button { padding: 5px 8px; font-size: 12px; background: #007bff; color: #fff; border: none; border-radius: 4px; }
-    .trusted-line { background: linear-gradient(90deg, #28a745, #218838); padding: 10px; border-radius: 6px; color: #fff; font-weight: bold; text-align: center; margin-top: 10px; animation: pulse 2s infinite; }
-    .tagline { text-align: center; font-size: 18px; color: #555; margin-top: 5px; animation: slideIn 1.5s ease-out; }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .account-options div { padding: 6px; background: #f1f1f1; border-radius: 4px; margin: 5px 0; cursor: pointer; }
+    #profileForm { display: none; }
   </style>
 </head>
 <body>
@@ -75,43 +60,51 @@
 </div>
 
 <div class="container section" id="homeSection">
-  <div id="propertyContainer"></div>
+  <div class="property-list"><img src="property1.jpg" alt="Property 1"></div>
+  <div class="property-list"><img src="property2.jpg" alt="Property 2"></div>
 </div>
 
 <div class="container section" id="sellSection">
   <h3>➕ Sell Property</h3>
-  <form id="sellForm">
-    <input type="text" id="propName" placeholder="Property Name" required>
-    <input type="text" id="propLocation" placeholder="Location" required>
-    <input type="number" id="propPrice" placeholder="Price" required>
-    <textarea id="propDesc" placeholder="Description" required></textarea>
-    <input type="text" id="propOwner" placeholder="Owner Name" required>
-    <input type="text" id="propFeatures" placeholder="Features (e.g. 3BHK, Garden)">
+  <form>
+    <input type="file" multiple>
+    <input type="text" placeholder="Property Name" required>
+    <input type="text" placeholder="Location" required>
+    <input type="number" placeholder="Price" required>
+    <textarea placeholder="Description" required></textarea>
+    <input type="text" placeholder="Owner Name" required>
+    <input type="text" placeholder="Features (e.g. 3BHK, Garden)">
     <button type="submit">Submit</button>
   </form>
 </div>
 
 <div class="container section" id="accountSection">
-  <div class="account-options">
-    <div class="account-dp">
-      <img src="dp.png" alt="DP">
-      <div>
-        <strong id="userStatus">Guest</strong>
-        <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
-      </div>
+  <div class="account-dp">
+    <img src="dp.png" alt="DP">
+    <div>
+      <strong id="userStatus">Guest</strong>
+      <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
     </div>
   </div>
-</div>
-
-<div class="container section" id="aboutSection">
-  <h3>About Us</h3>
-  <p>Apna Sapna Apna Ghar is your trusted platform to buy, sell, and rent properties with 10,000+ happy customers!</p>
+  <div class="account-options">
+    <div onclick="showLogin()">👤 Login</div>
+    <div onclick="logout()">🚪 Logout</div>
+    <div onclick="showSignup()">➕ Create Account</div>
+    <div onclick="editProfile()">✏️ Edit Profile</div>
+    <div onclick="saveProfile()">💾 Save Profile</div>
+  </div>
+  <div id="profileForm">
+    <input type="text" id="profileAddress" placeholder="Address">
+    <input type="date" id="profileDOB" placeholder="DOB">
+    <input type="text" id="profilePin" placeholder="PIN Code">
+    <input type="text" id="profileState" placeholder="State">
+    <input type="email" id="profileEmail" placeholder="Email Address">
+  </div>
 </div>
 
 <div class="nav">
   <button onclick="showSection('homeSection')">🏠 Home</button>
   <button onclick="showSection('sellSection')">➕ Sell</button>
-  <button onclick="showSection('aboutSection')">ℹ️ About</button>
   <button onclick="showSection('accountSection')">👤 Account</button>
 </div>
 
@@ -120,7 +113,6 @@ window.onload = function() {
   setTimeout(() => {
     document.getElementById('welcomeScreen').style.display = 'none';
     showSection('homeSection');
-    loadProperties();
   }, 3000);
 }
 
@@ -130,60 +122,39 @@ function showSection(id) {
 }
 
 function searchLocation() {
-  const val = document.getElementById('locationInput').value.toLowerCase();
-  const allProps = JSON.parse(localStorage.getItem('properties') || '[]');
-  const filtered = allProps.filter(p => p.location.toLowerCase().includes(val));
-  displayProperties(filtered);
+  const val = document.getElementById('locationInput').value;
+  alert(val ? `Searching for properties in: ${val}` : 'Please enter a location');
 }
 
 function showMyAds() {
-  const allProps = JSON.parse(localStorage.getItem('properties') || '[]');
-  displayProperties(allProps);
-  showSection('homeSection');
+  alert("My Ads clicked!");
+  showSection('sellSection');
 }
 
 function showPropertyList() {
-  loadProperties();
+  alert("Property List clicked!");
   showSection('homeSection');
 }
 
-document.getElementById('sellForm').onsubmit = function(e) {
-  e.preventDefault();
-  const prop = {
-    name: document.getElementById('propName').value,
-    location: document.getElementById('propLocation').value,
-    price: document.getElementById('propPrice').value,
-    desc: document.getElementById('propDesc').value,
-    owner: document.getElementById('propOwner').value,
-    features: document.getElementById('propFeatures').value
-  };
-  const props = JSON.parse(localStorage.getItem('properties') || '[]');
-  props.push(prop);
-  localStorage.setItem('properties', JSON.stringify(props));
-  alert('Property added!');
-  this.reset();
+function showLogin() {
+  alert("Login clicked!");
 }
 
-function loadProperties() {
-  const props = JSON.parse(localStorage.getItem('properties') || '[]');
-  displayProperties(props);
+function logout() {
+  alert("Logout clicked!");
 }
 
-function displayProperties(list) {
-  const container = document.getElementById('propertyContainer');
-  container.innerHTML = '';
-  if (list.length === 0) {
-    container.innerHTML = '<p>No properties found.</p>';
-    return;
-  }
-  list.forEach(p => {
-    container.innerHTML += `<div class="property-list">
-      <strong>${p.name}</strong><br>
-      📍 ${p.location} | 💰 ${p.price}<br>
-      📝 ${p.desc}<br>
-      👤 ${p.owner} | ${p.features}
-    </div>`;
-  });
+function showSignup() {
+  alert("Signup clicked!");
+}
+
+function editProfile() {
+  document.getElementById('profileForm').style.display = 'block';
+}
+
+function saveProfile() {
+  alert("Profile saved!");
+  document.getElementById('profileForm').style.display = 'none';
 }
 </script>
 
