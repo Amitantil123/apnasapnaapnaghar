@@ -75,20 +75,18 @@
 </div>
 
 <div class="container section" id="homeSection">
-  <div class="property-list"><img src="property1.jpg" alt="Property 1"></div>
-  <div class="property-list"><img src="property2.jpg" alt="Property 2"></div>
+  <div id="propertyContainer"></div>
 </div>
 
 <div class="container section" id="sellSection">
   <h3>➕ Sell Property</h3>
   <form id="sellForm">
-    <input type="file" multiple>
-    <input type="text" placeholder="Property Name" required>
-    <input type="text" placeholder="Location" required>
-    <input type="number" placeholder="Price" required>
-    <textarea placeholder="Description" required></textarea>
-    <input type="text" placeholder="Owner Name" required>
-    <input type="text" placeholder="Features (e.g. 3BHK, Garden)">
+    <input type="text" id="propName" placeholder="Property Name" required>
+    <input type="text" id="propLocation" placeholder="Location" required>
+    <input type="number" id="propPrice" placeholder="Price" required>
+    <textarea id="propDesc" placeholder="Description" required></textarea>
+    <input type="text" id="propOwner" placeholder="Owner Name" required>
+    <input type="text" id="propFeatures" placeholder="Features (e.g. 3BHK, Garden)">
     <button type="submit">Submit</button>
   </form>
 </div>
@@ -102,19 +100,12 @@
         <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
       </div>
     </div>
-    <div onclick="showLogin()">👤 Login</div>
-    <div onclick="logout()">🚪 Logout</div>
-    <div onclick="showSignup()">➕ Create Account</div>
-    <div onclick="editProfile()">✏️ Edit Profile</div>
-    <div onclick="saveProfile()">💾 Save Profile</div>
-    <div id="profileForm" style="display:none;">
-      <input type="text" id="profileAddress" placeholder="Address">
-      <input type="date" id="profileDOB" placeholder="DOB">
-      <input type="text" id="profilePin" placeholder="PIN Code">
-      <input type="text" id="profileState" placeholder="State">
-      <input type="email" id="profileEmail" placeholder="Email Address">
-    </div>
   </div>
+</div>
+
+<div class="container section" id="aboutSection">
+  <h3>About Us</h3>
+  <p>Apna Sapna Apna Ghar is your trusted platform to buy, sell, and rent properties with 10,000+ happy customers!</p>
 </div>
 
 <div class="nav">
@@ -129,6 +120,7 @@ window.onload = function() {
   setTimeout(() => {
     document.getElementById('welcomeScreen').style.display = 'none';
     showSection('homeSection');
+    loadProperties();
   }, 3000);
 }
 
@@ -138,18 +130,60 @@ function showSection(id) {
 }
 
 function searchLocation() {
-  const val = document.getElementById('locationInput').value;
-  alert(val ? `Searching for properties in: ${val}` : 'Please enter a location');
+  const val = document.getElementById('locationInput').value.toLowerCase();
+  const allProps = JSON.parse(localStorage.getItem('properties') || '[]');
+  const filtered = allProps.filter(p => p.location.toLowerCase().includes(val));
+  displayProperties(filtered);
 }
 
 function showMyAds() {
-  alert("Showing your ads...");
-  showSection('sellSection');
+  const allProps = JSON.parse(localStorage.getItem('properties') || '[]');
+  displayProperties(allProps);
+  showSection('homeSection');
 }
 
 function showPropertyList() {
-  alert("Showing property list...");
+  loadProperties();
   showSection('homeSection');
+}
+
+document.getElementById('sellForm').onsubmit = function(e) {
+  e.preventDefault();
+  const prop = {
+    name: document.getElementById('propName').value,
+    location: document.getElementById('propLocation').value,
+    price: document.getElementById('propPrice').value,
+    desc: document.getElementById('propDesc').value,
+    owner: document.getElementById('propOwner').value,
+    features: document.getElementById('propFeatures').value
+  };
+  const props = JSON.parse(localStorage.getItem('properties') || '[]');
+  props.push(prop);
+  localStorage.setItem('properties', JSON.stringify(props));
+  alert('Property added!');
+  this.reset();
+}
+
+function loadProperties() {
+  const props = JSON.parse(localStorage.getItem('properties') || '[]');
+  displayProperties(props);
+}
+
+function displayProperties(list) {
+  const container = document.getElementById('propertyContainer');
+  container.innerHTML = '';
+  if (list.length === 0) {
+    container.innerHTML = '<p>No properties found.</p>';
+    return;
+  }
+  list.forEach(p => {
+    container.innerHTML += `<div class="property-list">
+      <strong>${p.name}</strong><br>
+      📍 ${p.location} | 💰 ${p.price}<br>
+      📝 ${p.desc}<br>
+      👤 ${p.owner} | ${p.features}
+    </div>`;
+  });
 }
 </script>
 
