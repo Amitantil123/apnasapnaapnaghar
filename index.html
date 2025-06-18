@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apna Sapna Apna Ghar</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f5; }
-    .welcome { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 10; }
-    .welcome img { max-width: 80%; border-radius: 10px; }
-    header { background: #007bff; color: #fff; padding: 10px; display: flex; align-items: center; justify-content: space-between; }
-    header img { height: 40px; }
-    .trusted-line { background: linear-gradient(90deg, #28a745, #218838); padding: 10px; color: #fff; text-align: center; font-weight: bold; }
-    .tagline { text-align: center; color: #555; font-size: 18px; margin: 5px 0; }
-    .top-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 5px 10px; }
-    .top-actions button { background: #007bff; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; }
-    #searchBar { display: flex; gap: 5px; padding: 10px; background: #e9ecef; }
-    #searchBar input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-    #searchBar button { background: #007bff; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; }
-    .container { padding: 10px; }
-    .section { display: none; }
-    .property-list { background: #fff; padding: 10px; margin-bottom: 10px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .property-list img { width: 100%; border-radius: 6px; }
-    form input, form textarea { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
-    form button { background: #28a745; color: #fff; border: none; padding: 10px; border-radius: 6px; }
-    .nav { position: fixed; bottom: 0; width: 100%; display: flex; border-top: 1px solid #ccc; background: #fff; }
-    .nav button { flex: 1; padding: 10px; border: none; background: #fff; color: #007bff; font-size: 14px; }
-    .account-dp { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .account-dp img { width: 60px; height: 60px; border-radius: 50%; }
-    .account-options div { padding: 6px; background: #f1f1f1; border-radius: 4px; margin: 5px 0; cursor: pointer; }
-    #profileForm { display: none; }
+    body { margin:0; font-family:sans-serif; background:#f0f0f0; }
+    .welcome { position:fixed; top:0; left:0; width:100%; height:100%; background:#000;
+      display:flex; justify-content:center; align-items:center; z-index:10;
+    }
+    .welcome img { max-width:80%; border-radius:8px; }
+    header { background:#007bff; color:#fff; padding:10px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    header img { height:40px; }
+    .trusted-line {
+      background:linear-gradient(90deg,#28a745,#218838);
+      color:#fff; padding:8px; text-align:center; font-weight:bold;
+    }
+    .tagline { text-align:center; color:#555; margin:4px 0; }
+    .top-actions { display:flex; justify-content:flex-end; gap:8px; padding:5px 10px; }
+    .top-actions button { background:#007bff; color:#fff; border:none;
+      padding:5px 10px; border-radius:4px; font-size:12px; cursor:pointer;
+    }
+    #searchBar { display:flex; gap:5px; padding:10px; background:#e9ecef; }
+    #searchBar input { flex:1; padding:6px; border:1px solid #ccc; border-radius:4px; }
+    #searchBar button { background:#007bff; color:#fff; border:none;
+      padding:6px 12px; border-radius:4px; cursor:pointer;
+    }
+    .container { padding:10px; }
+    .section { display:none; }
+    .property-list { background:#fff; padding:10px; margin-bottom:10px; border-radius:6px;
+      box-shadow:0 2px 4px rgba(0,0,0,0.1); }
+    .property-list img { width:100%; border-radius:6px; }
+    form input, form textarea { width:100%; padding:6px; margin:5px 0;
+      border:1px solid #ccc; border-radius:4px; }
+    form button { background:#28a745; color:#fff; border:none; padding:8px;
+      border-radius:6px; cursor:pointer; }
+    .nav { position:fixed; bottom:0; width:100%; display:flex;
+      border-top:1px solid #ccc; background:#fff; }
+    .nav button { flex:1; padding:10px; border:none; background:#fff; color:#007bff;
+      font-size:14px; cursor:pointer; }
+    .account-dp { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .account-dp img { width:50px; height:50px; border-radius:50%; }
+    .account-options div {
+      padding:5px; background:#f1f1f1; border-radius:4px; margin:4px 0; cursor:pointer;
+    }
+    #profileForm { display:none; }
   </style>
 </head>
 <body>
 
 <div class="welcome" id="welcomeScreen">
-  <img src="welcome.jpg" alt="Welcome">
+  <img src="https://via.placeholder.com/400x300?text=Welcome" alt="Welcome">
 </div>
 
 <header>
-  <img src="logo.png" alt="Logo">
-  <strong>Apna Sapna Apna Ghar</strong>
+  <img src="https://via.placeholder.com/100x40?text=Logo" alt="Logo">
+  Apna Sapna Apna Ghar
 </header>
 
 <div class="trusted-line">
   🌟 10,000+ Trusted Customers | Your Dream Home Awaits!
 </div>
-<div class="tagline">
-  "Har ghar ek kahani, har kahani ek sapna!"
-</div>
+<div class="tagline">"Har ghar ek kahani, har kahani ek sapna!"</div>
 
 <div class="top-actions">
-  <button onclick="showMyAds()">📂 My Ads</button>
-  <button onclick="showPropertyList()">📋 Property List</button>
+  <button onclick="showMyAds()">My Ads</button>
+  <button onclick="showPropertyList()">Property List</button>
 </div>
 
 <div id="searchBar">
@@ -60,12 +76,16 @@
 </div>
 
 <div class="container section" id="homeSection">
-  <div class="property-list"><img src="property1.jpg" alt="Property 1"></div>
-  <div class="property-list"><img src="property2.jpg" alt="Property 2"></div>
+  <div class="property-list">
+    <img src="https://via.placeholder.com/600x400?text=Property+1" alt="Property 1">
+  </div>
+  <div class="property-list">
+    <img src="https://via.placeholder.com/600x400?text=Property+2" alt="Property 2">
+  </div>
 </div>
 
 <div class="container section" id="sellSection">
-  <h3>➕ Sell Property</h3>
+  <h3>Sell Property</h3>
   <form>
     <input type="file" multiple>
     <input type="text" placeholder="Property Name" required>
@@ -80,23 +100,23 @@
 
 <div class="container section" id="accountSection">
   <div class="account-dp">
-    <img src="dp.png" alt="DP">
+    <img src="https://via.placeholder.com/50?text=DP" alt="DP">
     <div>
       <strong id="userStatus">Guest</strong>
-      <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
+      <div style="font-size:12px;color:gray;">Profile Info</div>
     </div>
   </div>
   <div class="account-options" id="accountOptions">
-    <div onclick="showLogin()">👤 Login</div>
-    <div onclick="showSignup()">➕ Create Account</div>
+    <div onclick="showLogin()">Login</div>
+    <div onclick="showSignup()">Create Account</div>
   </div>
   <div id="profileForm">
-    <input type="text" id="profileAddress" placeholder="Address">
-    <input type="date" id="profileDOB" placeholder="DOB">
-    <input type="text" id="profilePin" placeholder="PIN Code">
-    <input type="text" id="profileState" placeholder="State">
-    <input type="email" id="profileEmail" placeholder="Email Address">
-    <button onclick="saveProfile()">Save Profile</button>
+    <input type="text" placeholder="Address">
+    <input type="date" placeholder="DOB">
+    <input type="text" placeholder="PIN Code">
+    <input type="text" placeholder="State">
+    <input type="email" placeholder="Email">
+    <button type="button" onclick="saveProfile()">Save Profile</button>
   </div>
 </div>
 
@@ -104,6 +124,8 @@
   <button onclick="showSection('homeSection')">🏠 Home</button>
   <button onclick="showSection('sellSection')">➕ Sell</button>
   <button onclick="showSection('accountSection')">👤 Account</button>
+  <button onclick="showChat()">💬 Chat</button>
+  <button onclick="showPageSettings()">⚙️ Page Settings</button>
 </div>
 
 <script>
@@ -114,7 +136,7 @@ window.onload = function() {
     document.getElementById('welcomeScreen').style.display = 'none';
     showSection('homeSection');
   }, 3000);
-}
+};
 
 function showSection(id) {
   document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
@@ -122,28 +144,34 @@ function showSection(id) {
 }
 
 function searchLocation() {
-  const val = document.getElementById('locationInput').value;
-  alert(val ? `Searching for properties in: ${val}` : 'Please enter a location');
+  const v = document.getElementById('locationInput').value;
+  alert(v ? `Searching properties in: ${v}` : 'Enter a location');
 }
 
 function showMyAds() {
-  alert("My Ads clicked!");
-  showSection('sellSection');
+  alert("My Ads clicked");
 }
 
 function showPropertyList() {
-  alert("Property List clicked!");
-  showSection('homeSection');
+  alert("Property List clicked");
+}
+
+function showChat() {
+  alert("Chat feature clicked!");
+}
+
+function showPageSettings() {
+  alert("Page Settings clicked!");
 }
 
 function showLogin() {
   loggedIn = true;
   updateAccountOptions();
-  alert("Login successful!");
+  alert("Logged in!");
 }
 
 function showSignup() {
-  alert("Signup clicked!");
+  alert("Signup form shown (simulate)");
 }
 
 function logout() {
@@ -153,20 +181,21 @@ function logout() {
 }
 
 function updateAccountOptions() {
-  const options = document.getElementById('accountOptions');
-  options.innerHTML = '';
+  const opt = document.getElementById('accountOptions');
+  opt.innerHTML = '';
   if (loggedIn) {
     document.getElementById('userStatus').innerText = 'User123';
-    options.innerHTML = `
-      <div onclick="editProfile()">✏️ Edit Profile</div>
-      <div onclick="showSettings()">⚙️ Settings</div>
-      <div onclick="logout()">🚪 Logout</div>
+    opt.innerHTML = `
+      <div onclick="editProfile()">Edit Profile</div>
+      <div onclick="showPageSettings()">Page Settings</div>
+      <div onclick="showChat()">Chat</div>
+      <div onclick="logout()">Logout</div>
     `;
   } else {
     document.getElementById('userStatus').innerText = 'Guest';
-    options.innerHTML = `
-      <div onclick="showLogin()">👤 Login</div>
-      <div onclick="showSignup()">➕ Create Account</div>
+    opt.innerHTML = `
+      <div onclick="showLogin()">Login</div>
+      <div onclick="showSignup()">Create Account</div>
     `;
   }
 }
@@ -178,10 +207,6 @@ function editProfile() {
 function saveProfile() {
   alert("Profile saved!");
   document.getElementById('profileForm').style.display = 'none';
-}
-
-function showSettings() {
-  alert("Settings clicked!");
 }
 </script>
 
