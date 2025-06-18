@@ -86,12 +86,9 @@
       <div style="font-size: 12px; color: gray;">View & Edit Profile</div>
     </div>
   </div>
-  <div class="account-options">
+  <div class="account-options" id="accountOptions">
     <div onclick="showLogin()">👤 Login</div>
-    <div onclick="logout()">🚪 Logout</div>
     <div onclick="showSignup()">➕ Create Account</div>
-    <div onclick="editProfile()">✏️ Edit Profile</div>
-    <div onclick="saveProfile()">💾 Save Profile</div>
   </div>
   <div id="profileForm">
     <input type="text" id="profileAddress" placeholder="Address">
@@ -99,6 +96,7 @@
     <input type="text" id="profilePin" placeholder="PIN Code">
     <input type="text" id="profileState" placeholder="State">
     <input type="email" id="profileEmail" placeholder="Email Address">
+    <button onclick="saveProfile()">Save Profile</button>
   </div>
 </div>
 
@@ -109,6 +107,8 @@
 </div>
 
 <script>
+let loggedIn = false;
+
 window.onload = function() {
   setTimeout(() => {
     document.getElementById('welcomeScreen').style.display = 'none';
@@ -137,15 +137,38 @@ function showPropertyList() {
 }
 
 function showLogin() {
-  alert("Login clicked!");
-}
-
-function logout() {
-  alert("Logout clicked!");
+  loggedIn = true;
+  updateAccountOptions();
+  alert("Login successful!");
 }
 
 function showSignup() {
   alert("Signup clicked!");
+}
+
+function logout() {
+  loggedIn = false;
+  updateAccountOptions();
+  alert("Logged out!");
+}
+
+function updateAccountOptions() {
+  const options = document.getElementById('accountOptions');
+  options.innerHTML = '';
+  if (loggedIn) {
+    document.getElementById('userStatus').innerText = 'User123';
+    options.innerHTML = `
+      <div onclick="editProfile()">✏️ Edit Profile</div>
+      <div onclick="showSettings()">⚙️ Settings</div>
+      <div onclick="logout()">🚪 Logout</div>
+    `;
+  } else {
+    document.getElementById('userStatus').innerText = 'Guest';
+    options.innerHTML = `
+      <div onclick="showLogin()">👤 Login</div>
+      <div onclick="showSignup()">➕ Create Account</div>
+    `;
+  }
 }
 
 function editProfile() {
@@ -155,6 +178,10 @@ function editProfile() {
 function saveProfile() {
   alert("Profile saved!");
   document.getElementById('profileForm').style.display = 'none';
+}
+
+function showSettings() {
+  alert("Settings clicked!");
 }
 </script>
 
