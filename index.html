@@ -1,212 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Apna Sapna Apna Ghar</title>
+  <meta charset="UTF-8" />
+  <title>Apna Sapna Apna Ghar - Account</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body { margin:0; font-family:sans-serif; background:#f0f0f0; }
-    .welcome { position:fixed; top:0; left:0; width:100%; height:100%; background:#000;
-      display:flex; justify-content:center; align-items:center; z-index:10;
-    }
-    .welcome img { max-width:80%; border-radius:8px; }
-    header { background:#007bff; color:#fff; padding:10px;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    header img { height:40px; }
-    .trusted-line {
-      background:linear-gradient(90deg,#28a745,#218838);
-      color:#fff; padding:8px; text-align:center; font-weight:bold;
-    }
-    .tagline { text-align:center; color:#555; margin:4px 0; }
-    .top-actions { display:flex; justify-content:flex-end; gap:8px; padding:5px 10px; }
-    .top-actions button { background:#007bff; color:#fff; border:none;
-      padding:5px 10px; border-radius:4px; font-size:12px; cursor:pointer;
-    }
-    #searchBar { display:flex; gap:5px; padding:10px; background:#e9ecef; }
-    #searchBar input { flex:1; padding:6px; border:1px solid #ccc; border-radius:4px; }
-    #searchBar button { background:#007bff; color:#fff; border:none;
-      padding:6px 12px; border-radius:4px; cursor:pointer;
-    }
-    .container { padding:10px; }
-    .section { display:none; }
-    .property-list { background:#fff; padding:10px; margin-bottom:10px; border-radius:6px;
-      box-shadow:0 2px 4px rgba(0,0,0,0.1); }
-    .property-list img { width:100%; border-radius:6px; }
-    form input, form textarea { width:100%; padding:6px; margin:5px 0;
-      border:1px solid #ccc; border-radius:4px; }
-    form button { background:#28a745; color:#fff; border:none; padding:8px;
-      border-radius:6px; cursor:pointer; }
-    .nav { position:fixed; bottom:0; width:100%; display:flex;
-      border-top:1px solid #ccc; background:#fff; }
-    .nav button { flex:1; padding:10px; border:none; background:#fff; color:#007bff;
-      font-size:14px; cursor:pointer; }
-    .account-dp { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-    .account-dp img { width:50px; height:50px; border-radius:50%; }
-    .account-options div {
-      padding:5px; background:#f1f1f1; border-radius:4px; margin:4px 0; cursor:pointer;
-    }
-    #profileForm { display:none; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f5; }
+    .account-container { max-width: 400px; margin: 20px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 15px; }
+    .profile { display: flex; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+    .profile img { width: 60px; height: 60px; border-radius: 50%; margin-right: 10px; }
+    .profile-info { }
+    .profile-info .name { font-weight: bold; font-size: 1.2em; }
+    .profile-info .email { font-size: 0.9em; color: #555; }
+    .action-list { margin-top: 15px; }
+    .action-list div { padding: 10px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; align-items: center; }
+    .action-list div:hover { background: #f9f9f9; }
+    .action-list div span { margin-left: 10px; }
+    .buttons { margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
+    button { flex: 1; padding: 8px; border: none; border-radius: 4px; font-size: 0.9em; cursor: pointer; }
+    .btn-primary { background: #007bff; color: #fff; }
+    .btn-outline { background: #fff; border: 1px solid #007bff; color: #007bff; }
+    .btn-danger { background: #dc3545; color: #fff; }
+
+    .modal { display: none; position: fixed; top: 0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index: 10; }
+    .modal-content { background: #fff; padding: 20px; border-radius: 6px; width:90%; max-width:300px; }
+    input { width:100%; padding:8px; margin:5px 0; border:1px solid #ccc; border-radius:4px; }
   </style>
 </head>
 <body>
 
-<div class="welcome" id="welcomeScreen">
-  <img src="https://via.placeholder.com/400x300?text=Welcome" alt="Welcome">
-</div>
-
-<header>
-  <img src="https://via.placeholder.com/100x40?text=Logo" alt="Logo">
-  Apna Sapna Apna Ghar
-</header>
-
-<div class="trusted-line">
-  🌟 10,000+ Trusted Customers | Your Dream Home Awaits!
-</div>
-<div class="tagline">"Har ghar ek kahani, har kahani ek sapna!"</div>
-
-<div class="top-actions">
-  <button onclick="showMyAds()">My Ads</button>
-  <button onclick="showPropertyList()">Property List</button>
-</div>
-
-<div id="searchBar">
-  <input type="text" id="locationInput" placeholder="Search location...">
-  <button onclick="searchLocation()">Search</button>
-</div>
-
-<div class="container section" id="homeSection">
-  <div class="property-list">
-    <img src="https://via.placeholder.com/600x400?text=Property+1" alt="Property 1">
-  </div>
-  <div class="property-list">
-    <img src="https://via.placeholder.com/600x400?text=Property+2" alt="Property 2">
-  </div>
-</div>
-
-<div class="container section" id="sellSection">
-  <h3>Sell Property</h3>
-  <form>
-    <input type="file" multiple>
-    <input type="text" placeholder="Property Name" required>
-    <input type="text" placeholder="Location" required>
-    <input type="number" placeholder="Price" required>
-    <textarea placeholder="Description" required></textarea>
-    <input type="text" placeholder="Owner Name" required>
-    <input type="text" placeholder="Features (e.g. 3BHK, Garden)">
-    <button type="submit">Submit</button>
-  </form>
-</div>
-
-<div class="container section" id="accountSection">
-  <div class="account-dp">
-    <img src="https://via.placeholder.com/50?text=DP" alt="DP">
-    <div>
-      <strong id="userStatus">Guest</strong>
-      <div style="font-size:12px;color:gray;">Profile Info</div>
+<div class="account-container">
+  <div class="profile">
+    <img src="https://via.placeholder.com/60" id="profilePic">
+    <div class="profile-info">
+      <div class="name" id="profileName">Guest</div>
+      <div class="email" id="profileEmail">Not logged in</div>
     </div>
   </div>
-  <div class="account-options" id="accountOptions">
-    <div onclick="showLogin()">Login</div>
-    <div onclick="showSignup()">Create Account</div>
+
+  <div class="action-list">
+    <div onclick="showAlert('My Ads')">📂 <span>My Ads</span></div>
+    <div onclick="showAlert('Wishlist')">❤️ <span>Wishlist</span></div>
+    <div onclick="showAlert('Chats')">💬 <span>Chats</span></div>
+    <div onclick="showAlert('Settings')">⚙️ <span>Settings</span></div>
+    <div onclick="showAlert('Help')">❓ <span>Help & Support</span></div>
+    <div onclick="changeLanguage()">🌐 <span>Language</span></div>
   </div>
-  <div id="profileForm">
-    <input type="text" placeholder="Address">
-    <input type="date" placeholder="DOB">
-    <input type="text" placeholder="PIN Code">
-    <input type="text" placeholder="State">
-    <input type="email" placeholder="Email">
-    <button type="button" onclick="saveProfile()">Save Profile</button>
+
+  <div class="buttons">
+    <button class="btn-primary" onclick="showLoginModal()">Login / Signup</button>
+    <button class="btn-outline" onclick="showEditModal()">Edit Profile</button>
+    <button class="btn-primary" onclick="logout()">Logout</button>
+    <button class="btn-danger" onclick="showDeleteModal()">Delete Account</button>
   </div>
 </div>
 
-<div class="nav">
-  <button onclick="showSection('homeSection')">🏠 Home</button>
-  <button onclick="showSection('sellSection')">➕ Sell</button>
-  <button onclick="showSection('accountSection')">👤 Account</button>
-  <button onclick="showChat()">💬 Chat</button>
-  <button onclick="showPageSettings()">⚙️ Page Settings</button>
+<!-- Modals -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <h3>Login / Signup</h3>
+    <input type="text" id="loginName" placeholder="Name">
+    <input type="email" id="loginEmail" placeholder="Email">
+    <button class="btn-primary" onclick="login()">Submit</button>
+    <button class="btn-outline" onclick="closeModal('loginModal')">Cancel</button>
+  </div>
+</div>
+
+<div class="modal" id="editModal">
+  <div class="modal-content">
+    <h3>Edit Profile</h3>
+    <input type="text" id="editName" placeholder="New Name">
+    <input type="email" id="editEmail" placeholder="New Email">
+    <button class="btn-primary" onclick="saveProfile()">Save</button>
+    <button class="btn-outline" onclick="closeModal('editModal')">Cancel</button>
+  </div>
+</div>
+
+<div class="modal" id="deleteModal">
+  <div class="modal-content">
+    <p>Are you sure you want to delete your account?</p>
+    <button class="btn-danger" onclick="confirmDelete()">Yes Delete</button>
+    <button class="btn-outline" onclick="closeModal('deleteModal')">Cancel</button>
+  </div>
 </div>
 
 <script>
-let loggedIn = false;
-
-window.onload = function() {
-  setTimeout(() => {
-    document.getElementById('welcomeScreen').style.display = 'none';
-    showSection('homeSection');
-  }, 3000);
-};
-
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
+function showAlert(feature) {
+  alert(feature + " clicked!");
 }
 
-function searchLocation() {
-  const v = document.getElementById('locationInput').value;
-  alert(v ? `Searching properties in: ${v}` : 'Enter a location');
+function changeLanguage() {
+  const lang = prompt("Enter language (English / Hindi):");
+  if (lang) alert("Language set to: " + lang);
 }
 
-function showMyAds() {
-  alert("My Ads clicked");
+function showLoginModal() {
+  document.getElementById('loginModal').style.display = 'flex';
 }
 
-function showPropertyList() {
-  alert("Property List clicked");
-}
-
-function showChat() {
-  alert("Chat feature clicked!");
-}
-
-function showPageSettings() {
-  alert("Page Settings clicked!");
-}
-
-function showLogin() {
-  loggedIn = true;
-  updateAccountOptions();
-  alert("Logged in!");
-}
-
-function showSignup() {
-  alert("Signup form shown (simulate)");
-}
-
-function logout() {
-  loggedIn = false;
-  updateAccountOptions();
-  alert("Logged out!");
-}
-
-function updateAccountOptions() {
-  const opt = document.getElementById('accountOptions');
-  opt.innerHTML = '';
-  if (loggedIn) {
-    document.getElementById('userStatus').innerText = 'User123';
-    opt.innerHTML = `
-      <div onclick="editProfile()">Edit Profile</div>
-      <div onclick="showPageSettings()">Page Settings</div>
-      <div onclick="showChat()">Chat</div>
-      <div onclick="logout()">Logout</div>
-    `;
+function login() {
+  const name = document.getElementById('loginName').value;
+  const email = document.getElementById('loginEmail').value;
+  if (name && email) {
+    document.getElementById('profileName').innerText = name;
+    document.getElementById('profileEmail').innerText = email;
+    closeModal('loginModal');
+    alert("Logged in!");
   } else {
-    document.getElementById('userStatus').innerText = 'Guest';
-    opt.innerHTML = `
-      <div onclick="showLogin()">Login</div>
-      <div onclick="showSignup()">Create Account</div>
-    `;
+    alert("Enter both name and email");
   }
 }
 
-function editProfile() {
-  document.getElementById('profileForm').style.display = 'block';
+function logout() {
+  document.getElementById('profileName').innerText = "Guest";
+  document.getElementById('profileEmail').innerText = "Not logged in";
+  alert("Logged out");
+}
+
+function showEditModal() {
+  document.getElementById('editModal').style.display = 'flex';
 }
 
 function saveProfile() {
-  alert("Profile saved!");
-  document.getElementById('profileForm').style.display = 'none';
+  const name = document.getElementById('editName').value;
+  const email = document.getElementById('editEmail').value;
+  if (name) document.getElementById('profileName').innerText = name;
+  if (email) document.getElementById('profileEmail').innerText = email;
+  closeModal('editModal');
+  alert("Profile updated");
+}
+
+function showDeleteModal() {
+  document.getElementById('deleteModal').style.display = 'flex';
+}
+
+function confirmDelete() {
+  logout();
+  closeModal('deleteModal');
+  alert("Account deleted");
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
 }
 </script>
 
